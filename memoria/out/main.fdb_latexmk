@@ -1,11 +1,11 @@
 # Fdb version 4
-["biber out/main"] 0 "out/main.bcf" "out/main.bbl" "out/main" 1731077119.32176 -1
-  "out/main.bcf" 1731077119 107506 52154da5a90696351b32d01c53d7b37f "pdflatex"
+["biber out/main"] 0 "out/main.bcf" "out/main.bbl" "out/main" 1731079552.71363 -1
+  "out/main.bcf" 1731079552 107506 52154da5a90696351b32d01c53d7b37f "pdflatex"
   (generated)
   "out/main.bbl"
   "out/main.blg"
   (rewritten before read)
-["pdflatex"] 1731077116.97031 "c:/Users/estel/OneDrive - Universidad Politécnica de Madrid/9º Cuatrimestre/IoT/iot-power/memoria/main.tex" "out/main.pdf" "main" 1731077119.32233 0
+["pdflatex"] 1731079550.39118 "c:/Users/estel/OneDrive - Universidad Politécnica de Madrid/9º Cuatrimestre/IoT/iot-power/memoria/main.tex" "out/main.pdf" "main" 1731079552.71421 0
   "C:/Users/estel/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1727114040 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/estel/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1715959490 24240354 ded59bbd0b5bfc8248cce8c87b12de2e ""
   "C:/Users/estel/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
@@ -15,14 +15,12 @@
   "C:/Users/estel/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmr12.tfm" 1136765053 1288 655e228510b4c2a1abe905c368440826 ""
   "C:/Users/estel/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmr17.tfm" 1136765053 1292 296a67155bdbfc32aa9c636f21e91433 ""
   "C:/Users/estel/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmti12.tfm" 1136765053 1484 ed72f8f5cf654cda15ecc8e32bfcbee5 ""
-  "C:/Users/estel/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmtt10.tfm" 1136765053 768 1321e9409b4137d6fb428ac9dc956269 ""
   "C:/Users/estel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb" 1247596666 34811 78b52f49e893bcba91bd7581cdc144c0 ""
   "C:/Users/estel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1247596666 32080 340ef9bf63678554ee606688e7b5339d ""
   "C:/Users/estel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb" 1247596667 32001 6aeea3afe875097b1eb0da29acd61e28 ""
   "C:/Users/estel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1247596667 35752 024fb6c41858982481f6968b5fc26508 ""
   "C:/Users/estel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1247596667 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "C:/Users/estel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb" 1247596667 36118 fad905eba93cff5bce1e185fe980a177 ""
-  "C:/Users/estel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb" 1247596667 31099 342ef5a582aacbd3346f3cf4579679fa ""
   "C:/Users/estel/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mkii" 1580390158 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "C:/Users/estel/AppData/Local/Programs/MiKTeX/tex/generic/atbegshi/atbegshi.sty" 1575571100 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
   "C:/Users/estel/AppData/Local/Programs/MiKTeX/tex/generic/babel/babel.sty" 1713592802 146627 f7a4a651a7b2f00e9d4cc78db15bfe2a ""
@@ -199,18 +197,18 @@
   "C:/Users/estel/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/estel/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "C:/Users/estel/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
-  "c:/Users/estel/OneDrive - Universidad Politécnica de Madrid/9º Cuatrimestre/IoT/iot-power/memoria/main.tex" 1731077112 1221 1ccdd645b31c5807a9e79d9dcc5d4bcf ""
+  "c:/Users/estel/OneDrive - Universidad Politécnica de Madrid/9º Cuatrimestre/IoT/iot-power/memoria/main.tex" 1731079515 1180 19c12fd2326bb50a08a4ebbcc1adc6c6 ""
   "config.tex" 1731076418 2752 7c9bf1bf3e2f4b840fade5f981c48057 ""
   "cover.tex" 1731074503 720 55f872b4730c9e7f91758a84c302f497 ""
-  "main.tex" 1731077112 1221 1ccdd645b31c5807a9e79d9dcc5d4bcf ""
-  "out/cover.aux" 1731077119 4403 a2fe03b02ddc2c2e9fc2f9d28da38d26 "pdflatex"
-  "out/main.aux" 1731077119 971 aa7ccf8ffccef6d919aa98ba3e6dbef9 "pdflatex"
+  "main.tex" 1731079515 1180 19c12fd2326bb50a08a4ebbcc1adc6c6 ""
+  "out/cover.aux" 1731079552 4403 a2fe03b02ddc2c2e9fc2f9d28da38d26 "pdflatex"
+  "out/main.aux" 1731079552 725 97a1b65ef8e6dab2b00e579f50138f34 "pdflatex"
   "out/main.bbl" 1731075648 0 d41d8cd98f00b204e9800998ecf8427e "biber out/main"
-  "out/main.lof" 1731077119 30 1bb04962d39b6bda471ac6c46ce13f85 "pdflatex"
-  "out/main.out" 1731077118 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "out/main.run.xml" 1731077119 2321 8c7466df2ab77836a39dd38b4aea8826 "pdflatex"
-  "out/main.tdo" 1731077119 124 2f5bf607a842a39472b5d38e14c89ea1 "pdflatex"
-  "out/main.toc" 1731077119 30 1bb04962d39b6bda471ac6c46ce13f85 "pdflatex"
+  "out/main.lof" 1731079552 30 1bb04962d39b6bda471ac6c46ce13f85 "pdflatex"
+  "out/main.out" 1731079552 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "out/main.run.xml" 1731079552 2321 8c7466df2ab77836a39dd38b4aea8826 "pdflatex"
+  "out/main.tdo" 1731079552 51 a771d19a5f1e9b0279b1e1baf4e8d514 "pdflatex"
+  "out/main.toc" 1731079552 30 1bb04962d39b6bda471ac6c46ce13f85 "pdflatex"
   (generated)
   "out/cover.aux"
   "out/main.aux"
