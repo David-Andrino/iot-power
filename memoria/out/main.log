@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.5.17)  8 NOV 2024 15:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.5.17)  8 NOV 2024 15:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -944,24 +944,7 @@ File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
 \c@@todonotes@numberoftodonotes=\count487
-)
-
-config.tex:53: LaTeX Error: Missing \begin{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.53 \todo{Cambiar .bib}
-                        
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input line 53.
-
-LaTeX Warning: Marginpar on page 1 moved.
-
-(C:\Users\estel\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+) (C:\Users\estel\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2024/03/11 1.10a listings language file
 ) (C:\Users\estel\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
 File: lstmisc.sty 2024/03/11 1.10a (Carsten Heinz)
@@ -970,8 +953,10 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'spanish'.
-
-No file main.aux.
+ (c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.aux (c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\cover.aux)
+LaTeX Info: Redefining \. on input line 13.
+LaTeX Info: Redefining \% on input line 13.
+)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
@@ -992,7 +977,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
-(C:\Users\estel\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+ (C:\Users\estel\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count488
 \scratchdimen=\dimen318
@@ -1048,10 +1033,11 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 Package hyperref Info: Link coloring OFF on input line 8.
+(c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.out) (c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.out)
 \@outlinefile=\write5
 \openout5 = `main.out'.
 
-(C:\Users\estel\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape.sty
+ (C:\Users\estel\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape.sty
 Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
  (C:\Users\estel\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape-nometadata.sty
 Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PDF (HO)
@@ -1081,12 +1067,9 @@ Couldn't patch \ttl@straight@ii
 \c@lstlisting=\count494
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-[1
-
-{C:/Users/estel/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 \openout2 = `cover.aux'.
 
- (cover.tex
+(cover.tex
 Underfull \hbox (badness 10000) in paragraph at lines 19--19
 
  []
@@ -1094,16 +1077,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--19
 [1
 
 
-])
-No file main.toc.
+
+{C:/Users/estel/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]) (c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.toc
+LaTeX Info: Redefining \sptext on input line 1.
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+)
 \tf@toc=\write6
 \openout6 = `main.toc'.
 
-No file main.lof.
+ (c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.lof
+LaTeX Info: Redefining \sptext on input line 1.
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+)
 \tf@lof=\write7
 \openout7 = `main.lof'.
 
-(c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.tdo)
+ (c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.tdo)
 \tf@tdo=\write8
 \openout8 = `main.tdo'.
 
@@ -1116,21 +1107,21 @@ l.17 \mainmatter
 
 
 ]
+Package hyperref Info: bookmark level for unknown todo defaults to 0 on input line 24.
+
 
 LaTeX Warning: Marginpar on page 1 moved.
 
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.46 \end{document}
-                    [1
+LaTeX Warning: Marginpar on page 1 moved.
 
-] (c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.aux
-LaTeX Info: Redefining \sptext on input line 16.
-LaTeX Info: Redefining \. on input line 16.
-LaTeX Info: Redefining \% on input line 16.
- (c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\cover.aux))
+[1
+
+] (c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.aux (c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\cover.aux)
+LaTeX Info: Redefining \sptext on input line 13.
+LaTeX Info: Redefining \. on input line 13.
+LaTeX Info: Redefining \% on input line 13.
+)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-04-11>
@@ -1139,17 +1130,8 @@ L3 programming layer <2024-04-11>
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
 Package biblatex Warning: Please (re)run Biber on the file:
 (biblatex)                main
@@ -1160,17 +1142,17 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 35183 strings out of 474370
- 665065 string characters out of 5740535
- 1932754 words of memory out of 5000000
- 57059 multiletter control sequences out of 15000+600000
+ 35198 strings out of 474370
+ 666451 string characters out of 5740535
+ 1934754 words of memory out of 5000000
+ 57062 multiletter control sequences out of 15000+600000
  561457 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 104i,13n,104p,1235b,1872s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 104i,13n,104p,1235b,1860s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/estel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/estel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/estel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/estel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/estel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/estel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/estel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on "c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.pdf" (4 pages, 97529 bytes).
+Output written on "c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.pdf" (3 pages, 98257 bytes).
 PDF statistics:
- 64 PDF objects out of 1000 (max. 8388607)
+ 61 PDF objects out of 1000 (max. 8388607)
  5 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

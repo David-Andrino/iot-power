@@ -343,6 +343,12 @@ INPUT C:\Users\estel\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang1.s
 INPUT C:\Users\estel\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstmisc.sty
 INPUT C:\Users\estel\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstmisc.sty
 INPUT C:\Users\estel\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstmisc.sty
+INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.aux
+INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.aux
+INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.aux
+INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\cover.aux
+INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\cover.aux
+INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\cover.aux
 OUTPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.aux
 INPUT C:\Users\estel\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\Users\estel\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
@@ -352,6 +358,12 @@ INPUT C:\Users\estel\AppData\Local\Programs\MiKTeX\tex\latex\epstopdf-pkg\epstop
 INPUT C:\Users\estel\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
 INPUT C:\Users\estel\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
 INPUT C:\Users\estel\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
+INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.out
+INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.out
+INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.out
+INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.out
+INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.out
+INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.out
 OUTPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.out
 OUTPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.pdf
 INPUT C:\Users\estel\AppData\Local\Programs\MiKTeX\tex\latex\pdflscape\pdflscape.sty
@@ -369,7 +381,6 @@ INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimes
 INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.bbl
 INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.bbl
 INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.bbl
-INPUT C:\Users\estel\AppData\Local\MiKTeX\fonts\map\pdftex\pdftex.map
 INPUT .\cover.tex
 INPUT .\cover.tex
 OUTPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\cover.aux
@@ -382,8 +393,15 @@ INPUT C:\Users\estel\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr12.tfm
 INPUT C:\Users\estel\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmti12.tfm
 INPUT C:\Users\estel\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmcsc10.tfm
 INPUT C:\Users\estel\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr12.tfm
+INPUT C:\Users\estel\AppData\Local\MiKTeX\fonts\map\pdftex\pdftex.map
 INPUT C:\Users\estel\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
+INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.toc
+INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.toc
+INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.toc
 OUTPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.toc
+INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.lof
+INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.lof
+INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.lof
 OUTPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.lof
 INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.tdo
 INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.tdo
@@ -400,6 +418,7 @@ INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimes
 INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\cover.aux
 INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.out
 INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.out
+INPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.run.xml
 OUTPUT c:\Users\estel\OneDrive - Universidad Politécnica de Madrid\9º Cuatrimestre\IoT\iot-power\memoria\out\main.run.xml
 INPUT C:\Users\estel\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx10.pfb
 INPUT C:\Users\estel\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx10.pfb
