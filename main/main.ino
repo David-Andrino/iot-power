@@ -3,12 +3,12 @@
 #include <PubSubClient.h>
 #include <Wire.h>
 // Replace the next variables with your SSID/Password combination
-#define ssid "POC"
-#define password "cacacaca"
+#define ssid "David's A55"
+#define password "izquierdorpi"
 
 // Add your MQTT Broker IP address, example:
 //const char* mqtt_server = "192.168.1.144";
-const char* mqtt_server = "192.168.238.69";
+const char* mqtt_server = "192.168.88.69";
 
 char result[256];
 double VSolar = 30, ISolar = 18, VBatbu = 10, IBatbu = 22, VBat1 = 77, IBat1 = 88, VBat2 = 99, IBat2 = 123;
@@ -83,8 +83,10 @@ void loop() {
   if (!client.connected()) {
     reconnect();
   }
-  client.loop();
-  snprintf(result, sizeof(result), "VSolar=%.2f,ISolar=%.2f,VBatbu=%.2f,IBatbu=%.2f,VBat1=%.2f,IBat1=%.2f,VBat2=%.2f,IBat2=%.2f", VSolar, ISolar, VBatbu, IBatbu, VBat1, IBat1, VBat2, IBat2);
-  client.publish("VSolar" ,result);
+  snprintf(result, sizeof(result), "{VSolar:%.2f,ISolar:%.2f,VBatbu:%.2f,IBatbu:%.2f,VBat1:%.2f,IBat1:%.2f,VBat2:%.2f,IBat2:%.2f}", VSolar, ISolar, VBatbu, IBatbu, VBat1, IBat1, VBat2, IBat2);
+  bool statusPublish = client.publish("v1/devices/me/telemetry" ,result);
+  Serial.println(statusPublish);
+  client.disconnect();
+  delay(1000);
 
 }
