@@ -9,6 +9,7 @@
 // Add your MQTT Broker IP address, example:
 //const char* mqtt_server = "192.168.1.144";
 const char* mqtt_server = "192.168.88.69";
+const int mqtt_port = 4444;
 
 char result[256];
 double VSolar = 30, ISolar = 18, VBatbu = 10, IBatbu = 22, VBat1 = 77, IBat1 = 88, VBat2 = 99, IBat2 = 123;
@@ -21,10 +22,7 @@ void setup() {
   Serial.begin(9600);
 
   setup_wifi();
-  client.setServer(mqtt_server, 4444);
-  client.setCallback(callback);
-
-
+  client.setServer(mqtt_server, mqtt_port);
 }
 
 void setup_wifi() {
@@ -43,33 +41,18 @@ void setup_wifi() {
 
   Serial.println("");
   Serial.println("WiFi connected");
-  Serial.println("IP address: ");
-  Serial.println(WiFi.localIP());
-}
-
-void callback(char* topic, byte* message, unsigned int length) {
-  Serial.print("Message arrived on topic: ");
-  Serial.print(topic);
-  Serial.print(". Message: ");
-  String messageTemp;
-  
-  for (int i = 0; i < length; i++) {
-    Serial.print((char)message[i]);
-    messageTemp += (char)message[i];
-  }
-  Serial.println();
-
 }
 
 void reconnect() {
   // Loop until we're reconnected
   while (!client.connected()) {
-    Serial.print("Attempting MQTT connection...");
+    Serial.print("Attempting MQTT connection to ");
+    Serial.print(String(mqtt_server));
+    Serial.print(":");
+    Serial.println(mqtt_port);
     // Attempt to connect
     if (client.connect("Cliente","Cliente","Cliente")) {
       Serial.println("connected");
-      // Subscribe
-      client.subscribe("v1/devices/me/telemetry");
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
@@ -85,7 +68,6 @@ void loop() {
   }
   snprintf(result, sizeof(result), "{VSolar:%.2f,ISolar:%.2f,VBatbu:%.2f,IBatbu:%.2f,VBat1:%.2f,IBat1:%.2f,VBat2:%.2f,IBat2:%.2f}", VSolar, ISolar, VBatbu, IBatbu, VBat1, IBat1, VBat2, IBat2);
   bool statusPublish = client.publish("v1/devices/me/telemetry" ,result);
-  Serial.println(statusPublish);
   client.disconnect();
   delay(1000);
 
