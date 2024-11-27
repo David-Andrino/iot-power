@@ -34,8 +34,10 @@ void setup(){
      CONV_TIME_4156       4.156 ms
      CONV_TIME_8244       8.244 ms  */
 
-  //ina226.setConversionTime(CONV_TIME_1100); //choose conversion time and uncomment for change of default
-
+  Solar.setConversionTime(CONV_TIME_1100); //choose conversion time and uncomment for change of default
+  Batbu.setConversionTime(CONV_TIME_1100);
+  Bat1.setConversionTime(CONV_TIME_1100);
+  Bat2.setConversionTime(CONV_TIME_1100);
   /* Set measure mode
     POWER_DOWN - INA226 switched off
     TRIGGERED  - measurement on demand
@@ -46,20 +48,22 @@ void setup(){
   /* Set Resistor and Current Range
      if resistor is 5.0 mOhm, current range is up to 10.0 A
      default is 100 mOhm and about 1.3 A*/
-
-  Solar.setResistorRange(0.1, 5); // choose resistor 0.1 Ohm and gain range up to 1.3A
-  Batbu.setResistorRange(0.1, 5);
-  Bat1.setResistorRange(0.1, 5);
-  Bat2.setResistorRange(0.1, 5);
-
+  
+  Solar.setResistorRange(0.1, 10); //Esto es para medir la corriente
+  Batbu.setResistorRange(0.1, 10);
+  Bat1.setResistorRange(0.1, 10);
+  Bat2.setResistorRange(0.1, 10);
+  
+  
   /* If the current values delivered by the INA226 differ by a constant factor
      from values obtained with calibrated equipment you can define a correction factor.
      Correction factor = current delivered from calibrated equipment / current delivered by INA226*/
-  Solar.setCorrectionFactor(0.93);
-  Batbu.setCorrectionFactor(0.93);
-  Bat1.setCorrectionFactor(0.93);
-  Bat2.setCorrectionFactor(0.93);
-
+  /*
+  Solar.setCorrectionFactor(0.95);
+  Batbu.setCorrectionFactor(0.95);
+  Bat1.setCorrectionFactor(0.95);
+  Bat2.setCorrectionFactor(0.95);
+  */
   Solar.waitUntilConversionCompleted(); //if you comment this line the first data might be zero
   Batbu.waitUntilConversionCompleted(); 
   Bat1.waitUntilConversionCompleted(); 
@@ -72,13 +76,14 @@ void loop()
   Batbu.readAndClearFlags();
   Bat1.readAndClearFlags();
   Bat2.readAndClearFlags();
-  VSolar = Solar.getShuntVoltage_mV()/1000; 
+  //Nota el INA SOLO da valores V>0 Voltios
+  VSolar = Solar.getBusVoltage_V()+(Solar.getShuntVoltage_mV()/100); 
   ISolar = Solar.getCurrent_mA(); 
-  VBatbu = Batbu.getShuntVoltage_mV()/1000; 
+  VBatbu = Batbu.getBusVoltage_V()+(Batbu.getShuntVoltage_mV()/100); 
   IBatbu = Batbu.getCurrent_mA();
-  VBat1  = Bat1.getShuntVoltage_mV()/1000;
+  VBat1  = Bat1.getBusVoltage_V()+(Bat1.getShuntVoltage_mV()/100);
   IBat1  = Bat1.getCurrent_mA(); 
-  VBat2  = Bat2.getShuntVoltage_mV()/1000; 
+  VBat2  = Bat2.getBusVoltage_V()+(Bat2.getShuntVoltage_mV()/100);
   IBat2  = Bat2.getCurrent_mA();
   
   Serial.print("VSolar [V]: "); Serial.println(VSolar);
