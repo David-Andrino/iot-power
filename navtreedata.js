@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "IoT_POWER", "index.html", [
-    [ "IoT - POWER", "index.html", "index" ],
+    [ "IoT - POWER", "index.html", null ],
     [ "Estructuras de datos", "annotated.html", [
       [ "Estructuras de datos", "annotated.html", "annotated_dup" ],
       [ "Índice de estructuras de datos", "classes.html", null ],

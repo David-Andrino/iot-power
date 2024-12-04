@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['david_20andrino_0',['David Andrino',['../index.html#autotoc_md1',1,'']]]
+  ['power_0',['IoT - POWER',['../index.html',1,'']]]
 ];
