@@ -8,4 +8,4 @@
 
 **Hugo Sanchez**
 
-![Logo](logo_full.png)
+![Logo](logo_full.jpg)

@@ -1054,7 +1054,8 @@ RECURSIVE              = YES
 # Note that relative paths are relative to the directory from which doxygen is
 # run.
 
-EXCLUDE                = */BUILD/*
+EXCLUDE                = */BUILD/* \
+			 README.md
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded
@@ -1104,7 +1105,7 @@ EXAMPLE_RECURSIVE      = NO
 # that contain images that are to be included in the documentation (see the
 # \image command).
 
-IMAGE_PATH             = doxygen
+IMAGE_PATH             =
 
 # The INPUT_FILTER tag can be used to specify a program that doxygen should
 # invoke to filter for each input file. Doxygen will invoke the filter program
@@ -1424,7 +1425,8 @@ HTML_EXTRA_FILES       = doxygen/doxygen-awesome-darkmode-toggle.js \
                          doxygen/doxygen-awesome-paragraph-link.js \
                          doxygen/doxygen-custom/toggle-alternative-theme.js \
                          doxygen/doxygen-awesome-interactive-toc.js \
-                         doxygen/doxygen-awesome-tabs.js
+                         doxygen/doxygen-awesome-tabs.js \
+			 doxygen/logo_full.jpg
 
 # The HTML_COLORSTYLE tag can be used to specify if the generated HTML output
 # should be rendered with a dark or light theme.
