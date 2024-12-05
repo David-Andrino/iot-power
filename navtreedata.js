@@ -35,14 +35,19 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Archivos", "files.html", [
-      [ "Lista de archivos", "files.html", "files_dup" ]
+      [ "Lista de archivos", "files.html", "files_dup" ],
+      [ "Globales", "globals.html", [
+        [ "Todos", "globals.html", null ],
+        [ "Funciones", "globals_func.html", null ],
+        [ "defines", "globals_defs.html", null ]
+      ] ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"annotated.html"
+"INA__medidas_8h.html"
 ];
 
 var SYNCONMSG = 'pulsar para deshabilitar sincronización';

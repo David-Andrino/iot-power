@@ -140,46 +140,160 @@ $(function(){initNavTree('structtelemetry__t.html',''); initResizable(true); });
 <p>Estructura con las medidas tomadas por los diferentes sensores.  
  <a href="#details">Más...</a></p>
 
-<p><code>#include &lt;<a class="el" href="mqtt__client_8hpp_source.html">mqtt_client.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="INA__medidas_8h_source.html">INA_medidas.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Campos de datos</h2></td></tr>
-<tr class="memitem:aeb9c570ed70112f6f56e6be8b01e8294" id="r_aeb9c570ed70112f6f56e6be8b01e8294"><td class="memItemLeft" align="right" valign="top"><a id="aeb9c570ed70112f6f56e6be8b01e8294" name="aeb9c570ed70112f6f56e6be8b01e8294"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>VSolar</b></td></tr>
-<tr class="memdesc:aeb9c570ed70112f6f56e6be8b01e8294"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tension panel solar. <br /></td></tr>
+<tr class="memitem:aeb9c570ed70112f6f56e6be8b01e8294" id="r_aeb9c570ed70112f6f56e6be8b01e8294"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb9c570ed70112f6f56e6be8b01e8294">VSolar</a></td></tr>
+<tr class="memdesc:aeb9c570ed70112f6f56e6be8b01e8294"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tensión panel solar.  <br /></td></tr>
 <tr class="separator:aeb9c570ed70112f6f56e6be8b01e8294"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a310c193315b27cb2d505d83289c9b33c" id="r_a310c193315b27cb2d505d83289c9b33c"><td class="memItemLeft" align="right" valign="top"><a id="a310c193315b27cb2d505d83289c9b33c" name="a310c193315b27cb2d505d83289c9b33c"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>ISolar</b></td></tr>
 <tr class="memdesc:a310c193315b27cb2d505d83289c9b33c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Corriente panel solar. <br /></td></tr>
 <tr class="separator:a310c193315b27cb2d505d83289c9b33c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e219678f653e735bc2113a2333d9dd5" id="r_a6e219678f653e735bc2113a2333d9dd5"><td class="memItemLeft" align="right" valign="top"><a id="a6e219678f653e735bc2113a2333d9dd5" name="a6e219678f653e735bc2113a2333d9dd5"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>VBatbu</b></td></tr>
-<tr class="memdesc:a6e219678f653e735bc2113a2333d9dd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tension bateria backup. <br /></td></tr>
+<tr class="memitem:a6e219678f653e735bc2113a2333d9dd5" id="r_a6e219678f653e735bc2113a2333d9dd5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e219678f653e735bc2113a2333d9dd5">VBatbu</a></td></tr>
+<tr class="memdesc:a6e219678f653e735bc2113a2333d9dd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tensión batería backup.  <br /></td></tr>
 <tr class="separator:a6e219678f653e735bc2113a2333d9dd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a0a8efbe6bc38db197b4957cf60cf85" id="r_a2a0a8efbe6bc38db197b4957cf60cf85"><td class="memItemLeft" align="right" valign="top"><a id="a2a0a8efbe6bc38db197b4957cf60cf85" name="a2a0a8efbe6bc38db197b4957cf60cf85"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>IBatbu</b></td></tr>
-<tr class="memdesc:a2a0a8efbe6bc38db197b4957cf60cf85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Corriente bateria backup. <br /></td></tr>
+<tr class="memitem:a2a0a8efbe6bc38db197b4957cf60cf85" id="r_a2a0a8efbe6bc38db197b4957cf60cf85"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a0a8efbe6bc38db197b4957cf60cf85">IBatbu</a></td></tr>
+<tr class="memdesc:a2a0a8efbe6bc38db197b4957cf60cf85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Corriente batería backup.  <br /></td></tr>
 <tr class="separator:a2a0a8efbe6bc38db197b4957cf60cf85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f74b2e302051e1e9b17088483468c27" id="r_a3f74b2e302051e1e9b17088483468c27"><td class="memItemLeft" align="right" valign="top"><a id="a3f74b2e302051e1e9b17088483468c27" name="a3f74b2e302051e1e9b17088483468c27"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>VBat1</b></td></tr>
-<tr class="memdesc:a3f74b2e302051e1e9b17088483468c27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tension bateria 1. <br /></td></tr>
+<tr class="memitem:a3f74b2e302051e1e9b17088483468c27" id="r_a3f74b2e302051e1e9b17088483468c27"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f74b2e302051e1e9b17088483468c27">VBat1</a></td></tr>
+<tr class="memdesc:a3f74b2e302051e1e9b17088483468c27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tensión batería 1.  <br /></td></tr>
 <tr class="separator:a3f74b2e302051e1e9b17088483468c27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b2f36bf6908fef87892d260a6010e8f" id="r_a7b2f36bf6908fef87892d260a6010e8f"><td class="memItemLeft" align="right" valign="top"><a id="a7b2f36bf6908fef87892d260a6010e8f" name="a7b2f36bf6908fef87892d260a6010e8f"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>IBat1</b></td></tr>
-<tr class="memdesc:a7b2f36bf6908fef87892d260a6010e8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Corriente bateria 1. <br /></td></tr>
+<tr class="memitem:a7b2f36bf6908fef87892d260a6010e8f" id="r_a7b2f36bf6908fef87892d260a6010e8f"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b2f36bf6908fef87892d260a6010e8f">IBat1</a></td></tr>
+<tr class="memdesc:a7b2f36bf6908fef87892d260a6010e8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Corriente batería 1.  <br /></td></tr>
 <tr class="separator:a7b2f36bf6908fef87892d260a6010e8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9967a6bdf0757da0e1b9aa0df9cfe52b" id="r_a9967a6bdf0757da0e1b9aa0df9cfe52b"><td class="memItemLeft" align="right" valign="top"><a id="a9967a6bdf0757da0e1b9aa0df9cfe52b" name="a9967a6bdf0757da0e1b9aa0df9cfe52b"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>VBat2</b></td></tr>
-<tr class="memdesc:a9967a6bdf0757da0e1b9aa0df9cfe52b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tension bateria 2. <br /></td></tr>
+<tr class="memitem:a9967a6bdf0757da0e1b9aa0df9cfe52b" id="r_a9967a6bdf0757da0e1b9aa0df9cfe52b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9967a6bdf0757da0e1b9aa0df9cfe52b">VBat2</a></td></tr>
+<tr class="memdesc:a9967a6bdf0757da0e1b9aa0df9cfe52b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tensión batería 2.  <br /></td></tr>
 <tr class="separator:a9967a6bdf0757da0e1b9aa0df9cfe52b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adcf254d6844b8efcc1cefb8f0395052c" id="r_adcf254d6844b8efcc1cefb8f0395052c"><td class="memItemLeft" align="right" valign="top"><a id="adcf254d6844b8efcc1cefb8f0395052c" name="adcf254d6844b8efcc1cefb8f0395052c"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>IBat2</b></td></tr>
-<tr class="memdesc:adcf254d6844b8efcc1cefb8f0395052c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Corriente bateria 2. <br /></td></tr>
+<tr class="memitem:adcf254d6844b8efcc1cefb8f0395052c" id="r_adcf254d6844b8efcc1cefb8f0395052c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adcf254d6844b8efcc1cefb8f0395052c">IBat2</a></td></tr>
+<tr class="memdesc:adcf254d6844b8efcc1cefb8f0395052c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Corriente batería 2.  <br /></td></tr>
 <tr class="separator:adcf254d6844b8efcc1cefb8f0395052c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Estructura con las medidas tomadas por los diferentes sensores. </p>
-</div><hr/>La documentación de esta estructura está generada del siguiente archivo:<ul>
+</div><h2 class="groupheader">Documentación de campos</h2>
+<a id="a7b2f36bf6908fef87892d260a6010e8f" name="a7b2f36bf6908fef87892d260a6010e8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b2f36bf6908fef87892d260a6010e8f">&#9670;&#160;</a></span>IBat1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float telemetry_t::IBat1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Corriente batería 1. </p>
+<p>Corriente bateria 1. </p>
+
+</div>
+</div>
+<a id="adcf254d6844b8efcc1cefb8f0395052c" name="adcf254d6844b8efcc1cefb8f0395052c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcf254d6844b8efcc1cefb8f0395052c">&#9670;&#160;</a></span>IBat2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float telemetry_t::IBat2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Corriente batería 2. </p>
+<p>Corriente bateria 2. </p>
+
+</div>
+</div>
+<a id="a2a0a8efbe6bc38db197b4957cf60cf85" name="a2a0a8efbe6bc38db197b4957cf60cf85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a0a8efbe6bc38db197b4957cf60cf85">&#9670;&#160;</a></span>IBatbu</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float telemetry_t::IBatbu</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Corriente batería backup. </p>
+<p>Corriente bateria backup. </p>
+
+</div>
+</div>
+<a id="a3f74b2e302051e1e9b17088483468c27" name="a3f74b2e302051e1e9b17088483468c27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f74b2e302051e1e9b17088483468c27">&#9670;&#160;</a></span>VBat1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float telemetry_t::VBat1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tensión batería 1. </p>
+<p>Tension bateria 1. </p>
+
+</div>
+</div>
+<a id="a9967a6bdf0757da0e1b9aa0df9cfe52b" name="a9967a6bdf0757da0e1b9aa0df9cfe52b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9967a6bdf0757da0e1b9aa0df9cfe52b">&#9670;&#160;</a></span>VBat2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float telemetry_t::VBat2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tensión batería 2. </p>
+<p>Tension bateria 2. </p>
+
+</div>
+</div>
+<a id="a6e219678f653e735bc2113a2333d9dd5" name="a6e219678f653e735bc2113a2333d9dd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e219678f653e735bc2113a2333d9dd5">&#9670;&#160;</a></span>VBatbu</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float telemetry_t::VBatbu</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tensión batería backup. </p>
+<p>Tension bateria backup. </p>
+
+</div>
+</div>
+<a id="aeb9c570ed70112f6f56e6be8b01e8294" name="aeb9c570ed70112f6f56e6be8b01e8294"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb9c570ed70112f6f56e6be8b01e8294">&#9670;&#160;</a></span>VSolar</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float telemetry_t::VSolar</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tensión panel solar. </p>
+<p>Tension panel solar. </p>
+
+</div>
+</div>
+<hr/>La documentación de esta estructura está generada de los siguientes archivos:<ul>
+<li>INA_medidas/<a class="el" href="INA__medidas_8h_source.html">INA_medidas.h</a></li>
 <li>mqtt_module/<a class="el" href="mqtt__client_8hpp_source.html">mqtt_client.hpp</a></li>
 </ul>
 </div><!-- contents -->
