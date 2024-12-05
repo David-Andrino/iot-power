@@ -1,3 +1,7 @@
+/*! \file mqtt_client.h
+    \brief Fichero de cabecera del módulo MQTT
+*/
+
 #ifndef MQTT_CLIENT_HPP
 #define MQTT_CLIENT_HPP
 
