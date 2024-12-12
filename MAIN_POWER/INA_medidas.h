@@ -30,9 +30,9 @@
 #include <INA226_WE.h>
 #include "mqtt_client.hpp"
 // Direcciones I2C
-#define I2C_D_PANEL  0x41
-#define I2C_D_BAT_BU 0x41
-#define I2C_D_BAT_1  0x41
+#define I2C_D_PANEL  0x45
+#define I2C_D_BAT_BU 0x40
+#define I2C_D_BAT_1  0x44
 #define I2C_D_BAT_2  0x41
 
 
