@@ -6,8 +6,8 @@
 
 
 // Credenciales WIFI
-#define ssid "David's A55"
-#define password "izquierdorpi"
+#define ssid "POC"
+#define password "cacacaca"
 
 
 // // Credenciales servidor MQTT
@@ -46,7 +46,7 @@ void loop() {
   //   reconnect();
   // }
   // postTelemetry(VSolar, ISolar, VBatbu, IBatbu, VBat1, IBat1, VBat2, IBat2);
-  if (!publishTelemetry("192.168.88.69", 4444, telemetry)){
+  if (!publishTelemetry("192.168.111.69", 4444, telemetry)){
     Serial.println("ERROR");
   }
   delay(1000);

@@ -72,12 +72,11 @@ void setupINA226Sensors() {
     /* Si las medidas tienen un error debido al equipo por un factor constante se puede indicar:
        Factor_Correccion = I_Equipo/I_INA
     */
-    /*
-    Solar.setCorrectionFactor(0.95);
-    Batbu.setCorrectionFactor(0.95);
-    Bat1.setCorrectionFactor(0.95);
-    Bat2.setCorrectionFactor(0.95);
-    */
+   
+    Solar.setCorrectionFactor(1.0469);
+    Batbu.setCorrectionFactor(1.0419);
+    Bat1.setCorrectionFactor(0.9650);
+    Bat2.setCorrectionFactor(0.9624);
     
     Solar.waitUntilConversionCompleted();
     Batbu.waitUntilConversionCompleted();
@@ -133,12 +132,12 @@ void measureINA226(telemetry_t *telemetry) {
     // Batería Backup
     Batbu.readAndClearFlags();
     telemetry->VBatbu = Batbu.getBusVoltage_V() + (Batbu.getShuntVoltage_mV() / 100);
-    telemetry->IBatbu = Batbu.getCurrent_mA();
+    telemetry->IBatbu = -Batbu.getCurrent_mA();
 
     // Batería 1
     Bat1.readAndClearFlags();
     telemetry->VBat1 = Bat1.getBusVoltage_V() + (Bat1.getShuntVoltage_mV() / 100);
-    telemetry->IBat1 = Bat1.getCurrent_mA();
+    telemetry->IBat1 = -Bat1.getCurrent_mA();
 
     // Batería 2
     Bat2.readAndClearFlags();
