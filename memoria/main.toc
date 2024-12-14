@@ -9,9 +9,9 @@
 \contentsline {subsection}{\numberline {3.2}Implementación}{3}{subsection.3.2}%
 \contentsline {subsubsection}{\numberline {3.2.1}Software del ESP8266}{3}{subsubsection.3.2.1}%
 \contentsline {subsubsection}{\numberline {3.2.2}Software del servidor}{3}{subsubsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.3}Documentación del código}{4}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Consideraciones teóricas}{5}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Panel solar}{5}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Caja}{5}{subsection.4.2}%
-\contentsline {section}{\numberline {5}Presupuesto}{6}{section.5}%
-\contentsline {section}{\numberline {6}Horas dedicadas al proyecto}{7}{section.6}%
+\contentsline {subsection}{\numberline {3.3}Documentación del código}{6}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Consideraciones teóricas}{7}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Panel solar}{7}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Caja}{7}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Presupuesto}{8}{section.5}%
+\contentsline {section}{\numberline {6}Horas dedicadas al proyecto}{9}{section.6}%
