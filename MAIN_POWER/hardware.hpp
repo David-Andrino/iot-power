@@ -1,3 +1,8 @@
+/**
+ * @file hardware.hpp
+ * @brief Definiciones de los pines del ESP8266 utilizados en el proyecto.
+ * 
+ */ 
 #ifndef HARDWARE_H
 #define HARDWARE_H
 

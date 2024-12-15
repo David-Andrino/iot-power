@@ -2,7 +2,7 @@
 
 #include <ESP8266WiFi.h>
 
-void sleep_low_power(int time_delay, String ssid, String psw) {
+void sleep_low_power(int time_delay) {
     Serial.println("[SLEEP] Entrando en modo bajo consumo");
     WiFi.mode(WIFI_OFF);
     WiFi.forceSleepBegin();
