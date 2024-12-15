@@ -5,146 +5,129 @@
 #include "file_management.hpp"
 #include "sleep.hpp"
 
-#define ssid "POC"
-#define password "cacacaca"
-
-#define timeSleep 2000
-#define wifiTries 35
-#define BatTh     11.5
-#define SolarTh   20
-
 #define DEBUG
 
-int sw_bck_in, sw_bck_out = 0;
-float VSolar, ISolar, VBatbu, IBatbu, VBat1, IBat1, VBat2, IBat2 = 0;
-telemetry_t telemetry = {VSolar, ISolar, VBatbu, IBatbu, VBat1, IBat1, VBat2, IBat2};
-char timeStr[50] = "";
-struct tm currentTime;
+#ifdef DEBUG
+#define PRINT_DEBUG(...) Serial.println(__VA_ARGS__)
+#else
+#define PRINT_DEBUG(...)
+#endif
 
-void setup_wifi(int tries);
+#define ssid             "POC"
+#define password         "cacacaca"
+
+#define MQTT_SERVER      const_cast<char*>("192.168.111.69")
+#define MQTT_PORT        4444
+
+#define TIME_SLEEP       2000
+#define WIFI_TRIES       35
+#define BAT_THRESH       11.5
+#define SOLAR_THRESH     20
+#define MEASUREMENT_FILE "/measurements.txt"
+
+telemetry_t telemetry   = {0, 0, 0, 0, 0, 0, 0, 0};
+char        timeStr[50] = "";
+struct tm   currentTime;
+
+/**
+ * @brief Intenta realizar la conexión WiFi hasta WIFI_TRIES intentos
+ */
+static void setup_wifi();
+
+/**
+ * @brief Conmuta los relés en función de las medidas tomadas
+ * 
+ * 1. Si la tensión del panel solar es mayor que SOLAR_THRESH, se activa el panel solar.
+ * 2. Si la tensión de la batería de backup es mayor que BAT_THRESH, se activa la batería de backup.
+ * 3. En caso contrario, se activa la protección de sobredescarga.
+ * 
+ * @param telemetry Puntero a la estructura de medidas
+ */
+static void setRelays(telemetry_t *telemetry){
 
 void setup() {
-
-    pinMode(RELAY_SW_IN, OUTPUT);
+    pinMode(RELAY_SW_IN,  OUTPUT);
     pinMode(RELAY_SW_OUT, OUTPUT);
-    pinMode(SDA, OUTPUT);
-    pinMode(SCL, OUTPUT);
-    Serial.begin(9600);
-    while (!Serial);
-    telemetry.VSolar=0;
-    telemetry.ISolar=0;
-    telemetry.VBatbu=0;
-    telemetry.IBatbu=0;
-    telemetry.VBat1=0;
-    telemetry.IBat1=0;
-    telemetry.VBat2=0;
-    telemetry.IBat2=0;
+    pinMode(SDA,          OUTPUT);
+    pinMode(SCL,          OUTPUT);
 
+    Serial.begin(9600);
 }
 
 void loop() {
-    //Si no se inicializan los INA el sistema se bloquea
-    measureINA226(&telemetry);
-    #ifdef DEBUG
-      // Print telemetry data
-      Serial.print("VSolar [V]: "); Serial.println(telemetry.VSolar);
-      Serial.print("ISolar [mA]: "); Serial.println(telemetry.ISolar);
-      Serial.print("VBatbu [V]: "); Serial.println(telemetry.VBatbu);
-      Serial.print("IBatbu [mA]: "); Serial.println(telemetry.IBatbu);
-      Serial.print("VBat1 [V]: "); Serial.println(telemetry.VBat1);
-      Serial.print("IBat1 [mA]: "); Serial.println(telemetry.IBat1);
-      Serial.print("VBat2 [V]: "); Serial.println(telemetry.VBat2);
-      Serial.print("IBat2 [mA]: "); Serial.println(telemetry.IBat2);
-    #endif
+    measureINA226(&telemetry); // Si no están los INA conectados, bloquea
+
+    PRINT_DEBUG("[INA] VSolar [V]:  " + String(telemetry.VSolar));
+    PRINT_DEBUG("[INA] ISolar [mA]: " + String(telemetry.ISolar));
+    PRINT_DEBUG("[INA] VBatbu [V]:  " + String(telemetry.VBatbu));
+    PRINT_DEBUG("[INA] IBatbu [mA]: " + String(telemetry.IBatbu));
+    PRINT_DEBUG("[INA] VBat1 [V]:   " + String(telemetry.VBat1));
+    PRINT_DEBUG("[INA] IBat1 [mA]:  " + String(telemetry.IBat1));
+    PRINT_DEBUG("[INA] VBat2 [V]:   " + String(telemetry.VBat2));
+    PRINT_DEBUG("[INA] IBat2 [mA]:  " + String(telemetry.IBat2));
 
     setRelays(&telemetry);
 
-    setup_wifi(wifiTries);
+    setup_wifi();
 
     if (WiFi.status() == WL_CONNECTED){
-      getLocalTime(&currentTime, 1000);
-      strftime(timeStr, 50, "[%d/%m/%y - %H:%M:%S]", &currentTime);
+        configTime(3600, 0, "time.nist.gov", "0.pool.ntp.org");
+        
+        if (!publishTelemetry(MQTT_SERVER, MQTT_PORT, telemetry)){
+            PRINT_DEBUG("[POWER] ERROR publicando medidas");
+        } else {
+            PRINT_DEBUG("[POWER] Medidas publicadas con éxito");
+        }
 
-      if (!publishTelemetry(const_cast<char*>("192.168.111.69"), 4444, telemetry)){
-        #ifdef DEBUG
-          Serial.println("ERROR: MQTT no disponible");
-        #endif
-      }else{
-        #ifdef DEBUG
-          Serial.println("Medidas enviadas con éxito");
-        #endif
-      }
-    }
-
-    if (write_meas("/measurements.txt", telemetry, timeStr)){
-      #ifdef DEBUG
-        Serial.println("Fichero escrito con exito");
-      #endif
+        getLocalTime(&currentTime, 1000);
+        strftime(timeStr, 50, "[%d/%m/%y - %H:%M:%S]", &currentTime);
+        PRINT_DEBUG("[WIFI] Sincronizado con NTP. Hora obtenida: " + String(timeStr));
     } else {
-      #ifdef DEBUG
-        Serial.println("ERROR: El fichero no ha podido ser escrito");
-      #endif
+        PRINT_DEBUG("[WIFI] No se ha podido conectar a la red WiFi");
+        snprintf(timeStr, 50, "[00/00/00 - 00:00:00]")
     }
 
-    #ifdef DEBUG
-      Serial.println("Entering in Sleep Mode");
-    #endif
+    if (write_meas(MEASUREMENT_FILE, telemetry, timeStr)){
+        PRINT_DEBUG("[POWER] Fichero escrito con exito");
+    } else {
+        PRINT_DEBUG("[POWER] El fichero no ha podido ser escrito");
+    }
 
-    setSleepMode(timeSleep);
-
-    #ifdef DEBUG
-      Serial.println("Exit from Sleep Mode");
-    #endif
-
-    exitSleepMode(ssid,password);
+    sleep_low_power(TIME_SLEEP);
 }
 
-/**
- * @brief Realiza la conexión WiFi mediante las credenciales correspondientes.
- * Sino es exitosa, se reintenta hasta que se conecte.
- */
-void setup_wifi(int tries) {
-  delay(10);
-  #ifdef DEBUG
-    Serial.println();
-    Serial.print("Connecting to ");
-    Serial.println(ssid);
-  #endif
+static void setup_wifi() {
+    delay(10);
+    Serial.print("[WIFI] Intentando conectar a " + ssid);
 
-  WiFi.begin(ssid, password);
-  int i=0;
-  while (WiFi.status() != WL_CONNECTED && i!=tries) {
-    delay(500);
-    #ifdef DEBUG
-      Serial.print(".");
-    #endif
-    i++;
-  }
-  if(i!=tries){
-    #ifdef DEBUG
-      Serial.println("");
-      Serial.println("WiFi connected");
-    #endif
-  }else{
-    #ifdef DEBUG
-      Serial.println("");
-      Serial.println("WiFi disconnected");
-    #endif
-  }
-
-  configTime(3600, 0, "time.nist.gov", "0.pool.ntp.org");
+    WiFi.begin(ssid, password);
+    for (int i = 0; i < WIFI_TRIES && WiFi.status() != WL_CONNECTED; i++) {
+        delay(500);
+        Serial.print(".");
+        i++;
+    }
+    if(WiFi.status() == WL_CONNECTED){
+        PRINT_DEBUG("[WIFI] Conectado a la red WiFi " + ssid + " con IP: " + WiFi.localIP());
+    } else {
+        PRINT_DEBUG("[WIFI] No se ha podido conectar a la red WiFi");
+    }
 }
 
-void setRelays(telemetry_t *telemetry){
-  if (telemetry->VSolar > SolarTh) {
-    digitalWrite(RELAY_SW_IN,LOW);
-    digitalWrite(RELAY_SW_OUT,LOW);  
-  }else if(telemetry->VBatbu>BatTh){
-    digitalWrite(RELAY_SW_IN,HIGH);
-    digitalWrite(RELAY_SW_OUT,HIGH);
-  }else{
-    digitalWrite(RELAY_SW_IN,LOW);
-    digitalWrite(RELAY_SW_OUT,LOW);
-  }
-  
+static void setRelays(telemetry_t *telemetry){
+    if (telemetry->VSolar > SOLAR_THRESH) {
+        PRINT_DEBUG("[RELAY] Panel solar activo");
+
+        digitalWrite(RELAY_SW_IN,LOW);
+        digitalWrite(RELAY_SW_OUT,LOW);  
+    } else if (telemetry->VBatbu > BAT_THRESH){
+        PRINT_DEBUG("[RELAY] Bateria backup activa");
+
+        digitalWrite(RELAY_SW_IN,HIGH);
+        digitalWrite(RELAY_SW_OUT,HIGH);
+    } else {
+        PRINT_DEBUG("[RELAY] Activando protección sobredescarga. Se detendrá el sistema");
+
+        digitalWrite(RELAY_SW_IN,LOW);
+        digitalWrite(RELAY_SW_OUT,LOW);
+    }
 }
