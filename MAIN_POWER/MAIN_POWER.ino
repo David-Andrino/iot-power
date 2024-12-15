@@ -1,10 +1,9 @@
 #include "telemetry.hpp"
+#include "hardware.hpp"
 #include "INA_medidas.hpp"
 #include "mqtt_client.hpp"
 #include "write_file.hpp"
-#include "read_file.hpp"
-#include "hardware.hpp"
-#include "new_sleep_mode.hpp"
+#include "sleep.hpp"
 
 #define ssid "POC"
 #define password "cacacaca"
@@ -13,7 +12,6 @@
 #define wifiTries 35
 #define BatTh     11.5
 #define SolarTh   20
-
 
 #define DEBUG
 

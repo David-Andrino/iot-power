@@ -1,4 +1,4 @@
-#include "new_sleep_mode.hpp"
+#include "sleep.hpp"
 
 extern void setSleepMode(int time_delay){
   WiFi.mode( WIFI_OFF );
