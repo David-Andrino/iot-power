@@ -48,5 +48,6 @@ var NAVTREEINDEX0 =
 "structtelemetry__t.html#a9967a6bdf0757da0e1b9aa0df9cfe52b":[1,0,0,5],
 "structtelemetry__t.html#adcf254d6844b8efcc1cefb8f0395052c":[1,0,0,1],
 "structtelemetry__t.html#aeb9c570ed70112f6f56e6be8b01e8294":[1,0,0,7],
+"telemetry_8hpp.html":[2,0,0,5],
 "telemetry_8hpp_source.html":[2,0,0,5]
 };

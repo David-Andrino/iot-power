@@ -5,5 +5,5 @@ var dir_405e1d0ce9e55ff4ce959e146f639190 =
     [ "ina.hpp", "ina_8hpp.html", "ina_8hpp" ],
     [ "mqtt_client.hpp", "mqtt__client_8hpp.html", "mqtt__client_8hpp" ],
     [ "sleep.hpp", "sleep_8hpp.html", "sleep_8hpp" ],
-    [ "telemetry.hpp", "telemetry_8hpp_source.html", null ]
+    [ "telemetry.hpp", "telemetry_8hpp.html", "telemetry_8hpp" ]
 ];
