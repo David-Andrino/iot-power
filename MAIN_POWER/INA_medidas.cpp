@@ -1,6 +1,6 @@
 //! Clase INA_medidas. Engargada de configurar y solicitar medidas al los INAs del circuito.
 
-#include "INA_medidas.h"
+#include "INA_medidas.hpp"
 
 // INA226 instances
 INA226_WE Solar(I2C_D_PANEL);

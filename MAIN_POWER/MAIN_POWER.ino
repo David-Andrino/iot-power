@@ -1,8 +1,9 @@
-#include "INA_medidas.h"
+#include "telemetry.hpp"
+#include "INA_medidas.hpp"
 #include "mqtt_client.hpp"
 #include "write_file.hpp"
 #include "read_file.hpp"
-#include "hardware.h"
+#include "hardware.hpp"
 #include "new_sleep_mode.hpp"
 
 #define ssid "POC"
