@@ -1,8 +1,8 @@
 #ifndef HARDWARE_H
 #define HARDWARE_H
 
-#define D7 13
-#define D8 15
+#define RELAY_SW_IN 13
+#define RELAY_SW_OUT 15
 #define SDA 4
 #define SCL 5
 
