@@ -2,35 +2,33 @@
 
 void clear_file(const char* measFile) {
     if (!SPIFFS.begin()) {
-        Serial.println("Error iniciando SPIFFS");
+        Serial.println("[FILE_MGT] Error iniciando SPIFFS");
         return;
     }
 
     File file = SPIFFS.open(measFile, "w");
     if (!file) {
-        Serial.println("Error abriendo el fichero para borrar");
+        Serial.println("[FILE_MGT] Error abriendo el fichero para borrar");
         return;
     }
 
     file.close();
-    Serial.println("El contenido del fichero ha sido borrado.");
+    Serial.println("[FILE_MGT] El contenido del fichero ha sido borrado.");
 }
 
 void read_meas(const char* measFile){
     if (!SPIFFS.begin()) {
-        Serial.println("Error iniciando SPIFFS");
+        Serial.println("[FILE_MGT] Error iniciando SPIFFS");
         return;
     }
 
     File measurementFile = SPIFFS.open(measFile, "r");
     if (!measurementFile) {
-        Serial.println("Error abriendo fichero");
+        Serial.println("[FILE_MGT] Error abriendo fichero");
         return;
     }
 
-    Serial.println("");
-    Serial.println("Contenido del fichero ");
-    Serial.println(measFile);
+    Serial.println("[FILE_MGT] Abriendo " + String(measFile) + ". Contenido: ");
 
     while (measurementFile.available()) {
         Serial.write(measurementFile.read());
