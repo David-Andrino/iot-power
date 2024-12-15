@@ -1,5 +1,5 @@
 var files_dup =
 [
-    [ "INA_medidas", "dir_2f68e730331c62841f66c9a0bf7b1f29.html", "dir_2f68e730331c62841f66c9a0bf7b1f29" ],
-    [ "mqtt_module", "dir_1a81d0b1266aab7eb8736fc72451f673.html", "dir_1a81d0b1266aab7eb8736fc72451f673" ]
+    [ "MAIN_POWER", "dir_405e1d0ce9e55ff4ce959e146f639190.html", "dir_405e1d0ce9e55ff4ce959e146f639190" ],
+    [ "read_file", "dir_49cc0a7bc850a634794211e44073d1aa.html", "dir_49cc0a7bc850a634794211e44073d1aa" ]
 ];

@@ -1,12 +1,10 @@
 var indexSectionsWithContent =
 {
-  0: "imptv",
+  0: "hiptv",
   1: "t",
-  2: "i",
-  3: "m",
-  4: "iv",
-  5: "i",
-  6: "ip"
+  2: "h",
+  3: "iv",
+  4: "ip"
 };
 
 var indexSectionNames =
@@ -14,10 +12,8 @@ var indexSectionNames =
   0: "all",
   1: "classes",
   2: "files",
-  3: "functions",
-  4: "variables",
-  5: "defines",
-  6: "pages"
+  3: "variables",
+  4: "pages"
 };
 
 var indexSectionLabels =
@@ -25,9 +21,7 @@ var indexSectionLabels =
   0: "Todos",
   1: "Estructuras de datos",
   2: "Archivos",
-  3: "Funciones",
-  4: "Variables",
-  5: "defines",
-  6: "Páginas"
+  3: "Variables",
+  4: "Páginas"
 };
 
