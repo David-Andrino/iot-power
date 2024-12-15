@@ -1,5 +1,5 @@
-/*! \file INA_medidas.h
-    \brief Fichero cabecera de INA_medidas.c
+/*! \file ina.h
+    \brief Fichero cabecera de ina.c
     
     Contamos con la librería INA226_WE cuya documentación puede ser accedida en:
     https://github.com/wollewald/INA226_WE?tab=readme-ov-file
@@ -22,8 +22,8 @@
     \brief Lee las medidas de los INAS y modifica las almacena la dirección de puntero indicada.
     \param telemetry Dirección de puntero de la estructura que almacena todas las medidas de tensión y corriente de las baterias y panel solar.
 */
-#ifndef ina_medidas_h
-#define ina_medidas_h
+#ifndef ina_h
+#define ina_h
 
 //Librerías utilizadas
 #include <Wire.h>
