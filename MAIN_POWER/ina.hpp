@@ -37,8 +37,6 @@
 #define I2C_D_BAT_2  0x41
 
 
-// Funciones
-
 /**************************************************************************//**
  * \brief Realiza una medida de todos los sensores.
  *
