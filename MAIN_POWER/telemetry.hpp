@@ -1,5 +1,5 @@
 /**
- * @file sleep.hpp
+ * @file telemetry.hpp
  * @author David Andrino
  * @author Estela Mora
  * @author Hugo Sánchez
