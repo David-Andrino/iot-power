@@ -1,10 +1,12 @@
 var indexSectionsWithContent =
 {
-  0: "hiptv",
+  0: "cfhimprstvw",
   1: "t",
-  2: "h",
-  3: "iv",
-  4: "ip"
+  2: "fhims",
+  3: "cmprsw",
+  4: "iv",
+  5: "ir",
+  6: "ip"
 };
 
 var indexSectionNames =
@@ -12,8 +14,10 @@ var indexSectionNames =
   0: "all",
   1: "classes",
   2: "files",
-  3: "variables",
-  4: "pages"
+  3: "functions",
+  4: "variables",
+  5: "defines",
+  6: "pages"
 };
 
 var indexSectionLabels =
@@ -21,7 +25,9 @@ var indexSectionLabels =
   0: "Todos",
   1: "Estructuras de datos",
   2: "Archivos",
-  3: "Variables",
-  4: "Páginas"
+  3: "Funciones",
+  4: "Variables",
+  5: "defines",
+  6: "Páginas"
 };
 

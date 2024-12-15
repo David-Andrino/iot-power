@@ -134,30 +134,30 @@ $(function(){initNavTree('ina_8hpp_source.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">ina.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifndef ina_h</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define ina_h</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;Wire.h&gt;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;INA226_WE.h&gt;</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;telemetry.hpp&quot;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#define I2C_D_PANEL  0x45</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#define I2C_D_BAT_BU 0x40</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#define I2C_D_BAT_1  0x44</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#define I2C_D_BAT_2  0x41</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keywordtype">void</span> measureINA226(<a class="code hl_struct" href="structtelemetry__t.html">telemetry_t</a> *telemetry);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="astructtelemetry__t_html"><div class="ttname"><a href="structtelemetry__t.html">telemetry_t</a></div><div class="ttdoc">Estructura con las medidas tomadas por los diferentes sensores.</div><div class="ttdef"><b>Definition</b> telemetry.hpp:7</div></div>
+<a href="ina_8hpp.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#ifndef ina_h</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#define ina_h</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;Wire.h&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;INA226_WE.h&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;telemetry.hpp&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="ina_8hpp.html#ad8edbb23711e0bf82623951c7184dfb5">   21</a></span><span class="preprocessor">#define I2C_D_PANEL  0x45</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="ina_8hpp.html#af2068dd9de318ffd6b4a4495674379ce">   25</a></span><span class="preprocessor">#define I2C_D_BAT_BU 0x40</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="ina_8hpp.html#af1cb6edc32346e678a6ae6324a8518aa">   29</a></span><span class="preprocessor">#define I2C_D_BAT_1  0x44</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="ina_8hpp.html#acddb5f7f368c0da8633708110a6e5230">   33</a></span><span class="preprocessor">#define I2C_D_BAT_2  0x41</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keywordtype">void</span> <a class="code hl_function" href="ina_8hpp.html#a8bf6f569a506efddd83bcaa15be6b18b">measureINA226</a>(<a class="code hl_struct" href="structtelemetry__t.html">telemetry_t</a> *telemetry);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aina_8hpp_html_a8bf6f569a506efddd83bcaa15be6b18b"><div class="ttname"><a href="ina_8hpp.html#a8bf6f569a506efddd83bcaa15be6b18b">measureINA226</a></div><div class="ttdeci">void measureINA226(telemetry_t *telemetry)</div><div class="ttdoc">Realiza una medida de todos los sensores.</div><div class="ttdef"><b>Definition</b> ina.cpp:84</div></div>
+<div class="ttc" id="astructtelemetry__t_html"><div class="ttname"><a href="structtelemetry__t.html">telemetry_t</a></div><div class="ttdoc">Estructura con las medidas tomadas por los diferentes sensores.</div><div class="ttdef"><b>Definition</b> telemetry.hpp:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_405e1d0ce9e55ff4ce959e146f639190.html">MAIN_POWER</a></li><li class="navelem"><b>ina.hpp</b></li>
+    <li class="navelem"><a class="el" href="dir_405e1d0ce9e55ff4ce959e146f639190.html">MAIN_POWER</a></li><li class="navelem"><a class="el" href="ina_8hpp.html">ina.hpp</a></li>
     <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>

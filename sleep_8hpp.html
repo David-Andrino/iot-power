@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="IoT - Power" />
 <meta name="twitter:description" content="David A. Estela M. Fernando S. Hugo S." />
 <!-- END twitter metadata -->
-<title>IoT_POWER: Lista de archivos</title>
+<title>IoT_POWER: Referencia del archivo MAIN_POWER/sleep.hpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -105,7 +105,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('files.html',''); initResizable(true); });
+$(function(){initNavTree('sleep_8hpp.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -131,27 +131,75 @@ $(function(){initNavTree('files.html',''); initResizable(true); });
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">Lista de archivos</div></div>
+  <div class="summary">
+<a href="#func-members">Funciones</a>  </div>
+  <div class="headertitle"><div class="title">Referencia del archivo sleep.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock">Lista de todos los archivos documentados y con breves descripciones:</div><div class="directory">
-<div class="levels">[nivel de detalle <span onclick="javascript:dynsection.toggleLevel(1);">1</span><span onclick="javascript:dynsection.toggleLevel(2);">2</span>]</div><table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><span style="width:0px;display:inline-block;">&#160;</span><span id="arr_0_" class="arrow" onclick="dynsection.toggleFolder('0_')">&#9660;</span><span id="img_0_" class="iconfopen" onclick="dynsection.toggleFolder('0_')">&#160;</span><a class="el" href="dir_405e1d0ce9e55ff4ce959e146f639190.html" target="_self">MAIN_POWER</a></td><td class="desc"></td></tr>
-<tr id="row_0_0_" class="odd"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><a href="MAIN__POWER_2file__management_8hpp_source.html"><span class="icondoc"></span></a><a class="el" href="MAIN__POWER_2file__management_8hpp.html" target="_self">file_management.hpp</a></td><td class="desc">Módulo de gestión de ficheros </td></tr>
-<tr id="row_0_1_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><a href="hardware_8hpp_source.html"><span class="icondoc"></span></a><a class="el" href="hardware_8hpp.html" target="_self">hardware.hpp</a></td><td class="desc">Definición de pines hardware </td></tr>
-<tr id="row_0_2_" class="odd"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><a href="ina_8hpp_source.html"><span class="icondoc"></span></a><a class="el" href="ina_8hpp.html" target="_self">ina.hpp</a></td><td class="desc">Módulo de medida de sensores INA226 </td></tr>
-<tr id="row_0_3_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><a href="mqtt__client_8hpp_source.html"><span class="icondoc"></span></a><a class="el" href="mqtt__client_8hpp.html" target="_self">mqtt_client.hpp</a></td><td class="desc">Módulo de cliente MQTT </td></tr>
-<tr id="row_0_4_" class="odd"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><a href="sleep_8hpp_source.html"><span class="icondoc"></span></a><a class="el" href="sleep_8hpp.html" target="_self">sleep.hpp</a></td><td class="desc">Módulo de bajo consumo </td></tr>
-<tr id="row_0_5_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><a href="telemetry_8hpp_source.html"><span class="icondoc"></span></a><b>telemetry.hpp</b></td><td class="desc"></td></tr>
-<tr id="row_1_" class="odd"><td class="entry"><span style="width:0px;display:inline-block;">&#160;</span><span id="arr_1_" class="arrow" onclick="dynsection.toggleFolder('1_')">&#9660;</span><span id="img_1_" class="iconfopen" onclick="dynsection.toggleFolder('1_')">&#160;</span><a class="el" href="dir_49cc0a7bc850a634794211e44073d1aa.html" target="_self">read_file</a></td><td class="desc"></td></tr>
-<tr id="row_1_0_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><a href="read__file_2file__management_8hpp_source.html"><span class="icondoc"></span></a><a class="el" href="read__file_2file__management_8hpp.html" target="_self">file_management.hpp</a></td><td class="desc">Módulo de gestión de ficheros </td></tr>
+
+<p>Módulo de bajo consumo.  
+<a href="#details">Más...</a></p>
+
+<p><a href="sleep_8hpp_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:a510962e41d741e0bc06604fe9d85ac72" id="r_a510962e41d741e0bc06604fe9d85ac72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a510962e41d741e0bc06604fe9d85ac72">sleep_low_power</a> (int time_delay)</td></tr>
+<tr class="memdesc:a510962e41d741e0bc06604fe9d85ac72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pone al ESP8266 en modo de bajo consumo durante el tiempo que se le indique.  <br /></td></tr>
+<tr class="separator:a510962e41d741e0bc06604fe9d85ac72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- directory -->
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Módulo de bajo consumo. </p>
+<p>Definición de la estructura de telemetría.</p>
+<dl class="section author"><dt>Autor</dt><dd>David Andrino </dd>
+<dd>
+Estela Mora </dd>
+<dd>
+Hugo Sánchez </dd>
+<dd>
+Fernando Sanz </dd></dl>
+<dl class="section version"><dt>Versión</dt><dd>1.1 </dd></dl>
+<dl class="section date"><dt>Fecha</dt><dd>15-12-2024 </dd></dl>
+</div><h2 class="groupheader">Documentación de funciones</h2>
+<a id="a510962e41d741e0bc06604fe9d85ac72" name="a510962e41d741e0bc06604fe9d85ac72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a510962e41d741e0bc06604fe9d85ac72">&#9670;&#160;</a></span>sleep_low_power()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sleep_low_power </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>time_delay</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pone al ESP8266 en modo de bajo consumo durante el tiempo que se le indique. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time_delay</td><td>Tiempo en milisegundos que el ESP8266 estará en modo de bajo consumo </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
+    <li class="navelem"><a class="el" href="dir_405e1d0ce9e55ff4ce959e146f639190.html">MAIN_POWER</a></li><li class="navelem"><a class="el" href="sleep_8hpp.html">sleep.hpp</a></li>
     <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>

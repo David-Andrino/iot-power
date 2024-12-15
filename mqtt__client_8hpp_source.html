@@ -134,27 +134,29 @@ $(function(){initNavTree('mqtt__client_8hpp_source.html',''); initResizable(true
   <div class="headertitle"><div class="title">mqtt_client.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef MQTT_CLIENT_HPP</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define MQTT_CLIENT_HPP</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;WiFiUdp.h&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;ESP8266WiFi.h&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;PubSubClient.h&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;Wire.h&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;telemetry.hpp&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define REINTENTOS_MQTT 3</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">extern</span> <span class="keywordtype">bool</span> publishTelemetry(<span class="keywordtype">char</span>* mqtt_server, <span class="keywordtype">int</span> mqtt_port, <a class="code hl_struct" href="structtelemetry__t.html">telemetry_t</a>&amp; telemetry);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="astructtelemetry__t_html"><div class="ttname"><a href="structtelemetry__t.html">telemetry_t</a></div><div class="ttdoc">Estructura con las medidas tomadas por los diferentes sensores.</div><div class="ttdef"><b>Definition</b> telemetry.hpp:7</div></div>
+<a href="mqtt__client_8hpp.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#ifndef MQTT_CLIENT_HPP</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#define MQTT_CLIENT_HPP</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;WiFiUdp.h&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;ESP8266WiFi.h&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;PubSubClient.h&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;Wire.h&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;telemetry.hpp&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="mqtt__client_8hpp.html#acc94f5f75fb3e1602015dd8b01ee5677">   23</a></span><span class="preprocessor">#define REINTENTOS_MQTT 3</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="mqtt__client_8hpp.html#a2a8f1d78d749723f6d3e3b88539ea735">publishTelemetry</a>(<span class="keywordtype">char</span>* mqtt_server, <span class="keywordtype">int</span> mqtt_port, <a class="code hl_struct" href="structtelemetry__t.html">telemetry_t</a>&amp; telemetry);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="amqtt__client_8hpp_html_a2a8f1d78d749723f6d3e3b88539ea735"><div class="ttname"><a href="mqtt__client_8hpp.html#a2a8f1d78d749723f6d3e3b88539ea735">publishTelemetry</a></div><div class="ttdeci">bool publishTelemetry(char *mqtt_server, int mqtt_port, telemetry_t &amp;telemetry)</div><div class="ttdoc">Crea el cliente MQTT y establece la conexión con el servidor MQTT.</div><div class="ttdef"><b>Definition</b> mqtt_client.cpp:5</div></div>
+<div class="ttc" id="astructtelemetry__t_html"><div class="ttname"><a href="structtelemetry__t.html">telemetry_t</a></div><div class="ttdoc">Estructura con las medidas tomadas por los diferentes sensores.</div><div class="ttdef"><b>Definition</b> telemetry.hpp:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_405e1d0ce9e55ff4ce959e146f639190.html">MAIN_POWER</a></li><li class="navelem"><b>mqtt_client.hpp</b></li>
+    <li class="navelem"><a class="el" href="dir_405e1d0ce9e55ff4ce959e146f639190.html">MAIN_POWER</a></li><li class="navelem"><a class="el" href="mqtt__client_8hpp.html">mqtt_client.hpp</a></li>
     <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>

@@ -134,28 +134,31 @@ $(function(){initNavTree('read__file_2file__management_8hpp_source.html',''); in
   <div class="headertitle"><div class="title">file_management.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#ifndef FILE_MANAGEMENT_H</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define FILE_MANAGEMENT_H</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;FS.h&gt;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;time.h&gt;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;telemetry.hpp&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">extern</span> <span class="keywordtype">void</span> clear_file(<span class="keyword">const</span> <span class="keywordtype">char</span>* measFile);</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">extern</span> <span class="keywordtype">void</span> read_meas(<span class="keyword">const</span> <span class="keywordtype">char</span>* measFile);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">extern</span> <span class="keywordtype">bool</span> write_meas(<span class="keyword">const</span> <span class="keywordtype">char</span>* measFile , <a class="code hl_struct" href="structtelemetry__t.html">telemetry_t</a> measures, String timestamp);</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="astructtelemetry__t_html"><div class="ttname"><a href="structtelemetry__t.html">telemetry_t</a></div><div class="ttdoc">Estructura con las medidas tomadas por los diferentes sensores.</div><div class="ttdef"><b>Definition</b> telemetry.hpp:7</div></div>
+<a href="read__file_2file__management_8hpp.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#ifndef FILE_MANAGEMENT_H</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#define FILE_MANAGEMENT_H</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;FS.h&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;time.h&gt;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;telemetry.hpp&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="MAIN__POWER_2file__management_8hpp.html#a546a116b546478886981a20ad065aaa9">clear_file</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* measFile);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="MAIN__POWER_2file__management_8hpp.html#add002f653d095fb467cde209eba9c38f">read_meas</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* measFile);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="MAIN__POWER_2file__management_8hpp.html#afdbd05ab56031318aa62a55776e2d5d6">write_meas</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* measFile , <a class="code hl_struct" href="structtelemetry__t.html">telemetry_t</a> measures, String timestamp);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aMAIN__POWER_2file__management_8hpp_html_a546a116b546478886981a20ad065aaa9"><div class="ttname"><a href="MAIN__POWER_2file__management_8hpp.html#a546a116b546478886981a20ad065aaa9">clear_file</a></div><div class="ttdeci">void clear_file(const char *measFile)</div><div class="ttdoc">Borra el contenido del fichero indicado.</div><div class="ttdef"><b>Definition</b> file_management.cpp:3</div></div>
+<div class="ttc" id="aMAIN__POWER_2file__management_8hpp_html_add002f653d095fb467cde209eba9c38f"><div class="ttname"><a href="MAIN__POWER_2file__management_8hpp.html#add002f653d095fb467cde209eba9c38f">read_meas</a></div><div class="ttdeci">void read_meas(const char *measFile)</div><div class="ttdoc">Lee el contenido del fichero indicado.</div><div class="ttdef"><b>Definition</b> file_management.cpp:19</div></div>
+<div class="ttc" id="aMAIN__POWER_2file__management_8hpp_html_afdbd05ab56031318aa62a55776e2d5d6"><div class="ttname"><a href="MAIN__POWER_2file__management_8hpp.html#afdbd05ab56031318aa62a55776e2d5d6">write_meas</a></div><div class="ttdeci">bool write_meas(const char *measFile, telemetry_t measures, String timestamp)</div><div class="ttdoc">Escribe la medida en el fichero indicado.</div><div class="ttdef"><b>Definition</b> file_management.cpp:40</div></div>
+<div class="ttc" id="astructtelemetry__t_html"><div class="ttname"><a href="structtelemetry__t.html">telemetry_t</a></div><div class="ttdoc">Estructura con las medidas tomadas por los diferentes sensores.</div><div class="ttdef"><b>Definition</b> telemetry.hpp:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_49cc0a7bc850a634794211e44073d1aa.html">read_file</a></li><li class="navelem"><b>file_management.hpp</b></li>
+    <li class="navelem"><a class="el" href="dir_49cc0a7bc850a634794211e44073d1aa.html">read_file</a></li><li class="navelem"><a class="el" href="read__file_2file__management_8hpp.html">file_management.hpp</a></li>
     <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
