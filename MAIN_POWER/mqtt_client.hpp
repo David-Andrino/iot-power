@@ -1,3 +1,13 @@
+/**
+ * @file mqtt_client.hpp
+ * @author David Andrino
+ * @author Estela Mora
+ * @author Hugo Sánchez
+ * @author Fernando Sanz
+ * @brief Módulo de cliente MQTT
+ * @version 1.1
+ * @date 15-12-2024
+ */
 #ifndef MQTT_CLIENT_HPP
 #define MQTT_CLIENT_HPP
 #include <WiFiUdp.h>

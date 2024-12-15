@@ -1,8 +1,13 @@
-/**
+ /**
  * @file hardware.hpp
- * @brief Definiciones de los pines del ESP8266 utilizados en el proyecto.
- * 
- */ 
+ * @author Estela Mora
+ * @author David Andrino
+ * @author Hugo Sánchez
+ * @author Fernando Sanz
+ * @brief Definición de pines hardware
+ * @version 1.1
+ * @date 15-12-2024
+ */
 #ifndef HARDWARE_H
 #define HARDWARE_H
 

@@ -1,14 +1,13 @@
-/** @file ina.h
-    @brief Fichero cabecera de ina.c
-    
-    Contamos con la librería INA226_WE cuya documentación puede ser accedida en:
-    https://github.com/wollewald/INA226_WE?tab=readme-ov-file
-*/
-
-/** @fn void measureINA226(telemetry_t *telemetry)
-    @brief Lee las medidas de los INAS y modifica las almacena la dirección de puntero indicada.
-    @param telemetry Dirección de puntero de la estructura que almacena todas las medidas de tensión y corriente de las baterias y panel solar.
-*/
+ /**
+ * @file ina.hpp
+ * @author Estela Mora
+ * @author David Andrino
+ * @author Hugo Sánchez
+ * @author Fernando Sanz
+ * @brief Módulo de medida de sensores INA226
+ * @version 1.1
+ * @date 15-12-2024
+ */
 #ifndef ina_h
 #define ina_h
 
@@ -32,7 +31,6 @@
     @brief Indica la dirección I2C del INA que toma las medidas de la segunda batería.
 */
 #define I2C_D_BAT_2  0x41
-
 
 /**
  * @brief Realiza una medida de todos los sensores.

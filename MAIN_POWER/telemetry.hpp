@@ -1,3 +1,13 @@
+/**
+ * @file sleep.hpp
+ * @author David Andrino
+ * @author Estela Mora
+ * @author Hugo Sánchez
+ * @author Fernando Sanz
+ * @brief Definición de la estructura de telemetría
+ * @version 1.1
+ * @date 15-12-2024
+ */
 #ifndef TELEMETRY_H
 #define TELEMETRY_H
 

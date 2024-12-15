@@ -1,7 +1,16 @@
-/** @file file_management.h
-    @brief Módulo de manejo de ficheros
-*/
-
+/**
+ * @file file_management.hpp
+ * @author Estela Mora
+ * @author David Andrino
+ * @author Hugo Sánchez
+ * @author Fernando Sanz
+ * @brief Módulo de gestión de ficheros
+ * @version 1.1
+ * @date 15-12-2024
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
 #ifndef FILE_MANAGEMENT_H
 #define FILE_MANAGEMENT_H
 

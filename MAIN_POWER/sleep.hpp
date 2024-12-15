@@ -1,3 +1,13 @@
+/**
+ * @file sleep.hpp
+ * @author David Andrino
+ * @author Estela Mora
+ * @author Hugo Sánchez
+ * @author Fernando Sanz
+ * @brief Módulo de bajo consumo
+ * @version 1.1
+ * @date 15-12-2024
+ */
 #ifndef SLEEP_H
 #define SLEEP_H
 
