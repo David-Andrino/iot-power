@@ -1,6 +1,44 @@
 #include "file_management.hpp"
 
-// Implementación de la función
+void clear_file(const char* measFile) {
+    if (!SPIFFS.begin()) {
+        Serial.println("Error iniciando SPIFFS");
+        return;
+    }
+
+    File file = SPIFFS.open(measFile, "w");
+    if (!file) {
+        Serial.println("Error abriendo el fichero para borrar");
+        return;
+    }
+
+    file.close();
+    Serial.println("El contenido del fichero ha sido borrado.");
+}
+
+void read_meas(const char* measFile){
+    if (!SPIFFS.begin()) {
+        Serial.println("Error iniciando SPIFFS");
+        return;
+    }
+
+    File measurementFile = SPIFFS.open(measFile, "r");
+    if (!measurementFile) {
+        Serial.println("Error abriendo fichero");
+        return;
+    }
+
+    Serial.println("");
+    Serial.println("Contenido del fichero ");
+    Serial.println(measFile);
+
+    while (measurementFile.available()) {
+        Serial.write(measurementFile.read());
+    }
+
+    measurementFile.close();
+}
+
 bool write_meas(const char* measFile, telemetry_t measures, String timestamp) {
     if (!SPIFFS.begin()) {
         return false;
@@ -25,43 +63,4 @@ bool write_meas(const char* measFile, telemetry_t measures, String timestamp) {
     measurementFile.close();
 
     return true;
-}
-
-void read_meas(const char* measFile){
-    if (!SPIFFS.begin()) {
-        Serial.println("Error iniciando SPIFFS");
-        return;
-    }
-
-    File measurementFile = SPIFFS.open(measFile, "r");
-    if (!measurementFile) {
-        Serial.println("Error abriendo fichero");
-        return;
-    }
-
-    Serial.println("");
-    Serial.print("Contenido del fichero ");
-    Serial.println(measFile);
-
-    while (measurementFile.available()) {
-        Serial.write(measurementFile.read());
-    }
-
-    measurementFile.close();
-}
-
-void clear_file(const char* measFile) {
-    if (!SPIFFS.begin()) {
-        Serial.println("Error iniciando SPIFFS");
-        return;
-    }
-
-    File file = SPIFFS.open(measFile, "w");
-    if (!file) {
-        Serial.println("Error abriendo el fichero para borrar");
-        return;
-    }
-
-    Serial.println("El contenido del fichero ha sido borrado.");
-    file.close();
 }
