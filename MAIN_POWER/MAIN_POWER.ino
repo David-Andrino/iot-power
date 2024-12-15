@@ -25,8 +25,8 @@ void setup_wifi(int tries);
 
 void setup() {
 
-    pinMode(D7, OUTPUT);
-    pinMode(D8, OUTPUT);
+    pinMode(RELAY_SW_IN, OUTPUT);
+    pinMode(RELAY_SW_OUT, OUTPUT);
     pinMode(SDA, OUTPUT);
     pinMode(SCL, OUTPUT);
     Serial.begin(9600);
@@ -137,14 +137,14 @@ void setup_wifi(int tries) {
 
 void setRelays(telemetry_t *telemetry){
   if (telemetry->VSolar > SolarTh) {
-    digitalWrite(D7,LOW);
-    digitalWrite(D8,LOW);  
+    digitalWrite(RELAY_SW_IN,LOW);
+    digitalWrite(RELAY_SW_OUT,LOW);  
   }else if(telemetry->VBatbu>BatTh){
-    digitalWrite(D7,HIGH);
-    digitalWrite(D8,HIGH);
+    digitalWrite(RELAY_SW_IN,HIGH);
+    digitalWrite(RELAY_SW_OUT,HIGH);
   }else{
-    digitalWrite(D7,LOW);
-    digitalWrite(D8,LOW);
+    digitalWrite(RELAY_SW_IN,LOW);
+    digitalWrite(RELAY_SW_OUT,LOW);
   }
   
 }
