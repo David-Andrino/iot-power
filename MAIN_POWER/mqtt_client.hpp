@@ -7,6 +7,11 @@
 
 #include "telemetry.hpp"
 
+/** 
+ * @brief Número de reintentos de conexión con el servidor MQTT.
+ */
+#define REINTENTOS_MQTT 3
+
 /**
  * @brief Crea el cliente MQTT y establece la conexión con el servidor MQTT.
  * Además, define la estructura del mensaje para publicar las medidas
