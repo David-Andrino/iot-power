@@ -1,19 +1,16 @@
 #include "file_management.hpp"
 
 void clear_file(const char* measFile) {
-    if (!SPIFFS.begin()) {
-        Serial.println("[FILE_MGT] Error iniciando SPIFFS");
-        return;
-    }
-
-    File file = SPIFFS.open(measFile, "w");
-    if (!file) {
-        Serial.println("[FILE_MGT] Error abriendo el fichero para borrar");
-        return;
-    }
-
-    file.close();
-    Serial.println("[FILE_MGT] El contenido del fichero ha sido borrado.");
+  if (SPIFFS.exists(measFile)) {
+      // Delete the file
+      if (SPIFFS.remove(measFile)) {
+        Serial.println("[FILE_MGT] Archivo borrado correctamente");
+      } else {
+        Serial.println("[FILE_MGT] Error al borrar el archivo");
+      }
+  } else {
+      Serial.println("[FILE_MGT] Error: El archivo no existe");
+  }
 }
 
 void read_meas(const char* measFile){
