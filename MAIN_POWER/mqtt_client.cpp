@@ -29,7 +29,7 @@ bool publishTelemetry(char* const mqtt_server, int mqtt_port, telemetry_t& telem
 }
 
 void reconnect(PubSubClient& client, char* const mqtt_server, int mqtt_port) {
-    for (int i = 0; i < 3 && !client.connected(); i++) )
+    for (int i = 0; i < 3 && !client.connected(); i++){
 
         Serial.print("[MQTT] Iniciando conexión a " + String(mqtt_server) + ":" + String(mqtt_port));
 

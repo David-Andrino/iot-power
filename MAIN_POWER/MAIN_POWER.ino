@@ -14,14 +14,14 @@
 #endif
 
 #define ssid             "POC"
-#define password         "cacacaca"
+#define password         "POWERIoT"
 
 #define MQTT_SERVER      const_cast<char*>("192.168.111.69")
 #define MQTT_PORT        4444
 
 #define TIME_SLEEP       2000
 #define WIFI_TRIES       35
-#define BAT_THRESH       11.5
+#define BAT_THRESH       11.65
 #define SOLAR_THRESH     20
 #define MEASUREMENT_FILE "/measurements.txt"
 
@@ -43,7 +43,7 @@ static void setup_wifi();
  * 
  * @param telemetry Puntero a la estructura de medidas
  */
-static void setRelays(telemetry_t *telemetry){
+static void setRelays(telemetry_t *telemetry);
 
 void setup() {
     pinMode(RELAY_SW_IN,  OUTPUT);
@@ -84,7 +84,7 @@ void loop() {
         PRINT_DEBUG("[WIFI] Sincronizado con NTP. Hora obtenida: " + String(timeStr));
     } else {
         PRINT_DEBUG("[WIFI] No se ha podido conectar a la red WiFi");
-        snprintf(timeStr, 50, "[00/00/00 - 00:00:00]")
+        snprintf(timeStr, 50, "[00/00/00 - 00:00:00]");
     }
 
     if (write_meas(MEASUREMENT_FILE, telemetry, timeStr)){
@@ -98,7 +98,7 @@ void loop() {
 
 static void setup_wifi() {
     delay(10);
-    Serial.print("[WIFI] Intentando conectar a " + ssid);
+    Serial.print("[WIFI] Intentando conectar a " ssid);
 
     WiFi.begin(ssid, password);
     for (int i = 0; i < WIFI_TRIES && WiFi.status() != WL_CONNECTED; i++) {
@@ -107,7 +107,7 @@ static void setup_wifi() {
         i++;
     }
     if(WiFi.status() == WL_CONNECTED){
-        PRINT_DEBUG("[WIFI] Conectado a la red WiFi " + ssid + " con IP: " + WiFi.localIP());
+        PRINT_DEBUG("[WIFI] Conectado a la red WiFi "  ssid  " con IP: "); PRINT_DEBUG(WiFi.localIP());
     } else {
         PRINT_DEBUG("[WIFI] No se ha podido conectar a la red WiFi");
     }
