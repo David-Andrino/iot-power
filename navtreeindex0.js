@@ -5,6 +5,8 @@ var NAVTREEINDEX0 =
 "MAIN__POWER_2file__management_8hpp.html#add002f653d095fb467cde209eba9c38f":[2,0,0,0,1],
 "MAIN__POWER_2file__management_8hpp.html#afdbd05ab56031318aa62a55776e2d5d6":[2,0,0,0,2],
 "MAIN__POWER_2file__management_8hpp_source.html":[2,0,0,0],
+"MAIN__POWER_2telemetry_8hpp.html":[2,0,0,5],
+"MAIN__POWER_2telemetry_8hpp_source.html":[2,0,0,5],
 "annotated.html":[1,0],
 "classes.html":[1,1],
 "dir_405e1d0ce9e55ff4ce959e146f639190.html":[2,0,0],
@@ -36,6 +38,8 @@ var NAVTREEINDEX0 =
 "read__file_2file__management_8hpp.html#add002f653d095fb467cde209eba9c38f":[2,0,1,0,1],
 "read__file_2file__management_8hpp.html#afdbd05ab56031318aa62a55776e2d5d6":[2,0,1,0,2],
 "read__file_2file__management_8hpp_source.html":[2,0,1,0],
+"read__file_2telemetry_8hpp.html":[2,0,1,1],
+"read__file_2telemetry_8hpp_source.html":[2,0,1,1],
 "sleep_8hpp.html":[2,0,0,4],
 "sleep_8hpp.html#a510962e41d741e0bc06604fe9d85ac72":[2,0,0,4,0],
 "sleep_8hpp_source.html":[2,0,0,4],
@@ -47,7 +51,5 @@ var NAVTREEINDEX0 =
 "structtelemetry__t.html#a7b2f36bf6908fef87892d260a6010e8f":[1,0,0,0],
 "structtelemetry__t.html#a9967a6bdf0757da0e1b9aa0df9cfe52b":[1,0,0,5],
 "structtelemetry__t.html#adcf254d6844b8efcc1cefb8f0395052c":[1,0,0,1],
-"structtelemetry__t.html#aeb9c570ed70112f6f56e6be8b01e8294":[1,0,0,7],
-"telemetry_8hpp.html":[2,0,0,5],
-"telemetry_8hpp_source.html":[2,0,0,5]
+"structtelemetry__t.html#aeb9c570ed70112f6f56e6be8b01e8294":[1,0,0,7]
 };
