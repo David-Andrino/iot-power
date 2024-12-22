@@ -1,2 +1,82 @@
 \subsection{Caja}
 \todo[inline, inlinewidth=0.9\textwidth]{TODO}
+\documentclass{article}
+\begin{document}
+\subsection{Caja}
+
+En este apartado se realizará un desarrollo teórico de la caja que se utilizaría para desarrollar la solución.
+
+\subsubsection{Requisitos técnicos}
+
+Para asegurar una protección complete de todo el sistema, se ha pensado en desarrollar una caja que mantenga protegido a todo el circuito y al sistema de carga de cualquier elemento externo que pueda perturbar su funcionamiento.
+
+Esta protección debe asegurar las siguientes condiciones:
+\begin{enumerate}
+    \item \textbf{Protección contra agua y partículas}: Para evitar la entrada de agua dentro de la caja pudiendo generar corto circuitos o dañar gravemente el funcionamiento del sistema. Estos daños también pueden ser ocasionados por la entrada de polvo u otras pequeñas partículas dentro de la caja. 
+    \item \textbf{Acceso restringido}: Permitir el acceso a la carga de baterías solo se permitirá para el cliente, mientras que el acceso al circuito de carga y a la batería de backup. 
+    \item \textbf{Aislamiento eléctrico}: Asegurar un aislamiento eléctrico de factores externos para evitar interferencias con el sistema.
+    \item \textbf{Resistencia a golpes}: El sistema al encontrarse en un entorno al aire libre es necesario proveerlo de cierta capacidad de protección en caso de golpes o impactos de factores externos.
+    \item \textbf{Resistencia rayos ultravioletas}: El sistema se carga principalmente mediante energía solar, esto implica que el sistema de carga se ve expuesto constantemente al sol y por ende a rayos ultravioletas, lo que puede dañar materiales como los polímeros.
+    \item \textbf{Temperaturas de trabajo}: La caja deberá ser capaz de aguantar altas temperaturas exteriores durante largos periodos de tiempo debido al entorno al que está expuesto.
+\end{enumerate}
+
+\subsubsection{Diseño 3D}
+
+Para tener un diseño preliminar de cómo sería la caja real se ha diseñado mediante el software de FreeCAD el siguiente modelo en 3D:
+
+%\TODO{CAJA_3D_ISOMETRICA}
+
+Como se puede observar, la caja cuenta con 2 accesos:
+\begin{itemize}
+    \item \textbf{Puerta de usuario}: Esta puerta es usada por el cliente para únicamente conectar/desconectar las baterías que se desean cargar.
+%\TODO{CAJA_3D_PUERTA_USER}
+    \item \textbf{Puerta de técnico}: Esta puerta es usada por el personal de administración para acceder tanto al circuito de carga como las baterías de backup y que estén cargándose.
+%\TODO{CAJA_3D_PUERTA_ADMIN}
+\end{itemize}
+
+Adicionalmente, el interior de la caja tiene 3 incisiones. Estas serán usadas únicamente para dar acceso a los terminales de carga para las baterías del usuario (los 2 accesos de la izquierda) y la de backup (acceso de la derecha).
+%\TODO{CAJA_3D_ACCESOS}
+
+Además, en la parte superior de la caja contamos con un acceso para la entrada del cableado del panel solar para la caja.
+
+\textbf{Nota}: Para facilitar el entendimiento del diseño en el anexo x se encuentran en detalle todas las vistas del diseño sin las puertas e imágenes adicionales del mismo.
+%Añadir un anexo con todas las fotos que faltan. (estan en la carpteta de caja)
+
+\subsubsection{Características técnicas}
+
+Para cumplir el diseño teórico se proponen las siguientes características técnicas:
+\begin{itemize}
+    \item Protección contra agua y partículas:
+\end{itemize}
+
+La caja cumplirá la norma internacional CEI 60529 para permitir esta protección. En concreto una protección IP67 que garantiza una protección completa contra polvo y pequeñas partículas y además, la inmersión completa de la caja a sin filtración alguna. 
+%\TODO{https://www.wewontech.com/IEC60529-%20IP-Standard.pdf}
+
+\begin{itemize}
+    \item Acceso restringido:
+\end{itemize}
+
+Esto se logra con el diseño 3D que hemos propuesto para la caja, la única implementación adicional que es necesaria añadir son cerraduras en cada una de las puertas.
+
+\begin{itemize}
+    \item Aislamiento eléctrico, resistencia rayos ultravioletas y temperatura:
+\end{itemize}
+
+Para esto se plantea que el material de la caja sea de policarbonato. Gracias a esto se consigue evitar el efecto de jaula de Faraday que pudiera causar el uso de una caja de metal. Además, el policarbonato proporciona una protección total de los rayos ultravioletas y una temperatura de operación desde -40ºC hasta 115ºC siendo un rango más que de sobra para nuestro circuito.
+%\TODO{https://www.palram.com/blog/construction-architecture/polycarbonate-and-protection-from-uv-radiation/#:~:text=Polycarbonate%20as%20a%20material%20blocks,it%20to%20be%20transmitted%20through.}
+
+Además, protege de posibles cortos en caso de que alguno de los elementos de la caja hiciera contacto con ella.
+
+Como elemento adicional, todo el cableado expuesto tanto en el interior de la caja (cableado usado por el usuario) como exteriores (cableado del panel solar) pasarán por prensaestopas y el cableado exterior constará de una funda de protección para el paso del panel a la caja.
+%\TODO{CAJA_FUNDA}
+%\TODO{CAJA_PRENSAESTOPA}
+
+\begin{itemize}
+    \item Resistencia a golpes:
+\end{itemize}
+
+En caso de impactos la caja debe proporcionar cierta protección, para esto debe de asegurar un índice de protección IK entre 08 y 09 que ayudaría a mitigar los golpes de efectos adversos como el granizo o golpes de pequeñas rocas.
+%\TODO{https://www.wewontech.com/IEC60529-%20IP-Standard.pdf}
+
+
+\end{document}
