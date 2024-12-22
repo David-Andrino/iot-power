@@ -1,0 +1,21 @@
+\documentclass{article}
+\begin{document}
+\subsection{Modulo Principal}
+
+Este módulo está formado por el archivo, \texttt{MAIN\_POWER.ino} que se encarga de conectar todos los módulos en un sistema unificado.
+
+El fichero contiene las siguientes funciones:
+
+- \texttt{setup()}: Inicializa los pines que usamos para la comunicación I2C y los relés, la velocidad del puerto serie y el valor inicial de la estructura de datos que contienen.
+
+- \texttt{loop()}: Realiza todas las operaciones de funcionamiento del sistema. La secuencia de ejecución es la siguiente:
+\begin{enumerate}
+    \item Recoge las medidas de losz INA.
+    \item Revisa los valores obtenidos del panel solar por si es necesario cambiar la alimentación del panel solar a la de backup.
+    \item Se intenta conectar a la red Wifi. Si lo consigue se intenta mandar las medidas al servidor mqtt.
+    \item Guarda las medidas de los sensores en un fichero.
+    \item Duerme al ESP poniéndolo en bajo consumo.
+    \item Sale del modo de bajo consumo.
+\end{enumerate}
+
+\end{document}
