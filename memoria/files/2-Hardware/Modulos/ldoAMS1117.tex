@@ -6,11 +6,25 @@ En su hoja de características indica que (en nuestra versión) tiene una tensi�
 
 Utilizaremos el regulador a la salida del regulador reductor, con la finalidad de suavizar los picos de tensión que aparecen por la naturaleza conmutada de dicho regulador.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{images/2-hardware/componentes/AMS1117.png}
     \caption{\texttt{LDO AMS1117}}
     \label{fig:hardware/modulos/ldo-ams1117}
 \end{figure}
 
-\todo[inline,inlinewidth=0.9\textwidth]{Incluir imagen de los picos}
+En la \autoref{fig:hardware/modulos/ldo-picos} se puede ver que la tensión de salida del regulador presenta picos de aproximadamente $110\ mV$, que se eliminan gracias a este componente. Aparece en la tensión de salida de este componente una oscilación de $20\ mV$, por lo que se ha reducido significativamente.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/2-hardware/componentes/ldo/picosSinLDO.jpg}
+    \caption{Componente alterna de la tensión de salida del regulador conmutado}
+    \label{fig:hardware/modulos/ldo-picos}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/2-hardware/componentes/ldo/picosConLDO.jpg}
+    \caption{Componente alterna de la tensión de salida del LDO}
+    \label{fig:hardware/modulos/ldo-sin-picos}
+\end{figure}
