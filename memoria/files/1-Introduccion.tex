@@ -1,2 +1,47 @@
 \section{Introducción}
-\todo[inline, inlinewidth=0.9\textwidth]{TODO}
+
+\subsection{Descripción funcional del equipo}
+
+El sistema se encarga de cargar mediante energía solar y monitorizar dos baterías $12 V$ / $7 Ah$. Se encargará de guardar las medidas en un log y se visualizarán en un servidor, al que el usuario podrá acceder mediante un PC o un móvil. Además, el sistema dispondrá de una batería de backup para alimentar el sistema cuando la situación lo requiera (Bajo rendimiento solar). La batería de backup también se recargará mediante energía solar.
+
+
+\subsection{Especificaciones funcionales}
+
+Se diseñará un sistema de carga de baterías para emplazamientos aislados exteriores, que utilice energía solar como fuente de energía y que sea controlable y monitorizable a través de internet. El sistema deberá cumplir las siguientes especificaciones técnicas para asegurar su correcto y completo funcionamiento:
+
+\subsubsection{Especificaciones Hardware}
+
+\begin{itemize}
+    \item El sistema deberá cargar dos baterías a la vez (\texttt{BAT1} y \texttt{BAT2}).
+    \item Se utilizará un circuito específico para la carga de las baterías que debe contar con protección.
+    \item El sistema priorizará el uso de la energía generada por el panel solar.
+    \item El sistema contará con una tercera batería de backup, que se utilizará cuando el panel solar sea incapaz de entregar la energía necesaria.
+    \item La batería de backup se cargará también mediante energía solar.
+    \item Se utilizarán tres baterías de plomo ácido de $12 V$ y $7 Ah$ cada una. 
+    \item El panel solar debe ser capaz de generar suficiente energía para cargar ambas baterías en condiciones ideales.
+    \item Se utilizará el microcontrolador \texttt{ESP8266} para el control y monitoreo del sistema mediante \texttt{I2C} enviar las medidas por \texttt{Wi-Fi}.
+    \item Se utilizará este sensor \texttt{INA226} para medir la tensión y corriente de cada batería y el panel solar.
+    \item El sistema debe ser resistente a condiciones climáticas adversas. 
+    \item El sistema deberá contar con un diseño que permita la adecuada ventilación y disipación del calor generado por la electrónica.
+    \item Se minimizará al máximo el consumo del sistema encargado del control de las baterías.
+    \item El sistema cumplirá las normativas de seguridad eléctrica y medioambiental.
+    \item Se realizará pruebas de integración de todo el sistema.
+    \item El sistema se conectará a una red \texttt{WiFi} con acceso a un servidor.
+    \item El sistema enviará las medidas a un servidor externo.
+\end{itemize}
+
+\subsubsection{Especificaciones Software}
+
+\begin{itemize}
+    \item Se utilizará el entorno \texttt{Arduino IDE} para el desarrollo del código en el lenguaje \texttt{Arduino}.
+    \item Se configurará y gestionará la conexión \texttt{WiFi} en el \texttt{ESP8266}.
+    \item Toda la información estará disponible al usuario mediante un servidor web y un log almacenado en la memoria \texttt{flash} del microcontrolador.
+    \item En caso de pérdida de señal, el sistema seguirá almacenando medidas localmente.
+    \item Se dispondrá de un modo de lectura de medidas para obtener el log de medidas a través de \texttt{Serial}.
+    \item Se utilizará el protocolo de comunicación \texttt{MQTT} para la comunicación entre el \texttt{ESP8266} y el servidor.
+    \item El cliente podrá acceder al sistema a través de una interfaz web (en móvil u ordenador).
+    \item En el servidor web se visualizará en tiempo real gráficas y valores que correspondan con el estado de carga de las baterías y la producción de energía del panel solar.
+    \item En el log se almacenará la tensión y corriente de carga de las tres baterías y la producción de energía del panel solar.
+    \item El funcionamiento normal del sistema consistirá en: El sistema se despierta, intenta conectarse a la \texttt{WiFi}, toma medidas, las gestiona (envío y almacenamiento) y se duerme. De esta forma se optimiza el consumo de batería.
+    \item Se desarrollarán pruebas para cada módulo software.
+\end{itemize}
