@@ -1,5 +1,3 @@
-\documentclass{article}
-\begin{document}
 \subsubsection{Modulo INA}
 
 El módulo INA es el encargado de realizar la configuración de los INAs y solicitarles medidas.
@@ -15,7 +13,14 @@ Para la implementación de este módulo se ha requerido la utilización de la li
 El fichero ina.cpp contiene las siguientes funciones:
 
 - \texttt{setupINA226Sensors()}: Esta función inicializa los 3 INAs con la configuración inicial que establece la librería \texttt{“INA266\_WE.h”}.
-%\TODO{INA_SETUP}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/3-software/3-2-1-ina/INA_SETUP.png}
+    \caption{Configuracion Inicial INA \texttt{PS58F1}}
+    \label{fig:software/INA/INA_SETUP}
+\end{figure}
+
 
 - \texttt{reconfig\_INAs()}: Al despertar o inicializarlos INA, se encuentran con la configuración por defecto, por lo que es necesario reconfigurarlos acorde a las necesidades de nuestro circuito. Esta reconfiguración consta de lo siguiente:
 \begin{itemize}
@@ -25,12 +30,31 @@ El fichero ina.cpp contiene las siguientes funciones:
     \item \texttt{setCorrectionFactor}: Establece el factor de corrección, el sensor nunca realiza una medición que corresponde con la realidad, por lo que es necesario indicar el factor de corrección que tiene que ser aplicado cuando se realizan estas medidas. Para el establecimiento de este valor se han realizado medidas experimentales midiendo el valor real y comparándolo con lo que indicado por el sensor.
 \end{itemize}
 
-%\TODO{INA_RECONFIG}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/3-software/3-2-1-ina/INA_RECONFIG.png}
+    \caption{Reconfiguracion INA \texttt{PS58F1}}
+    \label{fig:software/INA/INA_RECONFIG}
+\end{figure}
+
 - \texttt{powerDownINA226()}: Pone en bajo consumo los INA ya que tras conseguir las medidas no es necesario que se mantengan activos.
-%\TODO{INA_PDOWN}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/3-software/3-2-1-ina/INA_PDOWN.png}
+    \caption{INA a bajo consumo. \texttt{PS58F1}}
+    \label{fig:software/INA/INA_PDOWN}
+\end{figure}
 
 - \texttt{powerUpINA226()}: Despierta de nuevo a los INA, al despertarlos los sensores se reinician con la configuración por defecto por lo que es necesario reconfigurarlos.
-%\TODO{INA_PUP}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/3-software/3-2-1-ina/INA_PUP.png}
+    \caption{Despertar al INA del bajo consumo. \texttt{PS58F1}}
+    \label{fig:software/INA/INA_PUP}
+\end{figure}
+
 
 -\texttt{measureINA226(telemetry\_t *telemetry)}: Realiza la medida de todos los sensores. La secuencia de ejecución es la siguiente:
 
@@ -41,8 +65,20 @@ El fichero ina.cpp contiene las siguientes funciones:
     \item Se ponen a bajo consumo los INAs.
 \end{enumerate}
 
-%\TODO{INA_MEAS}
-En el contenido de este mismo fichero, se instancian los 4 INAs que tenemos indicando su dirección I2C:
-%\TODO{INA_INSTANCIA}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/3-software/3-2-1-ina/INA_MEAS.png}
+    \caption{Solicitar medidas al INA. \texttt{PS58F1}}
+    \label{fig:software/INA/INA_MEAS}
+\end{figure}
 
-\end{document}
+
+En el contenido de este mismo fichero, se instancian los 4 INAs que tenemos indicando su dirección I2C:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/3-software/3-2-1-ina/INA_INSTANCIA.png}
+    \caption{Instancia de las direcciones de los INAs. \texttt{PS58F1}}
+    \label{fig:software/INA/INA_INSTANCIA}
+\end{figure}
+
