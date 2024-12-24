@@ -1,7 +1,4 @@
-\subsection{Caja}
-\todo[inline, inlinewidth=0.9\textwidth]{TODO}
-\documentclass{article}
-\begin{document}
+
 \subsection{Caja}
 
 En este apartado se realizará un desarrollo teórico de la caja que se utilizaría para desarrollar la solución.
@@ -24,18 +21,46 @@ Esta protección debe asegurar las siguientes condiciones:
 
 Para tener un diseño preliminar de cómo sería la caja real se ha diseñado mediante el software de FreeCAD el siguiente modelo en 3D:
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/4-DesarrolloTeorico/4-1-caja/CAJA_3D_ISOMETRICA.png}
+    \caption{Vista Isometrica Modelo 3D caja. \texttt{PS58F1}}
+    \label{fig:DesarrolloTeorico/Caja/CAJA_3D_ISOMETRICA}
+\end{figure}
+
+
 %\TODO{CAJA_3D_ISOMETRICA}
 
 Como se puede observar, la caja cuenta con 2 accesos:
 \begin{itemize}
     \item \textbf{Puerta de usuario}: Esta puerta es usada por el cliente para únicamente conectar/desconectar las baterías que se desean cargar.
-%\TODO{CAJA_3D_PUERTA_USER}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/4-DesarrolloTeorico/4-1-caja/CAJA_3D_PUERTA_USER.png}
+    \caption{Vista Puerta Usuario Modelo 3D caja. \texttt{PS58F1}}
+    \label{fig:DesarrolloTeorico/Caja/CAJA_3D_PUERTA_USER}
+\end{figure}
+
     \item \textbf{Puerta de técnico}: Esta puerta es usada por el personal de administración para acceder tanto al circuito de carga como las baterías de backup y que estén cargándose.
-%\TODO{CAJA_3D_PUERTA_ADMIN}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/4-DesarrolloTeorico/4-1-caja/CAJA_3D_PUERTA_ADMIN.png}
+    \caption{Vista Puerta Técnico Modelo 3D caja. \texttt{PS58F1}}
+    \label{fig:DesarrolloTeorico/Caja/CAJA_3D_PUERTA_ADMIN}
+\end{figure}
+
 \end{itemize}
 
 Adicionalmente, el interior de la caja tiene 3 incisiones. Estas serán usadas únicamente para dar acceso a los terminales de carga para las baterías del usuario (los 2 accesos de la izquierda) y la de backup (acceso de la derecha).
-%\TODO{CAJA_3D_ACCESOS}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/4-DesarrolloTeorico/4-1-caja/CAJA_3D_ACCESOS.png}
+    \caption{Vista Inicisiones Modelo 3D caja. \texttt{PS58F1}}
+    \label{fig:DesarrolloTeorico/Caja/CAJA_3D_ACCESOS}
+\end{figure}
+
 
 Además, en la parte superior de la caja contamos con un acceso para la entrada del cableado del panel solar para la caja.
 
@@ -68,8 +93,20 @@ Para esto se plantea que el material de la caja sea de policarbonato. Gracias a 
 Además, protege de posibles cortos en caso de que alguno de los elementos de la caja hiciera contacto con ella.
 
 Como elemento adicional, todo el cableado expuesto tanto en el interior de la caja (cableado usado por el usuario) como exteriores (cableado del panel solar) pasarán por prensaestopas y el cableado exterior constará de una funda de protección para el paso del panel a la caja.
-%\TODO{CAJA_FUNDA}
-%\TODO{CAJA_PRENSAESTOPA}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/4-DesarrolloTeorico/4-1-caja/CAJA_FUNDA.png}
+    \caption{Funda cableado exterior. \texttt{PS58F1}}
+    \label{fig:DesarrolloTeorico/Caja/CAJA_FUNDA}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/4-DesarrolloTeorico/4-1-caja/CAJA_PRENSAESTOPA.png}
+    \caption{Prensaestopa. \texttt{PS58F1}}
+    \label{fig:DesarrolloTeorico/Caja/CAJA_PRENSAESTOPA}
+\end{figure}
+
 
 \begin{itemize}
     \item Resistencia a golpes:
@@ -77,6 +114,3 @@ Como elemento adicional, todo el cableado expuesto tanto en el interior de la ca
 
 En caso de impactos la caja debe proporcionar cierta protección, para esto debe de asegurar un índice de protección IK entre 08 y 09 que ayudaría a mitigar los golpes de efectos adversos como el granizo o golpes de pequeñas rocas.
 %\TODO{https://www.wewontech.com/IEC60529-%20IP-Standard.pdf}
-
-
-\end{document}
