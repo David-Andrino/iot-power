@@ -1,0 +1,9 @@
+\subsubsection{Subsistema para los relés}
+
+La selección de tensión de alimentación para los cargadores y la carga o descarga de la batería de \textit{Backup} se ha realizado mediante relés. Debido a la naturaleza del proyecto, es interesante reducir al mínimo posible el consumo de corriente de los elementos del circuito, por lo que el consumo constante de un relé no es algo admisible.
+
+Se tuvo en consideración el uso de relés biestables, pero su elevado coste en comparación y la encarecida recomendación de realizar un subsistema electrónico con una PCB propia, decidimos tomar otra alternativa. 
+
+La corriente que un relé necesita para conmutar es menor que la que necesita para mantener el interruptor conmutado, por lo que decidimos realizar un circuito que aplicara un pico de corriente al conmutar y reduejera la corriente para mantener la conmutación. 
+
+Se puede ver el circuito en la \autoref{fig:hardware/modulos/reles/esquematico}. Se utiliza un condensador y una resistencia que consiguen una respuesta subamortiguada ante el escalón de conmutación. Además, se utiliza un transistor para manejar la conmutación del relé y se utiliza un diodo de \textit{flyback} para proteger a dicho transistor de la corriente de la bobina cuando se intente cortar. Para la resistencia en paralelo con el condensador se ha utilizado un potenciómetro para poder ajustar el pico de conmutación. 
