@@ -26,7 +26,24 @@ El valor de los componentes pasivos se ha elegido experimentalmente, en función
     \item \texttt{D1}: Diodo de \textit{flyback} utilizado para redirigir la corriente de la bobina cuando se corta el transistor, para evitar destruirlo. Se ha utilizado un diodo \texttt{1N4007} por ser el más accesible, aunque lo óptimo hubiera sido un diodo Schottky.
 \end{itemize}
 
-Observando la forma de onda de la corriente de conmutación (proporcional a la tensión en la resisitencia \texttt{R1}), se ve la diseñada respuesta subamortiguada.
+Para el montaje de dicho circuito se ha diseñado una PCB que se ha enviado a fabricar a una empresa extranjera. El resulado se puede ver en la \autoref{fig:hardware/modulos/reles/fotoPCB}. Las resistencias soldadas en la imagen no tienen los valores indicados porque se cambiaron después de hacer la foto.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{images/2-hardware/componentes/rele/pcbRele.png}
+        \caption{PCB sin montar}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{images/2-hardware/componentes/rele/pcbReleMontada.png}
+        \caption{Circuito montado}
+    \end{subfigure}
+    \caption{PCB del circuito para los relés}
+    \label{fig:hardware/modulos/reles/fotoPCB}
+\end{figure}
+
+Observando la forma de onda de la corriente de conmutación (proporcional a la tensión en la resistencia \texttt{R1}), se ve la diseñada respuesta subamortiguada.
 
 \begin{figure}[H]
     \centering
