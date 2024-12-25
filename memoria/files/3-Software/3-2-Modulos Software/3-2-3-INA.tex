@@ -12,15 +12,17 @@ Para la implementación de este módulo se ha requerido la utilización de la li
 
 El fichero ina.cpp contiene las siguientes funciones:
 
-- \texttt{setupINA226Sensors()}: Esta función inicializa los 3 INAs con la configuración inicial que establece la librería \texttt{“INA266\_WE.h”}.
+- \texttt{setupINA226Sensors()}: Esta función inicializa los 4 INAs con la configuración inicial que establece la librería \texttt{“INA266\_WE.h”}.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{images/3-software/3-2-1-ina/INA_SETUP.png}
-    \caption{Configuracion Inicial INA \texttt{PS58F1}}
-    \label{fig:software/INA/INA_SETUP}
-\end{figure}
-
+\begin{lstlisting}[captionpos=b, caption={Codigo funcion setupINA226Sensors}, language=c++]
+    void setupINA226Sensors() {
+        Wire.begin();
+        Solar.init();
+        Batbu.init();
+        Bat1.init();
+        Bat2.init();
+    }
+\end{lstlisting}
 
 - \texttt{reconfig\_INAs()}: Al despertar o inicializarlos INA, se encuentran con la configuración por defecto, por lo que es necesario reconfigurarlos acorde a las necesidades de nuestro circuito. Esta reconfiguración consta de lo siguiente:
 \begin{itemize}
@@ -30,31 +32,59 @@ El fichero ina.cpp contiene las siguientes funciones:
     \item \texttt{setCorrectionFactor}: Establece el factor de corrección, el sensor nunca realiza una medición que corresponde con la realidad, por lo que es necesario indicar el factor de corrección que tiene que ser aplicado cuando se realizan estas medidas. Para el establecimiento de este valor se han realizado medidas experimentales midiendo el valor real y comparándolo con lo que indicado por el sensor.
 \end{itemize}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{images/3-software/3-2-1-ina/INA_RECONFIG.png}
-    \caption{Reconfiguracion INA \texttt{PS58F1}}
-    \label{fig:software/INA/INA_RECONFIG}
-\end{figure}
+
+\begin{lstlisting}[captionpos=b, caption={Codigo funcion reconfig\_INAs}, language=c++]
+    void reconfig_INAs(){
+        Solar.setConversionTime(CONV_TIME_1100);
+        Batbu.setConversionTime(CONV_TIME_1100);
+        Bat1.setConversionTime(CONV_TIME_1100);
+        Bat2.setConversionTime(CONV_TIME_1100);
+    
+        Solar.setMeasureMode(CONTINUOUS);
+        Batbu.setMeasureMode(CONTINUOUS);
+        Bat1.setMeasureMode(CONTINUOUS);
+        Bat2.setMeasureMode(CONTINUOUS);
+        
+        Solar.setResistorRange(0.1, 10);
+        Batbu.setResistorRange(0.1, 10);
+        Bat1.setResistorRange(0.1, 10);
+        Bat2.setResistorRange(0.1, 10);
+        
+        // Factores de corrección medidos experimentalmente
+        Solar.setCorrectionFactor(1.0469);
+        Batbu.setCorrectionFactor(1.0419);
+        Bat1.setCorrectionFactor(0.9650);
+        Bat2.setCorrectionFactor(0.9624);
+        
+        Solar.waitUntilConversionCompleted();
+        Batbu.waitUntilConversionCompleted();
+        Bat1.waitUntilConversionCompleted();
+        Bat2.waitUntilConversionCompleted();
+    }
+\end{lstlisting}
 
 - \texttt{powerDownINA226()}: Pone en bajo consumo los INA ya que tras conseguir las medidas no es necesario que se mantengan activos.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{images/3-software/3-2-1-ina/INA_PDOWN.png}
-    \caption{INA a bajo consumo. \texttt{PS58F1}}
-    \label{fig:software/INA/INA_PDOWN}
-\end{figure}
+\begin{lstlisting}[captionpos=b, caption={Codigo funcion powerDownINA226}, language=c++]
+    void powerDownINA226() {
+        Solar.powerDown();
+        Batbu.powerDown();
+        Bat1.powerDown();
+        Bat2.powerDown();
+    }
+\end{lstlisting}
+
 
 - \texttt{powerUpINA226()}: Despierta de nuevo a los INA, al despertarlos los sensores se reinician con la configuración por defecto por lo que es necesario reconfigurarlos.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{images/3-software/3-2-1-ina/INA_PUP.png}
-    \caption{Despertar al INA del bajo consumo. \texttt{PS58F1}}
-    \label{fig:software/INA/INA_PUP}
-\end{figure}
-
+\begin{lstlisting}[captionpos=b, caption={Codigo funcion powerUpINA226}, language=c++]
+    void powerUpINA226() {
+        Solar.powerUp();
+        Batbu.powerUp();
+        Bat1.powerUp();
+        Bat2.powerUp();
+    }
+\end{lstlisting}
 
 -\texttt{measureINA226(telemetry\_t *telemetry)}: Realiza la medida de todos los sensores. La secuencia de ejecución es la siguiente:
 
@@ -65,20 +95,50 @@ El fichero ina.cpp contiene las siguientes funciones:
     \item Se ponen a bajo consumo los INAs.
 \end{enumerate}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{images/3-software/3-2-1-ina/INA_MEAS.png}
-    \caption{Solicitar medidas al INA. \texttt{PS58F1}}
-    \label{fig:software/INA/INA_MEAS}
-\end{figure}
+\begin{lstlisting}[captionpos=b, caption={Codigo funcion measureINA226}, language=c++]
+    void measureINA226(telemetry_t *telemetry) {
+        // Panel Solar
+        if(first_config==false){
+          setupINA226Sensors();
+          first_config=true;
+        }else{
+          powerUpINA226();  
+        }
+    
+        reconfig_INAs();
+        
+        Solar.readAndClearFlags();
+        telemetry->VSolar = Solar.getBusVoltage_V() + (Solar.getShuntVoltage_mV() / 100);
+        telemetry->ISolar = Solar.getCurrent_mA();
+    
+        // Batería Backup
+        Batbu.readAndClearFlags();
+        telemetry->VBatbu = Batbu.getBusVoltage_V() + (Batbu.getShuntVoltage_mV() / 100);
+        telemetry->IBatbu = -Batbu.getCurrent_mA();
+    
+        // Batería 1
+        Bat1.readAndClearFlags();
+        telemetry->VBat1 = Bat1.getBusVoltage_V() + (Bat1.getShuntVoltage_mV() / 100);
+        telemetry->IBat1 = -Bat1.getCurrent_mA(); // Invertir signo porque está al revés
+    
+        // Batería 2
+        Bat2.readAndClearFlags();
+        telemetry->VBat2 = Bat2.getBusVoltage_V() + (Bat2.getShuntVoltage_mV() / 100);
+        telemetry->IBat2 = Bat2.getCurrent_mA();
+        powerDownINA226();
+    }
+\end{lstlisting}
 
 
 En el contenido de este mismo fichero, se instancian los 4 INAs que tenemos indicando su dirección I2C:
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{images/3-software/3-2-1-ina/INA_INSTANCIA.png}
-    \caption{Instancia de las direcciones de los INAs. \texttt{PS58F1}}
-    \label{fig:software/INA/INA_INSTANCIA}
-\end{figure}
+\begin{lstlisting}[captionpos=b, caption={Instancia de las direcciones de los INAs.}, language=c++]
+    #include "ina.hpp"
+    // INA226 instances
+    INA226_WE Solar(I2C_D_PANEL);
+    INA226_WE Batbu(I2C_D_BAT_BU);
+    INA226_WE Bat1(I2C_D_BAT_1);
+    INA226_WE Bat2(I2C_D_BAT_2);
+    
+\end{lstlisting}
 
