@@ -1,6 +1,6 @@
 \subsubsection{XL6009}
 
-El regulador conmutado elevador (o Boost converter en inglés) es un módulo que permite elevar una tensión de entrada más baja a una tensión de salida mayor. Esto se logra gracias a un interruptor (transistor) controlado que conecta una bobina a la alimentación, almacenando mucha energía en forma de campo magnético y redirigiéndola en forma de corriente a través de un diodo al circuito, filtrando a través de un condensador.\cite{xlsemi400KHz604}
+El regulador conmutado elevador (o Boost converter en inglés) es un módulo que permite elevar una tensión de entrada más baja a una tensión de salida mayor. Esto se logra gracias a un interruptor (transistor) controlado que conecta una bobina a la alimentación, almacenando mucha energía en forma de campo magnético y redirigiéndola en forma de corriente a través de un diodo al circuito, filtrando a través de un condensador. Una consecuencia es que incrementa la corriente requerida proporcionalmente a la relación de tensión elevada. \cite{xlsemi400KHz604}
 
 En este caso, se utiliza para elevar la tensión de la batería de backup (tensión de $12 V$) a una tensión de $24 V$ para alimentar el sistema, ocupando el lugar del panel cuando este no esté disponible.
 
@@ -37,7 +37,7 @@ Con el fin de caracterizar el rendimiento, se han medido las tensiones y corrien
         \caption{Cálculos de rendimiento realizados}
     \end{subtable}
     \caption{Caracterización del rendimiento del LM2596}
-    \label{tab:rendimiento_reductor}
+    \label{tab:rendimiento_elevador}
 \end{table}
 
 Como se puede ver, el rendimiento incrementa con la corriente, como es natural en los reguladores conmutados, por lo que en nuestra aplicación se pueden esperar rendimientos incluso mejores.
