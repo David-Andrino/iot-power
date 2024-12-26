@@ -1,15 +1,13 @@
-\subsection{Modulo Principal}
-
 Este módulo está formado por el archivo, \texttt{MAIN\_POWER.ino} que se encarga de conectar todos los módulos en un sistema unificado.
 
 Inicialmente, en la cabecera del fichero se incluyen las librerías que vamos a utilizar:
 \begin{itemize}
-    \item \texttt{telemetry.hpp}: Define la estrucura de datos que será usarda para almacenar las lecturas recibidas por los INAs.
-    \item \texttt{hardware-hpp}: Define los pines del ESP que son necesarias para el funcionamiento del sistema (I2C y relés).
-    \item \texttt{ina.hpp}: Contiene el codigo relativo a la gestión, configuración y obtención de datos de los INAs. 
-    \item \texttt{mqtt\_client.hpp}: Contiene el codigo relativo a la conexión y envio de datos al servidor MQTT.
-    \item \texttt{file\_management.hpp}: Contiene el codigo relativo a la escritura en un fichero de los datos recibidos de los INA.
-    \item \texttt{sleep.hpp}: Contiene el codigo que pone en bajo consumo al ESP.
+    \item \texttt{telemetry.hpp}: Define la estructura de datos que será usada para almacenar las lecturas recibidas por los INAs.
+    \item \texttt{hardware-hpp}: Define los pines del \texttt{ESP} que son necesarias para el funcionamiento del sistema (I2C y relés).
+    \item \texttt{ina.hpp}: Contiene el código relativo a la gestión, configuración y obtención de datos de los INAs. 
+    \item \texttt{mqtt\_client.hpp}: Contiene el código relativo a la conexión y envío de datos al servidor MQTT.
+    \item \texttt{file\_management.hpp}: Contiene el código relativo a la escritura en un fichero de los datos recibidos de los INA.
+    \item \texttt{sleep.hpp}: Contiene el código que pone en bajo consumo al \texttt{ESP}.
 \end{itemize}
 
 \begin{lstlisting}[captionpos=b, caption={Cabecera con los módulos y ficheros utilizados}, language=c++]
@@ -21,7 +19,7 @@ Inicialmente, en la cabecera del fichero se incluyen las librerías que vamos a 
     #include "sleep.hpp"
 \end{lstlisting}
 
-A continuación, se cuenta define un elemento que puede ser usado para debugear el código:
+A continuación, se cuenta define un elemento que puede ser usado para depurar el código:
 \begin{lstlisting}[captionpos=b, caption={Definición del debuger}, language=c++]
     #define DEBUG
 
@@ -32,9 +30,9 @@ A continuación, se cuenta define un elemento que puede ser usado para debugear 
     #endif    
 \end{lstlisting}
 
-A lo largo del codigo de este programa se hacen varias llamadas al metodo \texttt{PRINT_DEBUG(...)}, este metodo se encarga de escribir por el puerto serie información de interes como:
+A lo largo del código de este programa se hacen varias llamadas al macro \texttt{PRINT\_DEBUG()}, este macro se encarga de escribir por el puerto serie información de interés como:
 \begin{itemize}
-    \item Mostrar la información recibida por los INAs (asi corroborar la correcta recepción en el MQTT).
+    \item Mostrar la información recibida por los INAs (así corroborar la correcta recepción en el MQTT).
     \item Indicar si se ha podido enviar correctamente los datos al servidor MQTT.
     \item Indicar la hora recibida del NTP.
     \item Indicar la correcta conexión con la red Wifi.
@@ -43,8 +41,8 @@ A lo largo del codigo de este programa se hacen varias llamadas al metodo \textt
     \item Indicar las modificaciones en los relés y el estado en el que se encuentran.
 \end{itemize}
 
-Después de este código, se encuentra la definición de distintos elementos utilizados por el main:
-\begin{lstlisting}[captionpos=b, caption={DEFINES de MAIN_POWER}, language=c++]
+Después de este código, se encuentra la definición de distintos elementos utilizados por el \texttt{main}:
+\begin{lstlisting}[captionpos=b, caption={DEFINES de MAIN\_POWER}, language=c++]
     #define ssid             "POC"
     #define password         "POWERIoT"
     
@@ -59,12 +57,12 @@ Después de este código, se encuentra la definición de distintos elementos uti
 \end{lstlisting}
 
 \begin{itemize}
-    \item \texttt{ssid y password}: Son utilizados para indicar el ssid de la wifi a la que conectarse y su contraseña. 
-    \item \texttt{MQTT_SERVER y MQTT_PORT}: Indican la dirección y el puerto del servidor MQTT al que el ESP se intentará conectar para enviar datos.
-    \item \texttt{TIME_SLEEP}: Indica el tiempo en ms que se quedará en bajo consumo/dormido el sistema.
-    \item \texttt{WIFI_TIRES}: Indica el numero de reintentos que damos al ESP para conectarse a la red wifi.
-    \item \texttt{BAT_THRESH}: Umbral de la batería de backup con el que el sistema determina si activa la protección de sobrecarga.
-    \item \texttt{SOLAR_THRESH}: Umbral del panel solar para el que el sistema determina si cambiamos a la carga mediante la batería de backup.
+    \item \texttt{SSID y password}: Son utilizados para indicar el \texttt{SSID} de la wifi a la que conectarse y su contraseña. 
+    \item \texttt{MQTT\_SERVER y MQTT\_PORT}: Indican la dirección y el puerto del servidor MQTT al que el ESP se intentará conectar para enviar datos.
+    \item \texttt{TIME\_SLEEP}: Indica el tiempo en ms que se quedará en bajo consumo/dormido el sistema.
+    \item \texttt{WIFI\_TIRES}: Indica el numero de reintentos que damos al ESP para conectarse a la red wifi.
+    \item \texttt{BAT\_THRESH}: Umbral de la batería de backup con el que el sistema determina si activa la protección de sobrecarga.
+    \item \texttt{SOLAR\_THRESH}: Umbral del panel solar para el que el sistema determina si cambiamos a la carga mediante la batería de backup.
     \item \texttt{MEASUREMENT\_FILE}: Indica la ruta donde se almacena el fichero de medidas.
 \end{itemize}
 
@@ -87,14 +85,14 @@ El fichero contiene las siguientes funciones:
 \begin{enumerate}
     \item Recoge las medidas de los INA.
     \item Revisa los valores obtenidos del panel solar por si es necesario cambiar la alimentación del panel solar a la de backup.
-    \item Se intenta conectar a la red Wifi. Si lo consigue se intenta mandar las medidas al servidor mqtt.
+    \item Se intenta conectar a la red WiFi. Si lo consigue se intenta mandar las medidas al servidor MQTT.
     \item Guarda las medidas de los sensores en un fichero.
     \item Duerme al ESP poniéndolo en bajo consumo.
     \item Sale del modo de bajo consumo.
 \end{enumerate}
 
 \begin{lstlisting}[captionpos=b, caption={Codigo de la funcion loop}, language=c++]
-    measureINA226(&telemetry); // Si no están los INA conectados, bloquea
+    measureINA226(&telemetry); // Si no estan los INA conectados, bloquea
 
     PRINT_DEBUG("[INA] VSolar [V]:  " + String(telemetry.VSolar));
     PRINT_DEBUG("[INA] ISolar [mA]: " + String(telemetry.ISolar));
@@ -115,7 +113,7 @@ El fichero contiene las siguientes funciones:
         if (!publishTelemetry(MQTT_SERVER, MQTT_PORT, telemetry)){
             PRINT_DEBUG("[POWER] ERROR publicando medidas");
         } else {
-            PRINT_DEBUG("[POWER] Medidas publicadas con éxito");
+            PRINT_DEBUG("[POWER] Medidas publicadas con exito");
         }
 
         getLocalTime(&currentTime, 1000);
@@ -135,19 +133,19 @@ El fichero contiene las siguientes funciones:
     sleep_low_power(TIME_SLEEP);
 \end{lstlisting}
 
-La primera secuencia que hay en el código es \texttt{measureINA226(&telemetry);} función tiene una ligera limitación, si los INAs no han sido inicializados el sistema se queda bloqueado.
+La primera secuencia que hay en el código es \texttt{measureINA226(\&telemetry);} función tiene una ligera limitación, si los INAs no están conectados el sistema se queda bloqueado.
 Esto ocurre ya que se queda a la espera de una respuesta de la dirección I2C del INA al que esta llamando, que en caso de no estar configurado, se quedará el sistema bloqueado hasta esa respuesta o un rest.
 
 Tras recibir las medidas, si nos encontramos depurando el código, podremos observar por el puerto serie los datos que han sido almacenados de cada elemento del circuito.
 
-Una vez leidas las medidas, el sistema verifica los valores de tensión del panel solar y de la batería y modifica los relés en funcion de estos.
-En caso de que no se supere un valor mínimo de tensión tanto del panel solar como de la batería de buckup, el sistema activaría la protección de sobredescarga para evitar daños en el sistema. 
-Entrar en este modo implicaría que las funciones del ESP dejarían de estar disponibles hasta que las tensiones superen los umbrales, alimentando una vez mas al ESP y volviendo a su funcionamiento normal.
+Una vez leídas las medidas, el sistema verifica los valores de tensión del panel solar y de la batería y modifica los relés en función de estos.
+En caso de que no se supere un valor mínimo de tensión tanto del panel solar como de la batería de \textit{backup}, el sistema activaría la protección de sobredescarga para evitar daños en el sistema. 
+Entrar en este modo implicaría que las funciones del ESP dejarían de estar disponibles hasta que las tensiones superen los umbrales, alimentando una vez más al ESP y volviendo a su funcionamiento normal.
 
 Tras esto, se intenta la conexión con la red Wifi:
 \begin{itemize}
     \item No se consigue conectar a la Wifi: Se establece la hora y fecha de las medidas realizadas a 0 y no se intenta enviar los datos al servidor MQTT. 
-    \item Si se consigue conectar a la Wifi: Se configura un servidor NTP para asegurar la fecha y hora en las que realizan las medidas. Tras esto se intena enviar los datos leidos al servidor MQTT.
+    \item Si se consigue conectar a la Wifi: Se configura un servidor NTP para asegurar la fecha y hora en las que realizan las medidas. Tras esto se intenta enviar los datos leídos al servidor MQTT.
 \end{itemize}
 
 Independientemente de si se ha podido conectar a la Wifi o no, se intenta realizar una escritura con las lecturas realizadas en el fichero de medidas.

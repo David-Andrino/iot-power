@@ -50,7 +50,7 @@ El fichero ina.cpp contiene las siguientes funciones:
         Bat1.setResistorRange(0.1, 10);
         Bat2.setResistorRange(0.1, 10);
         
-        // Factores de corrección medidos experimentalmente
+        // Factores de correccion medidos experimentalmente
         Solar.setCorrectionFactor(1.0469);
         Batbu.setCorrectionFactor(1.0419);
         Bat1.setCorrectionFactor(0.9650);
@@ -111,17 +111,17 @@ El fichero ina.cpp contiene las siguientes funciones:
         telemetry->VSolar = Solar.getBusVoltage_V() + (Solar.getShuntVoltage_mV() / 100);
         telemetry->ISolar = Solar.getCurrent_mA();
     
-        // Batería Backup
+        // Bateria Backup
         Batbu.readAndClearFlags();
         telemetry->VBatbu = Batbu.getBusVoltage_V() + (Batbu.getShuntVoltage_mV() / 100);
         telemetry->IBatbu = -Batbu.getCurrent_mA();
     
-        // Batería 1
+        // Bateria 1
         Bat1.readAndClearFlags();
         telemetry->VBat1 = Bat1.getBusVoltage_V() + (Bat1.getShuntVoltage_mV() / 100);
-        telemetry->IBat1 = -Bat1.getCurrent_mA(); // Invertir signo porque está al revés
+        telemetry->IBat1 = -Bat1.getCurrent_mA(); // Invertir signo porque esta al reves
     
-        // Batería 2
+        // Bateria 2
         Bat2.readAndClearFlags();
         telemetry->VBat2 = Bat2.getBusVoltage_V() + (Bat2.getShuntVoltage_mV() / 100);
         telemetry->IBat2 = Bat2.getCurrent_mA();

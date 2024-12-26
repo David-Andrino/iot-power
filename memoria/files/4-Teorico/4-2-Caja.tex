@@ -9,11 +9,11 @@ Para asegurar una protección complete de todo el sistema, se ha pensado en desa
 
 Esta protección debe asegurar las siguientes condiciones:
 \begin{enumerate}
-    \item \textbf{Protección contra agua y partículas}: Para evitar la entrada de agua dentro de la caja pudiendo generar corto circuitos o dañar gravemente el funcionamiento del sistema. Estos daños también pueden ser ocasionados por la entrada de polvo u otras pequeñas partículas dentro de la caja. 
+    \item \textbf{Protección contra agua y partículas}: Para evitar la entrada de agua dentro de la caja pudiendo generar cortocircuitos o dañar gravemente el funcionamiento del sistema. Estos daños también pueden ser ocasionados por la entrada de polvo u otras pequeñas partículas dentro de la caja. 
     \item \textbf{Acceso restringido}: Permitir el acceso a la carga de baterías solo se permitirá para el cliente, mientras que el acceso al circuito de carga y a la batería de backup. 
     \item \textbf{Aislamiento eléctrico}: Asegurar un aislamiento eléctrico de factores externos para evitar interferencias con el sistema.
     \item \textbf{Resistencia a golpes}: El sistema al encontrarse en un entorno al aire libre es necesario proveerlo de cierta capacidad de protección en caso de golpes o impactos de factores externos.
-    \item \textbf{Resistencia rayos ultravioletas}: El sistema se carga principalmente mediante energía solar, esto implica que el sistema de carga se ve expuesto constantemente al sol y por ende a rayos ultravioletas, lo que puede dañar materiales como los polímeros.
+    \item \textbf{Resistencia rayos ultravioleta}: El sistema se carga principalmente mediante energía solar, esto implica que el sistema de carga se ve expuesto constantemente al sol y por ende a rayos ultravioleta, lo que puede dañar materiales como los polímeros.
     \item \textbf{Temperaturas de trabajo}: La caja deberá ser capaz de aguantar altas temperaturas exteriores durante largos periodos de tiempo debido al entorno al que está expuesto.
 \end{enumerate}
 
@@ -24,7 +24,7 @@ Para tener un diseño preliminar de cómo sería la caja real se ha diseñado me
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{images/4-DesarrolloTeorico/4-1-caja/CAJA_3D_ISOMETRICA.png}
-    \caption{Vista Isometrica Modelo 3D caja. \texttt{PS58F1}}
+    \caption{Vista Isometrica Modelo 3D caja}
     \label{fig:DesarrolloTeorico/Caja/CAJA_3D_ISOMETRICA}
 \end{figure}
 
@@ -38,7 +38,7 @@ Como se puede observar, la caja cuenta con 2 accesos:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{images/4-DesarrolloTeorico/4-1-caja/CAJA_3D_PUERTA_USER.png}
-    \caption{Vista Puerta Usuario Modelo 3D caja. \texttt{PS58F1}}
+    \caption{Vista Puerta Usuario Modelo 3D caja}
     \label{fig:DesarrolloTeorico/Caja/CAJA_3D_PUERTA_USER}
 \end{figure}
 
@@ -46,7 +46,7 @@ Como se puede observar, la caja cuenta con 2 accesos:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{images/4-DesarrolloTeorico/4-1-caja/CAJA_3D_PUERTA_ADMIN.png}
-    \caption{Vista Puerta Técnico Modelo 3D caja. \texttt{PS58F1}}
+    \caption{Vista Puerta Técnico Modelo 3D caja}
     \label{fig:DesarrolloTeorico/Caja/CAJA_3D_PUERTA_ADMIN}
 \end{figure}
 
@@ -57,53 +57,41 @@ Adicionalmente, el interior de la caja tiene 3 incisiones. Estas serán usadas �
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{images/4-DesarrolloTeorico/4-1-caja/CAJA_3D_ACCESOS.png}
-    \caption{Vista Inicisiones Modelo 3D caja. \texttt{PS58F1}}
+    \caption{Vista Incisiones Modelo 3D caja}
     \label{fig:DesarrolloTeorico/Caja/CAJA_3D_ACCESOS}
 \end{figure}
 
 
 Además, en la parte superior de la caja contamos con un acceso para la entrada del cableado del panel solar para la caja.
 
-\textbf{Nota}: Para facilitar el entendimiento del diseño en el anexo x se encuentran en detalle todas las vistas del diseño sin las puertas e imágenes adicionales del mismo.
+\textbf{Nota}: Para facilitar el entendimiento del diseño en el anexo x se encuentran en detalle todas las vistas del diseño sin las puertas e imágenes adicionales del mismo. \todo{Anexo X}
 %Añadir un anexo con todas las fotos que faltan. (estan en la carpteta de caja)
 
 \subsubsection{Características técnicas}
 
 Para cumplir el diseño teórico se proponen las siguientes características técnicas:
 \begin{itemize}
-    \item Protección contra agua y partículas:
+    \item Protección contra agua y partículas: La caja cumplirá la norma internacional CEI 60529 para permitir esta protección. En concreto una protección IP67 que garantiza una protección completa contra polvo y pequeñas partículas y además, la inmersión completa de la caja a sin filtración alguna. 
+    %\TODO{https://www.wewontech.com/IEC60529-%20IP-Standard.pdf}
+
+    \item Acceso restringido: Esto se logra con el diseño 3D que hemos propuesto para la caja, la única implementación adicional que es necesaria añadir son cerraduras en cada una de las puertas.
+
+    \item Aislamiento eléctrico, resistencia rayos ultravioletas y temperatura: Para esto se plantea que el material de la caja sea de policarbonato. Gracias a esto se consigue evitar el efecto de jaula de Faraday que pudiera causar el uso de una caja de metal. Además, el policarbonato proporciona una protección total de los rayos ultravioletas y una temperatura de operación desde -40ºC hasta 115ºC siendo un rango más que de sobra para nuestro circuito.  %\TODO{https://www.palram.com/blog/construction-architecture/polycarbonate-and-protection-from-uv-radiation/#:~:text=Polycarbonate%20as%20a%20material%20blocks,it%20to%20be%20transmitted%20through.}
+    Además, protege de posibles cortos en caso de que alguno de los elementos de la caja hiciera contacto con ella.
 \end{itemize}
-
-La caja cumplirá la norma internacional CEI 60529 para permitir esta protección. En concreto una protección IP67 que garantiza una protección completa contra polvo y pequeñas partículas y además, la inmersión completa de la caja a sin filtración alguna. 
-%\TODO{https://www.wewontech.com/IEC60529-%20IP-Standard.pdf}
-
-\begin{itemize}
-    \item Acceso restringido:
-\end{itemize}
-
-Esto se logra con el diseño 3D que hemos propuesto para la caja, la única implementación adicional que es necesaria añadir son cerraduras en cada una de las puertas.
-
-\begin{itemize}
-    \item Aislamiento eléctrico, resistencia rayos ultravioletas y temperatura:
-\end{itemize}
-
-Para esto se plantea que el material de la caja sea de policarbonato. Gracias a esto se consigue evitar el efecto de jaula de Faraday que pudiera causar el uso de una caja de metal. Además, el policarbonato proporciona una protección total de los rayos ultravioletas y una temperatura de operación desde -40ºC hasta 115ºC siendo un rango más que de sobra para nuestro circuito.
-%\TODO{https://www.palram.com/blog/construction-architecture/polycarbonate-and-protection-from-uv-radiation/#:~:text=Polycarbonate%20as%20a%20material%20blocks,it%20to%20be%20transmitted%20through.}
-
-Además, protege de posibles cortos en caso de que alguno de los elementos de la caja hiciera contacto con ella.
 
 Como elemento adicional, todo el cableado expuesto tanto en el interior de la caja (cableado usado por el usuario) como exteriores (cableado del panel solar) pasarán por prensaestopas y el cableado exterior constará de una funda de protección para el paso del panel a la caja.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/4-DesarrolloTeorico/4-1-caja/CAJA_FUNDA.png}
-    \caption{Funda cableado exterior. \texttt{PS58F1}}
+    \includegraphics[width=0.5\textwidth]{images/4-DesarrolloTeorico/4-1-caja/CAJA_FUNDAS.png}
+    \caption{Funda cableado exterior}
     \label{fig:DesarrolloTeorico/Caja/CAJA_FUNDA}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/4-DesarrolloTeorico/4-1-caja/CAJA_PRENSAESTOPA.png}
-    \caption{Prensaestopa. \texttt{PS58F1}}
+    \includegraphics[width=0.5\textwidth]{images/4-DesarrolloTeorico/4-1-caja/CAJA_PRENSAESTOPAS.png}
+    \caption{Prensaestopa}
     \label{fig:DesarrolloTeorico/Caja/CAJA_PRENSAESTOPA}
 \end{figure}
 
