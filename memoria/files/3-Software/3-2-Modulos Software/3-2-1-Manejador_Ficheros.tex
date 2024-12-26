@@ -1,0 +1,104 @@
+El módulo de gestión de fichero es el encargado de realizar tanto la escritura, lectura o eliminación del fichero que almacena las medidas obtenidas. Esta formado por dos archivos, \texttt{file\_management.cpp} el cual contiene las funciones necesarias, y \texttt{file\_management.hpp}, el cual contiene la definición de las funciones y la importación de la librería externa utilizada.
+
+
+Para la implementación de este módulo se ha requerido la utilización de SPIFFS incluido en la librería externa "FS". SPIFFS o SPI Flash File System es un sistema de archivos diseñado para funcionar en memorias flash conectadas por SPI, lo que lo hace perfecto para este proyecto.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{images/3-software/3-2-1-filemng/esp8266-spiffs.png}
+    \caption{SPIFFS}
+    \label{fig:3-2-1-1-SPIFFS}
+\end{figure}
+
+El fichero \texttt{file\_management.cpp} consta de las tres siguientes funciones:
+\begin{itemize}
+    \item \texttt{Clear\_file}: esta función se encarga de borrar el fichero. Recibe como parámetro el fichero a borrar y no devuelve nada. La secuencia de ejecución es la siguiente:
+    \begin{enumerate}
+        \item Inicializa el SPIFFS.
+        \item Abre el fichero en modo escritura.
+        \item Cierra el archivo.
+        \item Al abrir el fichero en modo escritura y no escribir nada, el archivo queda borrado.
+    \end{enumerate}
+    \begin{lstlisting}[captionpos=b, caption={Funcion \texttt{Clear\_file}}, language=c++]
+        void clear_file(const char* measFile) {
+            if (!SPIFFS.begin()) {
+                Serial.println("[FILE_MGT] Error iniciando SPIFFS");
+                return;
+            }
+
+            File file = SPIFFS.open(measFile, "w");
+            if (!file) {
+                Serial.println("[FILE_MGT] Error abriendo el fichero para borrar");
+                return;
+            }
+
+            file.close();
+            Serial.println("[FILE_MGT] El contenido del fichero ha sido borrado.");
+        }
+    \end{lstlisting}
+    \item \texttt{Read\_meas}: esta función realiza la operación de lectura del fichero. Recibe como parámetro el fichero a leer y no devuelve nada. La secuencia de ejecución es la siguiente:
+    \begin{enumerate}
+        \item Inicia el SPIFFS.
+        \item Abre el fichero en modo de lectura.
+        \item Muestra por Serial el contenido del archivo hasta que detecta que acaba dicho fichero.
+        \item Cierra el fichero.
+    \end{enumerate}
+    \begin{lstlisting}[captionpos=b, caption={Funcion \texttt{Read\_file}}, language=c++]
+        void read_meas(const char* measFile){
+            if (!SPIFFS.begin()) {
+                Serial.println("[FILE_MGT] Error iniciando SPIFFS");
+                return;
+            }
+
+            File measurementFile = SPIFFS.open(measFile, "r");
+            if (!measurementFile) {
+                Serial.println("[FILE_MGT] Error abriendo fichero");
+                return;
+            }
+
+            Serial.println("[FILE_MGT] Abriendo " + String(measFile) + ". Contenido: ");
+
+            while (measurementFile.available()) {
+                Serial.write(measurementFile.read());
+            }
+
+            measurementFile.close();
+        }
+    \end{lstlisting}
+    \item \texttt{Write\_meas}: esta función realiza la operación de escritura en el fichero. Recibe como parámetros el fichero a escribir, las medidas obtenidas por los sensores y una cadena de texto con la fecha y hora en la cual se han realizado dichas medidas y devuelve un  booleano que indica si la operación se la realizado de manera correcta. La secuencia de ejecución es la siguiente:
+    \begin{enumerate}
+        \item Inicia el SPIFFS.
+        \item Abre el fichero en modo "append" para escribir a continuación de la última medida y no sobrescribirla.
+        \item Se forma la cadena de texto que se desea escribir. Dicha cadena está formada por la fecha y hora de la medición y por los valores obtenidos.
+        \item Se escribe dicha cadena en el fichero.
+        \item Se cierra el fichero.
+        \item En caso de que la escritura haya sido satisfactoria, esta función devolverá true, en caso de que se haya encontrado un error en cualquiera de los pasos realizados, esta función devolverá false.
+    \end{enumerate}
+    \begin{lstlisting}[captionpos=b, caption={Funcion \texttt{Write\_file}}, language=c++]
+        bool write_meas(const char* measFile, telemetry_t measures, String timestamp) {
+            if (!SPIFFS.begin()) {
+                return false;
+            }
+
+            File measurementFile = SPIFFS.open(measFile, "a");
+            if (!measurementFile) {
+                return false;
+            }
+
+            String measurement = timestamp +
+                                 " VPanelSolar: " + String(measures.VSolar) + " V, " +
+                                 "IPanelSolar: " + String(measures.ISolar) + " mA, " +
+                                 "VBatBackup: " + String(measures.VBatbu) + " V, " +
+                                 "IBatBackup: " + String(measures.IBatbu) + " mA, " +
+                                 "VBat1: " + String(measures.VBat1) + " V, " +
+                                 "IBat1: " + String(measures.IBat1) + " mA, " +
+                                 "VBat2: " + String(measures.VBat2) + " V, " +
+                                 "IBat2: " + String(measures.IBat2) + " mA";
+
+            measurementFile.println(measurement);
+            measurementFile.close();
+
+            return true;
+        }
+    \end{lstlisting}
+\end{itemize}

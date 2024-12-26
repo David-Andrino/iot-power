@@ -28,3 +28,11 @@ En la \autoref{fig:hardware/modulos/ldo-picos} se puede ver que la tensión de s
     \caption{Componente alterna de la tensión de salida del LDO}
     \label{fig:hardware/modulos/ldo-sin-picos}
 \end{figure}
+
+Experimentalmente hemos comprobado que la tensión de salida no converge hacia los $5\ V$ anunciados para tensiones menores de $6.7\ V$, por lo que el \textit{dropout} es ligeramente superior al especificado. Sin embargo, como lo alimentamos con un regulador conmutado regulable no es ningún problema, solamente incrementa ligeramene la disipación de potencia del regulador.
+
+En la caracterización, se han medido dos valores: \begin{itemize}
+    \item Regulación de línea: Se han medido valores de tensión de salida variando la tensión de entrada, obteniendo el siguiente valor: \[ \text{Reg. Línea} \equiv \frac{\Delta V_o}{\Delta V_i} = \frac{V_{o2} - V_{o1}}{V_{i2} - V_{i1}} = \frac{5.00376 - 5.00372}{8 - 7.2} = 50\ \mu V/V \]
+
+    \item Regulación de carga: Se han aplicado distintas resistencias a la salida del regulador y se ha medido la variación de la tensión de salida en función de dicha carga: \[ \text{Reg. Carga} \equiv \frac{\Delta V_o}{\Delta I_o} = \frac{V_{o2} - V_{o1}}{I_{o2} - I_{o1}} = \frac{V_{o2} - V_{o1}}{\frac{V_{o2}}{R_2} - \frac{V_{o1}}{R_1}} = \frac{5.00345 - 5.00262}{5.00345/900 - 5.00262/100} = -18.67\ mV/A \]
+\end{itemize}

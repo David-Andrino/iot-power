@@ -1,0 +1,27 @@
+\subsubsection{Modulo Cliente MQTT}
+
+El módulo MQTT es el encargado de crear un cliente MQTT y establecer una conexión con el servidor MQTT para enviar los datos de la ultima medida que se haya realizado. 
+
+Este módulo está formado por dos archivos:
+\begin{itemize}
+    \item \texttt{mqtt\_client.cpp} : Contiene las funciones necesarias para la conexión.
+    \item \texttt{mqtt\_client.hpp} : Contiene la definición de las funciones, la importación de las librerías externas utilizadas y el número de reintentos permitidos al realizar una conexión con el servidor.
+\end{itemize}
+
+Para la implementación de este módulo se ha requerido la utilización de las librerías \texttt{“PubSubClient.h”}, que permite la conexión MQTT, \texttt{“ESP8266WiFi.h”} y \texttt{“WiFiUdp.h”} para configurar el cliente UDP.
+%\TODO{ https://github.com/knolleary/pubsubclient }
+
+El fichero \texttt{mqtt\_client.cpp} contiene las siguientes funciones:
+
+-\texttt{reconnect(PubSubClient\& client, char* const mqtt\_server, int mqtt\_port)}: Para intentar una reconexión con el servidor MQTT en caso de que haya fallado. Aunque este intento de reconexión es limitando.
+
+-\texttt{bool publishTelemetry(char* const mqtt\_server, int mqtt\_port, telemetry\_t\& telemetry)}: Intenta publicar un mensaje con todos los datos medidos por el INA al servidor MQTT.  La secuencia de ejecución es la siguiente:
+\begin{enumerate}
+    \item Crea un cliente MQTT.
+    \item Crea una conexión con el servidor MQTT.
+    \item Verifica si el cliente se ha podido conectar con el servidor. Si no ha podido intenta realizar una reconexión en el caso de que haya habido un error.
+    \item Formatea el mensaje para que pueda ser procesado por el servidor.
+    \item Publica el mensaje en el servidor y este devuelve un booleano que indica si el envío ha sido correcto.
+    \item Se desconecta el cliente.
+    \item Devuelve el booleano.
+\end{enumerate}

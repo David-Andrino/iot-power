@@ -97,7 +97,7 @@
 		(descr "relay Sanyou SRD series Form C http://www.sanyourelay.ca/public/products/pdf/SRD.pdf")
 		(tags "relay Sanyu SRD form C")
 		(property "Reference" "K1"
-			(at 2.15 -2.54 90)
+			(at 17.39 -6.35 180)
 			(layer "F.SilkS")
 			(uuid "ae7844e9-40c2-4172-b622-0f9de9d934aa")
 			(effects
@@ -1106,7 +1106,7 @@
 		(descr "CP, Radial series, Radial, pin pitch=5.00mm, , diameter=12.5mm, Electrolytic Capacitor")
 		(tags "CP Radial series Radial pin pitch 5.00mm  diameter 12.5mm Electrolytic Capacitor")
 		(property "Reference" "C1"
-			(at 10.16 0 360)
+			(at 10.16 0 0)
 			(layer "F.SilkS")
 			(uuid "84954354-ee4e-43ef-9be8-4903ac98bb98")
 			(effects
@@ -1117,7 +1117,7 @@
 			)
 		)
 		(property "Value" "C"
-			(at 2.5 7.5 360)
+			(at 2.5 7.5 0)
 			(layer "User.1")
 			(hide yes)
 			(uuid "49bb4a70-003a-49c9-8db8-9532bcef375c")
@@ -3566,7 +3566,7 @@
 			(uuid "c19452ad-8f72-4343-84ca-f83074af82a8")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 2.5 0 360)
+			(at 2.5 0 0)
 			(layer "F.Fab")
 			(uuid "a5d594db-ff96-4536-b366-0c8ec7de6d75")
 			(effects
@@ -3715,7 +3715,7 @@
 		(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 		(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
 		(property "Reference" "R1"
-			(at 5.08 -2.37 360)
+			(at 5.08 -2.37 0)
 			(layer "F.SilkS")
 			(uuid "612db638-3b9f-4d6e-8d0c-9f6ff124daf5")
 			(effects
@@ -3726,7 +3726,7 @@
 			)
 		)
 		(property "Value" "R"
-			(at 5.08 2.37 360)
+			(at 5.08 2.37 0)
 			(layer "User.1")
 			(hide yes)
 			(uuid "defb9893-251d-4dab-8b36-a5d4bd4b241d")
@@ -3942,7 +3942,7 @@
 			(uuid "87962527-33eb-4743-9a2e-4cbdf7168925")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 5.08 0 360)
+			(at 5.08 0 0)
 			(layer "F.Fab")
 			(uuid "de7cb6c1-edc3-4da2-9cec-2874330398e5")
 			(effects
@@ -3991,7 +3991,7 @@
 		(descr "simple 3-pin terminal block, pitch 5.08mm, revamped version of bornier3")
 		(tags "terminal block bornier3")
 		(property "Reference" "J2"
-			(at 13.97 -2.54 360)
+			(at 13.97 -2.54 0)
 			(layer "F.SilkS")
 			(uuid "68151a60-e5a7-4785-9193-86e44a96ef79")
 			(effects
@@ -4002,7 +4002,7 @@
 			)
 		)
 		(property "Value" "Screw_Terminal_01x03"
-			(at 5.08 5.08 360)
+			(at 5.08 5.08 0)
 			(layer "User.1")
 			(hide yes)
 			(uuid "fa8dbff9-3903-4fc1-a5da-e0bd8db37e8a")
@@ -4198,7 +4198,7 @@
 			(uuid "bc810688-5767-45a7-94e8-4b187f227a2a")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 5.08 0 360)
+			(at 5.08 0 0)
 			(layer "F.Fab")
 			(uuid "6c22daa7-9796-4526-ad34-b5463fa0f209")
 			(effects
@@ -4532,7 +4532,7 @@
 			(at 0 -3.5 0)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "56578e84-6f26-48cc-8354-bafaea12c133")
+			(uuid "62f64cc9-3001-458e-8f34-0dc1e4707c9e")
 			(effects
 				(font
 					(size 1 1)
@@ -4544,7 +4544,7 @@
 			(at 0 3.5 0)
 			(layer "User.1")
 			(hide yes)
-			(uuid "cba56f2a-54e9-4fe3-99a9-94678634f2a5")
+			(uuid "5e6d8ae0-8544-4666-99a9-f9f0cce25ca3")
 			(effects
 				(font
 					(size 1 1)
@@ -4601,7 +4601,7 @@
 			)
 			(fill none)
 			(layer "Cmts.User")
-			(uuid "117289a2-3bdd-4e7a-a84f-3ab6c4f6325f")
+			(uuid "35a730b0-1b95-4871-a4b9-6935ea1a5e40")
 		)
 		(fp_circle
 			(center 0 0)
@@ -4612,14 +4612,14 @@
 			)
 			(fill none)
 			(layer "F.CrtYd")
-			(uuid "c6e66ee0-7546-4be1-bcfe-30205d87c83f")
+			(uuid "938c8d86-4da3-4ab5-8f26-37cdc0511a5e")
 		)
 		(pad "" np_thru_hole circle
 			(at 0 0)
 			(size 2.5 2.5)
 			(drill 2.5)
 			(layers "*.Cu" "*.Mask")
-			(uuid "be3ad9ee-90f4-4ce9-be7e-03c31ebc8692")
+			(uuid "56be9f0e-264e-4d0f-b361-8f25119bdfde")
 		)
 	)
 	(footprint "Potentiometer_THT:Potentiometer_ACP_CA9-V10_Vertical_Hole"
@@ -4629,7 +4629,7 @@
 		(descr "Potentiometer, vertical, shaft hole, ACP CA9-V10, http://www.acptechnologies.com/wp-content/uploads/2017/05/02-ACP-CA9-CE9.pdf")
 		(tags "Potentiometer vertical hole ACP CA9-V10")
 		(property "Reference" "RV1"
-			(at 5 -8.65 360)
+			(at 5 -8.65 0)
 			(layer "F.SilkS")
 			(uuid "b4e21d8a-4a27-48c6-9d3c-0db029a69f3d")
 			(effects
@@ -4640,7 +4640,7 @@
 			)
 		)
 		(property "Value" "R_Potentiometer"
-			(at 5 3.65 360)
+			(at 5 3.65 0)
 			(layer "User.1")
 			(hide yes)
 			(uuid "2ae1bd3d-ed42-4e90-88ba-ddb33842539c")
@@ -4915,7 +4915,7 @@
 		(descr "TO-92L leads in-line (large body variant of TO-92), also known as TO-226, wide, drill 0.75mm, hand-soldering variant with enlarged pads (see https://www.diodes.com/assets/Package-Files/TO92L.pdf and http://www.ti.com/lit/an/snoa059/snoa059.pdf)")
 		(tags "to-92 sc-43 sc-43a sot54 PA33 transistor")
 		(property "Reference" "Q1"
-			(at 1.27 -3.8 360)
+			(at 1.27 -3.8 0)
 			(layer "F.SilkS")
 			(uuid "207ee976-81b5-4894-bc55-5c29718e67d0")
 			(effects
@@ -4926,7 +4926,7 @@
 			)
 		)
 		(property "Value" "2N2222"
-			(at 1.27 2.79 360)
+			(at 1.27 2.79 0)
 			(layer "User.1")
 			(hide yes)
 			(uuid "7901ba03-ed95-436d-8d75-cd6342e65622")
@@ -5124,7 +5124,7 @@
 			(uuid "f98006ec-1393-48af-bf82-9ed09f5537f1")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 1.27 0 360)
+			(at 1.27 0 0)
 			(layer "F.Fab")
 			(uuid "1fdebb9c-0b83-4119-abe4-e4e3196c5e11")
 			(effects
@@ -5583,7 +5583,7 @@
 			(at 0 -3.5 0)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "56578e84-6f26-48cc-8354-bafaea12c133")
+			(uuid "a6c00bf2-d58c-42cf-97c7-b12c4ae01438")
 			(effects
 				(font
 					(size 1 1)
@@ -5595,7 +5595,7 @@
 			(at 0 3.5 0)
 			(layer "User.1")
 			(hide yes)
-			(uuid "cba56f2a-54e9-4fe3-99a9-94678634f2a5")
+			(uuid "3005560e-8d5c-4df5-b3bd-09921d572562")
 			(effects
 				(font
 					(size 1 1)
@@ -5652,7 +5652,7 @@
 			)
 			(fill none)
 			(layer "Cmts.User")
-			(uuid "117289a2-3bdd-4e7a-a84f-3ab6c4f6325f")
+			(uuid "ca5728c1-44bd-405e-b819-a93e3c9ee203")
 		)
 		(fp_circle
 			(center 0 0)
@@ -5663,14 +5663,14 @@
 			)
 			(fill none)
 			(layer "F.CrtYd")
-			(uuid "c6e66ee0-7546-4be1-bcfe-30205d87c83f")
+			(uuid "fdedad7f-58a2-4e7b-9f7a-15fa31262c58")
 		)
 		(pad "" np_thru_hole circle
 			(at 0 0)
 			(size 2.5 2.5)
 			(drill 2.5)
 			(layers "*.Cu" "*.Mask")
-			(uuid "be3ad9ee-90f4-4ce9-be7e-03c31ebc8692")
+			(uuid "cf4ab4de-e8b2-4187-b7d5-b6b60ec3fb41")
 		)
 	)
 	(gr_rect
