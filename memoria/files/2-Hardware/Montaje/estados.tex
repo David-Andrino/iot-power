@@ -20,7 +20,7 @@ En caso de que el panel solar no proporcione suficiente energía, el sistema pas
     \label{fig:hardware/estados/backup}
 \end{figure}
 
-En caso de que la tensión de la batería baje por debajo del umbral establecido, el sistema pasará a su \textbf{estado por defecto}, es decir, los relés estarán configurados con el normalmente cerrado. De esta manera, el sistema se encederá automáticamente cuando el panel solar proporcione suficiente energía.
+En caso de que la tensión de la batería alcance el umbral de sobredescarga, se pasará al \textbf{estado de protección}. Este estado tiene los relés en la misma posición que el \textbf{estado alimentado por panel solar} solo que el panel solar no es capaz de alimentar al circuito. Por tanto, el circuito no estará en funcionamiento, esperando a una tensión solar suficiente que permita el funcionamiento normal del sistema, pasando al \textbf{estado alimentado por panel solar}.
 
 \begin{figure}[H]
     \centering
