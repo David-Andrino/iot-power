@@ -48,6 +48,7 @@ Tanto el \texttt{LDO} como el \texttt{ESP8266} no cuentan con tornillos para su 
     \end{subfigure}
 
     \caption{Placas para montaje de \texttt{LDO} y \texttt{ESP8266}}
+    \label{fig:hardware/proto/baquelitas}
 \end{figure}
 
 Se puede ver el prototipo final en la \autoref{fig:hardware/proto/fotoCompleta}.
@@ -59,6 +60,6 @@ Se puede ver el prototipo final en la \autoref{fig:hardware/proto/fotoCompleta}.
     \label{fig:hardware/proto/fotoCompleta}
 \end{figure}
 
-Con el fin de facilitar el prototipado, se utiliza la fuente de tensión del laboratorio para simular el panel solar. Cabe destacar que la fuente no puede desconectarse por completo inmediatamente, hay que disminuir la tensión hasta que se active la batería de \textit{Backup} y entonces se puede desactivar. Esto no es un problema en un sistema real, ya que la tensión de un panel solar no cae a $0$ inmediatamente sino que disminuye progresivamente.
+Con el fin de facilitar el prototipado, se utiliza la fuente de tensión del laboratorio para simular el panel solar. Cabe destacar que \textbf{la fuente no puede desconectarse por completo inmediatamente}, hay que disminuir la tensión hasta que se active la batería de \textit{Backup} y entonces se puede desactivar. Esto no es un problema en un sistema real, ya que la tensión de un panel solar no cae a $0$ inmediatamente sino que disminuye progresivamente.
 
 Además, la batería de \textit{Backup} se puede simular con otra fuente de tensión \textbf{siempre que se desconecte la salida del cargador de dicha batería}, facilitado por el conector rápido al que está conectado.

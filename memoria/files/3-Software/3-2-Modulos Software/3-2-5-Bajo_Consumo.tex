@@ -1,7 +1,7 @@
 El módulo de bajo consumo es el encargado de reducir el consumo del sistema cuando no es necesario que funcione a plena potencia, es decir, entre las obtenciones de las diferentes medidas.
 
 
-Las librerías incluidas con el ESP8266 incluye un modo de bajo consumo ya definido llamado deep-sleep, el cual desactiva el WIFI, el reloj del sistema y la CPU, es decir, solo mantiene el funcionamiento del RTC y reduce el consumo del sistema a apenas unas decenas de micro amperios. Sin embargo, debido a que este modo de bajo consumo inhabilita también los GPIOs es incompatible con nuestro sistema ya que, si se activara, el proyecto quedaría inutilizado completamente. Debido a esto, este modo de bajo consumo no es apto para nuestro sistema. \cite{esp8266ESP8266LowPower}
+Las librerías incluidas con el ESP8266 incluye un modo de bajo consumo ya definido llamado deep-sleep, el cual desactiva el WIFI, el reloj del sistema y la CPU, es decir, solo mantiene el funcionamiento del RTC y reduce el consumo del sistema a apenas unas decenas de micro amperios. Sin embargo, debido a que este modo de bajo consumo inhabilita también los GPIOs es incompatible con nuestro sistema ya que, si se activara, el sistema no sería capaz de mantener los relés conmutados al entrar a este modo. Debido a esto, este modo de bajo consumo no es apto para nuestro sistema. \cite{esp8266ESP8266LowPower}
 
 \begin{figure}[H]
     \centering
@@ -55,3 +55,5 @@ Una vez pasado el tiempo definido de bajo consumo, se entra en la secuencia de r
 \end{lstlisting}
 
 Mediante la implementación de nuestro propio modo de bajo consumo, nos aseguramos que correcto funcionamiento durante y después de dicho modo, reduciendo el consumo del sistema un 80\% aproximadamente.
+
+\todo[inline,inlinewidth=0.99\textwidth]{Poner medidas para justificar el 80\%}
