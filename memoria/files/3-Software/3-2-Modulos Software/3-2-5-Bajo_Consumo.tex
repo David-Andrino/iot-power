@@ -1,8 +1,7 @@
 El módulo de bajo consumo es el encargado de reducir el consumo del sistema cuando no es necesario que funcione a plena potencia, es decir, entre las obtenciones de las diferentes medidas.
 
 
-Las librerías incluidas con el ESP8266 incluye un modo de bajo consumo ya definido llamado deep-sleep, el cual desactiva el WIFI, el reloj del sistema y la CPU, es decir, solo mantiene el funcionamiento del RTC y reduce el consumo del sistema a apenas unas decenas de micro amperios. Sin embargo, debido a que este modo de bajo consumo inhabilita también los GPIOs es incompatible con nuestro sistema ya que, si se activara, el proyecto quedaría inutilizado completamente. Debido a esto, este modo de bajo consumo no es apto para nuestro sistema.
-\todo[inline]{citar Bajo Consumo}
+Las librerías incluidas con el ESP8266 incluye un modo de bajo consumo ya definido llamado deep-sleep, el cual desactiva el WIFI, el reloj del sistema y la CPU, es decir, solo mantiene el funcionamiento del RTC y reduce el consumo del sistema a apenas unas decenas de micro amperios. Sin embargo, debido a que este modo de bajo consumo inhabilita también los GPIOs es incompatible con nuestro sistema ya que, si se activara, el proyecto quedaría inutilizado completamente. Debido a esto, este modo de bajo consumo no es apto para nuestro sistema. \cite{esp8266ESP8266LowPower}
 
 \begin{figure}[H]
     \centering
@@ -24,8 +23,8 @@ La secuencia de ejecución se puede dicir en dos secuencias consecutivas, una qu
 
 \begin{enumerate}
     \item Se desactiva el módulo de WIFI, activando el modo \texttt{WIFI\_OFF}.
-    \item Se llama a la función \texttt{forceSleepBegin()}, la cual guarda el modo de WIFI actual y fuerza el estado de modem sleep del WIFI, reduciendo aún más el consumo.
-    \item Se reduce frecuencia del reloj del sistema a la mínim valor posible, 80 MHZ.
+    \item Se llama a la función \texttt{forceSleepBegin()}, la cual guarda el modo de WIFI actual y fuerza el estado de mode sleep del WIFI, reduciendo aún más el consumo.
+    \item Se reduce la frecuencia del reloj del sistema al mínimo valor posible, 80 MHZ.
     \item Se introduce un delay. Esto asegura que el microprocesador consumirá menos durante dicho tiempo, además se utiliza para definir la duración aproximada del modo de bajo consumo.
 \end{enumerate}
 
