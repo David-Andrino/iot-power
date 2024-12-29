@@ -34,7 +34,6 @@ void setupINA226Sensors() {
 
 
 \begin{lstlisting}[captionpos=b, caption={Codigo funcion reconfig\_INAs}, language=c++]
-<<<<<<< HEAD
 void reconfig_INAs(){
     Solar.setConversionTime(CONV_TIME_1100);
     Batbu.setConversionTime(CONV_TIME_1100);
@@ -62,35 +61,6 @@ void reconfig_INAs(){
     Bat1.waitUntilConversionCompleted();
     Bat2.waitUntilConversionCompleted();
 }
-=======
-    void reconfig_INAs(){
-        Solar.setConversionTime(CONV_TIME_1100);
-        Batbu.setConversionTime(CONV_TIME_1100);
-        Bat1.setConversionTime(CONV_TIME_1100);
-        Bat2.setConversionTime(CONV_TIME_1100);
-
-        Solar.setMeasureMode(CONTINUOUS);
-        Batbu.setMeasureMode(CONTINUOUS);
-        Bat1.setMeasureMode(CONTINUOUS);
-        Bat2.setMeasureMode(CONTINUOUS);
-
-        Solar.setResistorRange(0.1, 10);
-        Batbu.setResistorRange(0.1, 10);
-        Bat1.setResistorRange(0.1, 10);
-        Bat2.setResistorRange(0.1, 10);
-
-        // Factores de correccion medidos experimentalmente
-        Solar.setCorrectionFactor(1.0469);
-        Batbu.setCorrectionFactor(1.0419);
-        Bat1.setCorrectionFactor(0.9650);
-        Bat2.setCorrectionFactor(0.9624);
-
-        Solar.waitUntilConversionCompleted();
-        Batbu.waitUntilConversionCompleted();
-        Bat1.waitUntilConversionCompleted();
-        Bat2.waitUntilConversionCompleted();
-    }
->>>>>>> latex
 \end{lstlisting}
 
 \item \texttt{powerDownINA226()}: Pone en bajo consumo los \texttt{INA}, ya que tras conseguir las medidas no es necesario que se mantengan activos.
@@ -126,7 +96,6 @@ void powerUpINA226() {
 \end{enumerate}
 
 \begin{lstlisting}[captionpos=b, caption={Codigo funcion measureINA226}, language=c++]
-<<<<<<< HEAD
 void measureINA226(telemetry_t *telemetry) {
     // Panel Solar
     if (first_config==false) {
@@ -134,38 +103,6 @@ void measureINA226(telemetry_t *telemetry) {
         first_config=true;
     } else {
         powerUpINA226();  
-=======
-    void measureINA226(telemetry_t *telemetry) {
-        // Panel Solar
-        if(first_config==false){
-          setupINA226Sensors();
-          first_config=true;
-        }else{
-          powerUpINA226();
-        }
-
-        reconfig_INAs();
-
-        Solar.readAndClearFlags();
-        telemetry->VSolar = Solar.getBusVoltage_V() + (Solar.getShuntVoltage_mV() / 100);
-        telemetry->ISolar = Solar.getCurrent_mA();
-
-        // Bateria Backup
-        Batbu.readAndClearFlags();
-        telemetry->VBatbu = Batbu.getBusVoltage_V() + (Batbu.getShuntVoltage_mV() / 100);
-        telemetry->IBatbu = -Batbu.getCurrent_mA();
-
-        // Bateria 1
-        Bat1.readAndClearFlags();
-        telemetry->VBat1 = Bat1.getBusVoltage_V() + (Bat1.getShuntVoltage_mV() / 100);
-        telemetry->IBat1 = -Bat1.getCurrent_mA(); // Invertir signo porque esta al reves
-
-        // Bateria 2
-        Bat2.readAndClearFlags();
-        telemetry->VBat2 = Bat2.getBusVoltage_V() + (Bat2.getShuntVoltage_mV() / 100);
-        telemetry->IBat2 = Bat2.getCurrent_mA();
-        powerDownINA226();
->>>>>>> latex
     }
 
     reconfig_INAs();
@@ -195,22 +132,12 @@ void measureINA226(telemetry_t *telemetry) {
 En el contenido de este mismo fichero, se instancian los 4 \texttt{INA} que tenemos indicando su dirección I2C:
 
 \begin{lstlisting}[captionpos=b, caption={Instancia de las direcciones de los \texttt{INA}.}, language=c++]
-<<<<<<< HEAD
 #include "ina.hpp"
 
 INA226_WE Solar(I2C_D_PANEL);
 INA226_WE Batbu(I2C_D_BAT_BU);
 INA226_WE Bat1(I2C_D_BAT_1);
 INA226_WE Bat2(I2C_D_BAT_2);
-=======
-    #include "ina.hpp"
-    // INA226 instances
-    INA226_WE Solar(I2C_D_PANEL);
-    INA226_WE Batbu(I2C_D_BAT_BU);
-    INA226_WE Bat1(I2C_D_BAT_1);
-    INA226_WE Bat2(I2C_D_BAT_2);
-
->>>>>>> latex
 \end{lstlisting}
 
 \end{itemize}
