@@ -42,5 +42,5 @@ Se diseñará un sistema de carga de baterías para emplazamientos aislados exte
     \item El cliente podrá acceder al sistema a través de una interfaz web (en móvil u ordenador).
     \item En el servidor web se visualizará en tiempo real gráficas y valores que correspondan con el estado de carga de las baterías y la producción de energía del panel solar.
     \item En el log se almacenará la tensión y corriente de carga de las tres baterías y la producción de energía del panel solar.
-    \item El funcionamiento normal del sistema consistirá en: El sistema se despierta, intenta conectarse a la \texttt{WiFi}, toma medidas, las gestiona (envío y almacenamiento) y se duerme. De esta forma se optimiza el consumo de batería.
+    \item El funcionamiento normal del sistema consistirá en: El sistema se despierta, toma medidas, gestiona los relés, intenta conectarse a la red y enviar las medidas, almacena las medidas en memoria y se duerme hasta el siguiente ciclo. De esta forma se optimiza el consumo de batería.
 \end{itemize}
