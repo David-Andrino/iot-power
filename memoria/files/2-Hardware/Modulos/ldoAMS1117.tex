@@ -1,8 +1,8 @@
 \subsubsection{AMS1117}
 
-El módulo \texttt{AMS1117} es un regulador de voltaje de 5V, el cual se utiliza para alimentar el microcontrolador. Es un regulador lineal de bajo \textit{drop-out} utilizado para suavizar la alimentación del microcontrolador. 
+El módulo \texttt{AMS1117} es un regulador de voltaje de $5 V$, el cual se utiliza para alimentar el microcontrolador. Es un regulador lineal de bajo \textit{drop-out} utilizado para suavizar la alimentación del microcontrolador. 
 
-En su hoja de características indica que (en nuestra versión) tiene una tensión de salida fija de $5 V$, un \textit{dropout} mínimo de $1.3 V$ en el peor caso, una regulación de línea de hasta $10 mV$ para nuestra tensión de entrada y salida diseñadas, regulación de carga de hasta $35 mV$ y una corriente máxima de $0.9 A$ \cite{advancedmonolithicsystemsAMS1117}.
+En su hoja de características indica que (en nuestra versión) tiene una tensión de salida fija de $5 V$, un \textit{drop-out} mínimo de $1.3 V$ en el peor caso, una regulación de línea de hasta $10 mV$ para nuestra tensión de entrada y salida diseñadas, regulación de carga de hasta $35 mV$ y una corriente máxima de $0.9 A$ \cite{advancedmonolithicsystemsAMS1117}.
 
 Utilizaremos el regulador a la salida del regulador reductor, con la finalidad de suavizar los picos de tensión que aparecen por la naturaleza conmutada de dicho regulador.
 
@@ -29,7 +29,7 @@ En la \autoref{fig:hardware/modulos/ldo-picos} se puede ver que la tensión de s
     \label{fig:hardware/modulos/ldo-sin-picos}
 \end{figure}
 
-Experimentalmente hemos comprobado que la tensión de salida no converge hacia los $5\ V$ anunciados para tensiones menores de $6.7\ V$, por lo que el \textit{dropout} es ligeramente superior al especificado. Sin embargo, como lo alimentamos con un regulador conmutado regulable no es ningún problema, solamente incrementa ligeramene la disipación de potencia del regulador.
+Experimentalmente, hemos comprobado que la tensión de salida no converge hacia los $5\ V$ anunciados para tensiones menores de $6.7\ V$, por lo que el \textit{drop-out} es ligeramente superior al especificado. Sin embargo, como lo alimentamos con un regulador conmutado regulable no es ningún problema, solamente incrementa ligeramente la disipación de potencia del regulador.
 
 En la caracterización, se han medido dos valores: \begin{itemize}
     \item Regulación de línea: Se han medido valores de tensión de salida variando la tensión de entrada, obteniendo el siguiente valor: \[ \text{Reg. Línea} \equiv \frac{\Delta V_o}{\Delta V_i} = \frac{V_{o2} - V_{o1}}{V_{i2} - V_{i1}} = \frac{5.00376 - 5.00372}{8 - 7.2} = 50\ \mu V/V \]

@@ -4,7 +4,7 @@ La selección de tensión de alimentación para los cargadores y la carga o desc
 
 Se tuvo en consideración el uso de relés biestables, pero su elevado coste en comparación y la recomendación de realizar un subsistema electrónico con una PCB propia, decidimos tomar otra alternativa. 
 
-La corriente que un relé necesita para conmutar es menor que la que necesita para mantener el interruptor conmutado, por lo que decidimos realizar un circuito que aplicara un pico de corriente al conmutar y reduejera la corriente para mantener la conmutación. 
+La corriente que un relé necesita para conmutar es menor que la que necesita para mantener el interruptor conmutado, por lo que decidimos realizar un circuito que aplicara un pico de corriente al conmutar y redujera la corriente para mantener la conmutación. 
 
 Se puede ver el circuito en la \autoref{fig:hardware/modulos/reles/esquematico}. Se utiliza un condensador y una resistencia que consiguen una respuesta subamortiguada ante el escalón de conmutación. Además, se utiliza un transistor para manejar la conmutación del relé y se utiliza un diodo de \textit{flyback} para proteger a dicho transistor de la corriente de la bobina cuando se intente cortar. Para la resistencia en paralelo con el condensador se ha utilizado un potenciómetro para poder ajustar el pico de conmutación. 
 
@@ -26,7 +26,7 @@ El valor de los componentes pasivos se ha elegido experimentalmente, en función
     \item \texttt{D1}: Diodo de \textit{flyback} utilizado para redirigir la corriente de la bobina cuando se corta el transistor, para evitar destruirlo. Se ha utilizado un diodo \texttt{1N4007} por ser el más accesible, aunque lo óptimo hubiera sido un diodo Schottky.
 \end{itemize}
 
-Para el montaje de dicho circuito se ha diseñado una PCB que se ha enviado a fabricar a una empresa extranjera. El resulado se puede ver en la \autoref{fig:hardware/modulos/reles/fotoPCB}. Las resistencias soldadas en la imagen no tienen los valores indicados porque se cambiaron después de hacer la foto.
+Para el montaje de dicho circuito se ha diseñado una PCB que se ha enviado a fabricar a una empresa extranjera. El resultado se puede ver en la \autoref{fig:hardware/modulos/reles/fotoPCB}. Las resistencias soldadas en la imagen no tienen los valores indicados porque se cambiaron después de hacer la foto.
 
 \begin{figure}[H]
     \centering

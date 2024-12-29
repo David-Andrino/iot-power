@@ -1,30 +1,30 @@
-Para la visualización y representación de los distintos valores de tensión y corriente medidos por los diferentes sensores, se ha optado por utilizar ThingsBoard, una plataforma IoT de código abierto para la recopilación, el procesamiento, la visualización y la gestión de dispositivos de datos.
+Para la visualización y representación de los distintos valores de tensión y corriente medidos por los diferentes sensores, se ha optado por utilizar \texttt{ThingsBoard}, una plataforma IoT de código abierto para la recopilación, el procesamiento, la visualización y la gestión de dispositivos de datos.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.3\textwidth]{images/3-software/3-2-2-thingsboard/LogoThingsboard.png}
-    \caption{Plataforma ThingsBoard}
+    \caption{Plataforma \texttt{ThingsBoard}}
     \label{fig:3-2-2-ThingsBoard}
 \end{figure}
 
-Para su instalación en el ordenador, se ha optado utilizar una máquina virtual en VirtualBox mediante la imagen de un servidor Linux con distribución Ubuntu. Para la realización de dicha instalación se ha seguido la guía oficial de la plataforma de ThingsBoard, que se puede definir en los siguientes pasos: \cite{thingsboardInstallingThingsBoardCE}
+Para su instalación en el ordenador, se ha optado utilizar una máquina virtual en VirtualBox mediante la imagen de un servidor Linux con distribución Ubuntu. Para la realización de dicha instalación se ha seguido la guía oficial de la plataforma de \texttt{ThingsBoard}, que se puede definir en los siguientes pasos: \cite{thingsboardInstallingThingsBoardCE}
 
 \begin{enumerate}
-    \item Instalar Java17 y configurarlo como predeterminado mediante los comandos:
+    \item Instalar \texttt{Java17} y configurarlo como predeterminado mediante los comandos:
     \begin{verbatim}
 sudo apt update
 sudo apt install openjdk-17-jdk
 sudo update-alternatives --config java
     \end{verbatim}
 
-    \item Instalar ThingsBoard mediante los siguientes comandos:
+    \item Instalar \texttt{ThingsBoard} mediante los siguientes comandos:
     \begin{verbatim}
 wget https://github.com/thingsboard/thingsboard/releases/\
 download/v3.8.1/thingsboard-3.8.1.deb
 sudo dpkg -i thingsboard-3.8.1.deb
     \end{verbatim}
 
-    \item Configurar la base de datos de ThingsBoard:
+    \item Configurar la base de datos de \texttt{ThingsBoard}:
     \begin{verbatim}
 sudo apt install -y postgresql-common
 sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh
@@ -33,7 +33,7 @@ sudo service postgresql start
 sudo su - postgres
 psql
     \end{verbatim}
-    A continuación, elige tu contraseña del postgres mediante el siguiente comando:
+    A continuación, elige tu contraseña del \texttt{postgres} mediante el siguiente comando:
     \begin{verbatim}
 \password
     \end{verbatim}
@@ -41,11 +41,11 @@ psql
     \begin{verbatim}
 psql -U postgres -d postgres -h 127.0.0.1 -W
     \end{verbatim}
-    Ahora, crea la base de datos para Thingsboard mediante el comando: \\
+    Ahora, crea la base de datos para \texttt{Thingsboard} mediante el comando: \\
     \texttt{CREATE DATABASE thingsboard;} \\
     Por último, pulsa dos veces ``Ctrl + D'' para salir del PostgreSQL.
 
-    \item Modificar el archivo de configuración de ThingsBoard mediante el siguiente comando:
+    \item Modificar el archivo de configuración de \texttt{ThingsBoard} mediante el siguiente comando:
     \begin{verbatim}
 sudo nano /etc/thingsboard/conf/thingsboard.conf
     \end{verbatim}
@@ -62,24 +62,24 @@ export SPRING_DATASOURCE_PASSWORD=PUT_YOUR_POSTGRESQL_PASSWORD_HERE
 export SQL_POSTGRES_TS_KV_PARTITIONING=MONTHS
     \end{verbatim}
 
-    \item Elegir el tipo de servicio de cola de ThingsBoard. En este caso se elige el por defecto, en memoria, por lo que no es necesario ningún paso adicional.
+    \item Elegir el tipo de servicio de cola de \texttt{ThingsBoard}. En este caso se elige el caso por defecto, en memoria, por lo que no es necesario ningún paso adicional.
 
     \item Ejecutar el script de instalación mediante el siguiente comando:
     \begin{verbatim}
 sudo /usr/share/thingsboard/bin/install/install.sh --loadDemo
     \end{verbatim}
 
-    \item Arrancar el servicio de ThingsBoard mediante el siguiente comando:
+    \item Arrancar el servicio de \texttt{ThingsBoard} mediante el siguiente comando:
     \begin{verbatim}
 sudo service thingsboard start
     \end{verbatim}
 \end{enumerate}
 
-Una vez realizados estos pasos, se podrá acceder a ThingsBoard en la siguiente dirección: 
+Una vez realizados estos pasos, se podrá acceder a \texttt{ThingsBoard} en la siguiente dirección: 
 
 \texttt{http://<IP VM>:8080/}
 
-Por defecto, ThingsBoard incluye tres diferentes perfiles para acceder a la plataforma:
+Por defecto, \texttt{ThingsBoard} incluye tres diferentes perfiles para acceder a la plataforma:
 \begin{itemize}
     \item System Administrator: \texttt{sysadmin@thingsboard.org / sysadmin}
     \item Tenant Administrator: \texttt{tenant@thingsboard.org / tenant}
@@ -97,7 +97,7 @@ Debido al uso de la máquina virtual, se ha tenido que realizar una redirección
 
 Por lo que, en nuestro caso, el puerto 1883 del \texttt{MQTT Broker} se corresponde con el puerto 4444 del anfitrión (\textit{host}), el puerto 3333 del anfitrión se corresponde con el puerto 8080 de la MV y también se ha redirigido el puerto 22 de \texttt{SSH} al puerto 2222 de la máquina anfitriona.
 
-Para la comunicación entre la plataforma \texttt{ThingsBoard} y el dispositivo \texttt{ESP8266}, se ha implementado el broker \texttt{Mosquitto}, el cual es un broker \texttt{MQTT} OpenSource ampliamente utilizado debido a su ligereza, lo que permite fácilmente emplearlo en gran número de ambientes, incluso si éstos son de pocos recursos. A continuación se indica el comando necesario para su instalación, obtenido de la guía oficial de \texttt{ThingsBoard}: \cite{thingsboardMQTTDeviceAPI}
+Para la comunicación entre la plataforma \texttt{ThingsBoard} y el dispositivo \texttt{ESP8266}, se ha implementado el broker \texttt{Mosquitto}, el cual es un broker \texttt{MQTT} OpenSource ampliamente utilizado debido a su ligereza, lo que permite fácilmente emplearlo en gran número de ambientes, incluso si estos son de pocos recursos. A continuación se indica el comando necesario para su instalación, obtenido de la guía oficial de \texttt{ThingsBoard}: \cite{thingsboardMQTTDeviceAPI}
 
 \begin{verbatim}
 sudo apt-get install mosquitto-clients
@@ -111,10 +111,10 @@ mosquitto_pub -d -q 1 -h "$THINGSBOARD_HOST_NAME" -p "1883"
 
 Donde los siguientes parámetros corresponden con:
 \begin{itemize}
-    \item \texttt{THINGSBOARD\_HOST\_NAME}: dirección IP del servidor ThingsBoard, \\
+    \item \texttt{THINGSBOARD\_HOST\_NAME}: dirección IP del servidor \texttt{ThingsBoard}, \\
     por ejemplo, \texttt{localhost} o \texttt{127.0.0.1}.
-    \item \texttt{ACCESS\_TOKEN}: token de acceso único proporcionado por ThingsBoard para cada dispositivo.
-    \item \texttt{ATTRIBUTE}: atributo asociado a dicho dispositivo, por ejemplo, temperature.
+    \item \texttt{ACCESS\_TOKEN}: token de acceso único proporcionado por \texttt{ThingsBoard} para cada dispositivo.
+    \item \texttt{ATTRIBUTE}: atributo asociado a dicho dispositivo, por ejemplo, \texttt{temperature}.
 \end{itemize}
 
 En caso de que la conexión y publicación se haya realizado de manera correcta, se obtendrá la siguiente respuesta:
@@ -172,19 +172,19 @@ Por último, se ha añadido dichas cadenas de reglas de potencia a la cadena de 
     \label{fig:3-2-2-CadenaPrincipalThingsBoard}
 \end{figure}
 
-Después de realizar los pasos descritos anteriormente, se han añadido las gráficas correspondientes a todas las medidas obtenidas en la página de gráficas del ThingsBoard, al igual que sus correspondientes tablas de valores instantáneos en la página de tablas, obteniendo las siguientes interfaces:
+Después de realizar los pasos descritos anteriormente, se han añadido las gráficas correspondientes a todas las medidas obtenidas en la página de gráficas del \texttt{ThingsBoard}, al igual que sus correspondientes tablas de valores instantáneos en la página de tablas, obteniendo las siguientes interfaces:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{images/3-software/3-2-2-thingsboard/PaginaGraficas.jpg}
-    \caption{Página de gráficas ThingsBoard}
+    \caption{Página de gráficas \texttt{ThingsBoard}}
     \label{fig:3-2-2-PaginaGraficasThingsBoard}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{images/3-software/3-2-2-thingsboard/PaginaTablas.jpg}
-    \caption{Página de tablas ThingsBoard}
+    \caption{Página de tablas \texttt{ThingsBoard}}
     \label{fig:3-2-2-PaginaTablasThingsBoard}
 \end{figure}
 
-De esta forma, se obtiene una interfaz para visualizar los valores instantáneos en las tablas de las medidas obtenidas por los sensores a la par que se puede visualizar los valores historicos en las gráficas.
+De esta forma, se obtiene una interfaz para visualizar los valores instantáneos en las tablas de las medidas obtenidas por los sensores a la par que se puede visualizar los valores históricos en las gráficas.

@@ -87,7 +87,7 @@ El fichero contiene las siguientes funciones:
     \item Revisa los valores obtenidos del panel solar por si es necesario cambiar la alimentación del panel solar a la de backup.
     \item Se intenta conectar a la red WiFi. Si lo consigue se intenta mandar las medidas al servidor \texttt{MQTT}.
     \item Guarda las medidas de los sensores en un fichero.
-    \item Duerme al ESP poniéndolo en bajo consumo.
+    \item Duerme al \texttt{ESP} poniéndolo en bajo consumo.
     \item Sale del modo de bajo consumo.
 \end{enumerate}
 
@@ -134,23 +134,23 @@ El fichero contiene las siguientes funciones:
 \end{lstlisting}
 
 La primera secuencia que hay en el código es \texttt{measureINA226(\&telemetry);} función tiene una ligera limitación, si los \texttt{INA} no están conectados el sistema se queda bloqueado.
-Esto ocurre ya que se queda a la espera de una respuesta de la dirección I2C del \texttt{INA} al que esta llamando, que en caso de no estar configurado, se quedará el sistema bloqueado hasta esa respuesta o un rest.
+Esto ocurre ya que se queda a la espera de una respuesta de la dirección I2C del \texttt{INA} al que está llamando, que en caso de no estar configurado, se quedará el sistema bloqueado hasta esa respuesta o un rest.
 
 Tras recibir las medidas, si nos encontramos depurando el código, podremos observar por el puerto serie los datos que han sido almacenados de cada elemento del circuito.
 
 Una vez leídas las medidas, el sistema verifica los valores de tensión del panel solar y de la batería y modifica los relés en función de estos.
 En caso de que no se supere un valor mínimo de tensión tanto del panel solar como de la batería de \textit{backup}, el sistema activaría la protección de sobredescarga para evitar daños en el sistema. 
-Entrar en este modo implicaría que las funciones del ESP dejarían de estar disponibles hasta que las tensiones superen los umbrales, alimentando una vez más al ESP y volviendo a su funcionamiento normal.
+Entrar en este modo implicaría que las funciones del ESP dejarían de estar disponibles hasta que las tensiones superen los umbrales, alimentando una vez más al \texttt{ESP} y volviendo a su funcionamiento normal.
 
-Tras esto, se intenta la conexión con la red Wifi:
+Tras esto, se intenta la conexión con la red \texttt{Wifi}:
 \begin{itemize}
-    \item No se consigue conectar a la Wifi: Se establece la hora y fecha de las medidas realizadas a 0 y no se intenta enviar los datos al servidor \texttt{MQTT}. 
-    \item Si se consigue conectar a la Wifi: Se configura un servidor NTP para asegurar la fecha y hora en las que realizan las medidas. Tras esto se intenta enviar los datos leídos al servidor \texttt{MQTT}.
+    \item No se consigue conectar a la \texttt{Wifi}: Se establece la hora y fecha de las medidas realizadas a 0 y no se intenta enviar los datos al servidor \texttt{MQTT}. 
+    \item Si se consigue conectar a la \texttt{Wifi}: Se configura un servidor \texttt{NTP} para asegurar la fecha y hora en las que realizan las medidas. Tras esto se intenta enviar los datos leídos al servidor \texttt{MQTT}.
 \end{itemize}
 
-Independientemente de si se ha podido conectar a la Wifi o no, se intenta realizar una escritura con las lecturas realizadas en el fichero de medidas.
+Independientemente de si se ha podido conectar a la \texttt{Wifi} o no, se intenta realizar una escritura con las lecturas realizadas en el fichero de medidas.
 
-Finalmente, tras realizar todas las operaciones anteriores, se pone a dormir el ESP durante un tiempo \texttt{TIME\_SLEEP}. Tras esto el sistema se vuelve a activar y a realizar las operaciones de nuevo.
+Finalmente, tras realizar todas las operaciones anteriores, se pone a dormir el \texttt{ESP} durante un tiempo \texttt{TIME\_SLEEP}. Tras esto el sistema se vuelve a activar y a realizar las operaciones de nuevo.
 
 \begin{figure}[H]
     \centering
@@ -173,7 +173,7 @@ Para la implementación del programa principal, también se han desarrollado dos
         \item Se intenta realizar la conexión un número finito de intentos indicados en la variable
 
         \texttt{WIFI\_TRIES}. El tiempo de espera entre intentos de conexión es de 500ms.
-        \item En caso de que la conexión haya sido satisfactoria, el sistema mostrará por serial un mensaje al usuario indicando que la conexión WIFI se ha realizado correctamente. En este mensaje se mostrará el nombre de la red a la que se ha realizado la conexión y la dirección IP de nuestro dispositivo ESP8266.
+        \item En caso de que la conexión haya sido satisfactoria, el sistema mostrará por serial un mensaje al usuario indicando que la conexión WIFI se ha realizado correctamente. En este mensaje se mostrará el nombre de la red a la que se ha realizado la conexión y la dirección \texttt{IP} de nuestro dispositivo \texttt{ESP8266}.
         \item Por otra parte, en caso de que el sistema no haya sido capaz de conectarse a la red WIFI indicada, se mostrará un mensaje de error por serial indicando al usuario la conexión fallida.
     \end{enumerate}
     \begin{lstlisting}[captionpos=b, caption={Desarrollo función setup\_wifi}, language=c++]
