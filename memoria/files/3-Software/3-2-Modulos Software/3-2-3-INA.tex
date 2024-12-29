@@ -28,7 +28,7 @@ void setupINA226Sensors() {
 \begin{itemize}
     \item \texttt{setConversionTime}: Establece el tiempo que asignamos al \texttt{INA} para realizar la conversión de medidas físicas a su valor digital.
     \item \texttt{setMeasureMode}: Establece el modo de medida, \texttt{POWER\_DOWN} (Sistema apagado), \texttt{TRIGGERED} (medidas a petición) o \texttt{CONTINUOUS} (medidas constantes).
-    \item \texttt{setResistorRange}: Establece el valor de la resistencia de SHUNT que tiene el \texttt{INA} (Medido físicamente) y su rango de corriente con el que se va a trabajar.
+    \item \texttt{setResistorRange}: Establece el valor de la resistencia de \texttt{SHUNT} que tiene el \texttt{INA} (Medido físicamente) y su rango de corriente con el que se va a trabajar.
     \item \texttt{setCorrectionFactor}: Establece el factor de corrección, el sensor nunca realiza una medición que corresponde con la realidad, por lo que es necesario indicar el factor de corrección que tiene que ser aplicado cuando se realizan estas medidas. Para el establecimiento de este valor se han realizado medidas experimentales midiendo el valor real y comparándolo con lo que indicado por el sensor.
 \end{itemize}
 
