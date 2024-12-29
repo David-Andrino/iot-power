@@ -2,11 +2,11 @@ Este módulo está formado por el archivo, \texttt{MAIN\_POWER.ino} que se encar
 
 Inicialmente, en la cabecera del fichero se incluyen las librerías que vamos a utilizar:
 \begin{itemize}
-    \item \texttt{telemetry.hpp}: Define la estructura de datos que será usada para almacenar las lecturas recibidas por los INAs.
+    \item \texttt{telemetry.hpp}: Define la estructura de datos que será usada para almacenar las lecturas recibidas por los \texttt{INA}.
     \item \texttt{hardware-hpp}: Define los pines del \texttt{ESP} que son necesarias para el funcionamiento del sistema (I2C y relés).
-    \item \texttt{ina.hpp}: Contiene el código relativo a la gestión, configuración y obtención de datos de los INAs. 
-    \item \texttt{mqtt\_client.hpp}: Contiene el código relativo a la conexión y envío de datos al servidor MQTT.
-    \item \texttt{file\_management.hpp}: Contiene el código relativo a la escritura en un fichero de los datos recibidos de los INA.
+    \item \texttt{ina.hpp}: Contiene el código relativo a la gestión, configuración y obtención de datos de los \texttt{INA}. 
+    \item \texttt{mqtt\_client.hpp}: Contiene el código relativo a la conexión y envío de datos al servidor \texttt{MQTT}.
+    \item \texttt{file\_management.hpp}: Contiene el código relativo a la escritura en un fichero de los datos recibidos de los \texttt{INA}.
     \item \texttt{sleep.hpp}: Contiene el código que pone en bajo consumo al \texttt{ESP}.
 \end{itemize}
 
@@ -32,8 +32,8 @@ A continuación, se cuenta define un elemento que puede ser usado para depurar e
 
 A lo largo del código de este programa se hacen varias llamadas al macro \texttt{PRINT\_DEBUG()}, este macro se encarga de escribir por el puerto serie información de interés como:
 \begin{itemize}
-    \item Mostrar la información recibida por los INAs (así corroborar la correcta recepción en el MQTT).
-    \item Indicar si se ha podido enviar correctamente los datos al servidor MQTT.
+    \item Mostrar la información recibida por los \texttt{INA} (así corroborar la correcta recepción en el \texttt{MQTT}).
+    \item Indicar si se ha podido enviar correctamente los datos al servidor \texttt{MQTT}.
     \item Indicar la hora recibida del NTP.
     \item Indicar la correcta conexión con la red Wifi.
     \item Indicar si se ha podido escribir correctamente en el fichero que almacena los datos de medidas.
@@ -58,7 +58,7 @@ Después de este código, se encuentra la definición de distintos elementos uti
 
 \begin{itemize}
     \item \texttt{SSID y password}: Son utilizados para indicar el \texttt{SSID} de la wifi a la que conectarse y su contraseña. 
-    \item \texttt{MQTT\_SERVER y MQTT\_PORT}: Indican la dirección y el puerto del servidor MQTT al que el ESP se intentará conectar para enviar datos.
+    \item \texttt{MQTT\_SERVER y MQTT\_PORT}: Indican la dirección y el puerto del servidor \texttt{MQTT} al que el ESP se intentará conectar para enviar datos.
     \item \texttt{TIME\_SLEEP}: Indica el tiempo en ms que se quedará en bajo consumo/dormido el sistema.
     \item \texttt{WIFI\_TIRES}: Indica el numero de reintentos que damos al ESP para conectarse a la red wifi.
     \item \texttt{BAT\_THRESH}: Umbral de la batería de backup con el que el sistema determina si activa la protección de sobrecarga.
@@ -83,9 +83,9 @@ El fichero contiene las siguientes funciones:
 
 - \texttt{loop()}: Realiza todas las operaciones de funcionamiento del sistema. La secuencia de ejecución es la siguiente:
 \begin{enumerate}
-    \item Recoge las medidas de los INA.
+    \item Recoge las medidas de los \texttt{INA}.
     \item Revisa los valores obtenidos del panel solar por si es necesario cambiar la alimentación del panel solar a la de backup.
-    \item Se intenta conectar a la red WiFi. Si lo consigue se intenta mandar las medidas al servidor MQTT.
+    \item Se intenta conectar a la red WiFi. Si lo consigue se intenta mandar las medidas al servidor \texttt{MQTT}.
     \item Guarda las medidas de los sensores en un fichero.
     \item Duerme al ESP poniéndolo en bajo consumo.
     \item Sale del modo de bajo consumo.
@@ -133,8 +133,8 @@ El fichero contiene las siguientes funciones:
     sleep_low_power(TIME_SLEEP);
 \end{lstlisting}
 
-La primera secuencia que hay en el código es \texttt{measureINA226(\&telemetry);} función tiene una ligera limitación, si los INAs no están conectados el sistema se queda bloqueado.
-Esto ocurre ya que se queda a la espera de una respuesta de la dirección I2C del INA al que esta llamando, que en caso de no estar configurado, se quedará el sistema bloqueado hasta esa respuesta o un rest.
+La primera secuencia que hay en el código es \texttt{measureINA226(\&telemetry);} función tiene una ligera limitación, si los \texttt{INA} no están conectados el sistema se queda bloqueado.
+Esto ocurre ya que se queda a la espera de una respuesta de la dirección I2C del \texttt{INA} al que esta llamando, que en caso de no estar configurado, se quedará el sistema bloqueado hasta esa respuesta o un rest.
 
 Tras recibir las medidas, si nos encontramos depurando el código, podremos observar por el puerto serie los datos que han sido almacenados de cada elemento del circuito.
 
@@ -144,8 +144,8 @@ Entrar en este modo implicaría que las funciones del ESP dejarían de estar dis
 
 Tras esto, se intenta la conexión con la red Wifi:
 \begin{itemize}
-    \item No se consigue conectar a la Wifi: Se establece la hora y fecha de las medidas realizadas a 0 y no se intenta enviar los datos al servidor MQTT. 
-    \item Si se consigue conectar a la Wifi: Se configura un servidor NTP para asegurar la fecha y hora en las que realizan las medidas. Tras esto se intenta enviar los datos leídos al servidor MQTT.
+    \item No se consigue conectar a la Wifi: Se establece la hora y fecha de las medidas realizadas a 0 y no se intenta enviar los datos al servidor \texttt{MQTT}. 
+    \item Si se consigue conectar a la Wifi: Se configura un servidor NTP para asegurar la fecha y hora en las que realizan las medidas. Tras esto se intenta enviar los datos leídos al servidor \texttt{MQTT}.
 \end{itemize}
 
 Independientemente de si se ha podido conectar a la Wifi o no, se intenta realizar una escritura con las lecturas realizadas en el fichero de medidas.

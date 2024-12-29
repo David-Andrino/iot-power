@@ -1,17 +1,17 @@
-\subsubsection{Modulo INA}
+\subsubsection{Modulo \texttt{INA}}
 
-El módulo INA es el encargado de realizar la configuración de los INAs y solicitarles medidas.
+El módulo \texttt{INA} es el encargado de realizar la configuración de los \texttt{INA} y solicitarles medidas.
 Este módulo está formado por dos archivos:
 \begin{itemize}
     \item ina.cpp : Contiene las funciones necesarias para la configuración de los sensores, el bajo consumo y la toma de medidas.
-    \item ina.hpp : Contiene la definición de la función que solicita 1 única medida a los INA y las direcciones I2C de los INA.
+    \item ina.hpp : Contiene la definición de la función que solicita 1 única medida a los \texttt{INA} y las direcciones I2C de los \texttt{INA}.
 \end{itemize}
 
 Para la implementación de este módulo se ha requerido la utilización de la librería \texttt{"INA266\_WE.h"} ,que permite configurar y leer los datos mediante I2C con Arduino.\cite{ewaldWollewaldINA226_WE2024}
 
 El fichero ina.cpp contiene las siguientes funciones:
 
-- \texttt{setupINA226Sensors()}: Esta función inicializa los 4 INAs con la configuración inicial que establece la librería \texttt{“INA266\_WE.h”}.
+- \texttt{setupINA226Sensors()}: Esta función inicializa los 4 \texttt{INA} con la configuración inicial que establece la librería \texttt{“INA266\_WE.h”}.
 
 \begin{lstlisting}[captionpos=b, caption={Codigo funcion setupINA226Sensors}, language=c++]
     void setupINA226Sensors() {
@@ -23,11 +23,11 @@ El fichero ina.cpp contiene las siguientes funciones:
     }
 \end{lstlisting}
 
-- \texttt{reconfig\_INAs()}: Al despertar o inicializarlos INA, se encuentran con la configuración por defecto, por lo que es necesario reconfigurarlos acorde a las necesidades de nuestro circuito. Esta reconfiguración consta de lo siguiente:
+- \texttt{reconfig\_INAs()}: Al despertar o inicializarlos \texttt{INA}, se encuentran con la configuración por defecto, por lo que es necesario reconfigurarlos acorde a las necesidades de nuestro circuito. Esta reconfiguración consta de lo siguiente:
 \begin{itemize}
-    \item \texttt{setConversionTime}: Establece el tiempo que asignamos al INA para realizar la conversión de medidas físicas a su valor digital.
+    \item \texttt{setConversionTime}: Establece el tiempo que asignamos al \texttt{INA} para realizar la conversión de medidas físicas a su valor digital.
     \item \texttt{setMeasureMode}: Establece el modo de medida, POWER\_DOWN (Sistema apagado), TRIGGERED (medidas a petición) o CONTINUOUS (medidas constantes).
-    \item \texttt{setResistorRange}: Establece el valor de la resistencia de SHUNT que tiene el INA (Medido físicamente) y su rango de corriente con el que se va a trabajar.
+    \item \texttt{setResistorRange}: Establece el valor de la resistencia de SHUNT que tiene el \texttt{INA} (Medido físicamente) y su rango de corriente con el que se va a trabajar.
     \item \texttt{setCorrectionFactor}: Establece el factor de corrección, el sensor nunca realiza una medición que corresponde con la realidad, por lo que es necesario indicar el factor de corrección que tiene que ser aplicado cuando se realizan estas medidas. Para el establecimiento de este valor se han realizado medidas experimentales midiendo el valor real y comparándolo con lo que indicado por el sensor.
 \end{itemize}
 
@@ -62,7 +62,7 @@ El fichero ina.cpp contiene las siguientes funciones:
     }
 \end{lstlisting}
 
-- \texttt{powerDownINA226()}: Pone en bajo consumo los INA ya que tras conseguir las medidas no es necesario que se mantengan activos.
+- \texttt{powerDownINA226()}: Pone en bajo consumo los \texttt{INA} ya que tras conseguir las medidas no es necesario que se mantengan activos.
 
 \begin{lstlisting}[captionpos=b, caption={Codigo funcion powerDownINA226}, language=c++]
     void powerDownINA226() {
@@ -74,7 +74,7 @@ El fichero ina.cpp contiene las siguientes funciones:
 \end{lstlisting}
 
 
-- \texttt{powerUpINA226()}: Despierta de nuevo a los INA, al despertarlos los sensores se reinician con la configuración por defecto por lo que es necesario reconfigurarlos.
+- \texttt{powerUpINA226()}: Despierta de nuevo a los \texttt{INA}, al despertarlos los sensores se reinician con la configuración por defecto por lo que es necesario reconfigurarlos.
 
 \begin{lstlisting}[captionpos=b, caption={Codigo funcion powerUpINA226}, language=c++]
     void powerUpINA226() {
@@ -88,10 +88,10 @@ El fichero ina.cpp contiene las siguientes funciones:
 -\texttt{measureINA226(telemetry\_t *telemetry)}: Realiza la medida de todos los sensores. La secuencia de ejecución es la siguiente:
 
 \begin{enumerate}
-    \item Verifica si se han inicializado 1 vez los INAs. Si se han inicializado se despiertan.
+    \item Verifica si se han inicializado 1 vez los \texttt{INA}. Si se han inicializado se despiertan.
     \item Se reconfiguran.
-    \item Se toman las medidas de tensión y corriente de todos los INAs y se guarda la información en el puntero con la estructura de datos.
-    \item Se ponen a bajo consumo los INAs.
+    \item Se toman las medidas de tensión y corriente de todos los \texttt{INA} y se guarda la información en el puntero con la estructura de datos.
+    \item Se ponen a bajo consumo los \texttt{INA}.
 \end{enumerate}
 
 \begin{lstlisting}[captionpos=b, caption={Codigo funcion measureINA226}, language=c++]
@@ -129,9 +129,9 @@ El fichero ina.cpp contiene las siguientes funciones:
 \end{lstlisting}
 
 
-En el contenido de este mismo fichero, se instancian los 4 INAs que tenemos indicando su dirección I2C:
+En el contenido de este mismo fichero, se instancian los 4 \texttt{INA} que tenemos indicando su dirección I2C:
 
-\begin{lstlisting}[captionpos=b, caption={Instancia de las direcciones de los INAs.}, language=c++]
+\begin{lstlisting}[captionpos=b, caption={Instancia de las direcciones de los \texttt{INA}.}, language=c++]
     #include "ina.hpp"
     // INA226 instances
     INA226_WE Solar(I2C_D_PANEL);
