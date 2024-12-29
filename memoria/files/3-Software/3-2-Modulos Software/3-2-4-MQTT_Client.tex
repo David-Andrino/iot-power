@@ -8,13 +8,35 @@ Este módulo está formado por dos archivos:
     \item \texttt{mqtt\_client.hpp}: Contiene la definición de las funciones, la importación de las librerías externas utilizadas y el número de reintentos permitidos al realizar una conexión con el servidor.
 \end{itemize}
 
-Para la implementación de este módulo se ha requerido la utilización de las librerías \texttt{PubSubClient.h}, que permite la conexión \texttt{MQTT}, \texttt{ESP8266WiFi.h} y \texttt{WiFiUdp.h} para configurar el cliente UDP.\cite{olearyKnollearyPubsubclient2024}
+Para la implementación de este módulo se ha requerido la utilización de las librerías \texttt{PubSubClient.h}, que permite la conexión \texttt{MQTT}, \texttt{ESP8266WiFi.h} y \texttt{WiFiUdp.h} para configurar el cliente UDP. \cite{olearyKnollearyPubsubclient2024}
 
 El fichero \texttt{mqtt\_client.cpp} contiene las siguientes funciones:
 
--\texttt{reconnect(PubSubClient\& client, char* const mqtt\_server, int mqtt\_port)}: Para intentar una reconexión con el servidor \texttt{MQTT} en caso de que haya fallado. Aunque este intento de reconexión es limitando.
+\begin{itemize}
 
--\texttt{bool publishTelemetry(char* const mqtt\_server, int mqtt\_port,}\texttt{ telemetry\_t\& telemetry)}: Intenta publicar un mensaje con todos los datos medidos por el \texttt{INA} al servidor \texttt{MQTT}.  La secuencia de ejecución es la siguiente:
+\item \texttt{reconnect(PubSubClient\& client, char* const mqtt\_server, int mqtt\_port)}
+
+Intentar una reconexión con el servidor \texttt{MQTT} en caso de que haya fallado. Se realiza un número limitado de reintentos antes de desistir. 
+
+\begin{lstlisting}[language=c++,caption={Función \texttt{reconnect}},captionpos=b]
+void reconnect(PubSubClient& client, char* const mqtt_server, int mqtt_port) {
+    for (int i = 0; i < 3 && !client.connected(); i++){
+
+        Serial.print("[MQTT] Iniciando conexion a " + String(mqtt_server) + ":" + String(mqtt_port));
+
+        if (client.connect("Cliente", "Cliente", "Cliente")) {
+            Serial.println("[MQTT] Conectado");
+        } else {
+            Serial.print("[MQTT] Conexion fallida. Estado = " + String(client.state()) + ". Reintentando en 0.5 segundos...");
+            delay(500);
+        }
+    }
+}
+\end{lstlisting}
+
+\item \texttt{publishTelemetry(char* const mqtt\_server, int mqtt\_port, telemetry\_t\& telemetry)}. 
+
+Intenta publicar un mensaje con todos los datos medidos por el \texttt{INA} al servidor \texttt{MQTT}.  La secuencia de ejecución es la siguiente:
 \begin{enumerate}
     \item Crea un cliente \texttt{MQTT}.
     \item Crea una conexión con el servidor \texttt{MQTT}.
@@ -25,4 +47,28 @@ El fichero \texttt{mqtt\_client.cpp} contiene las siguientes funciones:
     \item Devuelve el booleano.
 \end{enumerate}
 
-\todo[inline,inlinewidth=0.99\textwidth]{Fragmento de código}
+\begin{lstlisting}[language=c++,caption={Funcion \texttt{publishTelemetry}},captionpos=b]
+bool publishTelemetry(char* const mqtt_server, int mqtt_port, telemetry_t& telemetry){
+    WiFiClient wifiClient;
+    WiFiUDP ntpUDP;
+    PubSubClient client(wifiClient);
+    client.setServer(mqtt_server, mqtt_port);
+    bool statusPublish=false;
+    char result[256];
+
+    if (!client.connected()){
+        reconnect(client, mqtt_server, mqtt_port);
+    }
+
+    snprintf(result, sizeof(result), "{VSolar:%.2f,ISolar:%.2f,VBatbu:%.2f,IBatbu:%.2f,"
+        "VBat1:%.2f,IBat1:%.2f,VBat2:%.2f,IBat2:%.2f}", 
+        telemetry.VSolar, telemetry.ISolar, telemetry.VBatbu, telemetry.IBatbu, 
+        telemetry.VBat1, telemetry.IBat1, telemetry.VBat2, telemetry.IBat2);
+
+    statusPublish = client.publish("v1/devices/me/telemetry" ,result);
+    client.disconnect();
+    return statusPublish;
+}
+\end{lstlisting}
+
+\end{itemize}
