@@ -75,7 +75,9 @@ sudo service thingsboard start
     \end{verbatim}
 \end{enumerate}
 
-Una vez realizados estos pasos, se podrá acceder a ThingsBoard en la siguiente dirección: \texttt{http://<IP VM>:8080/}
+Una vez realizados estos pasos, se podrá acceder a ThingsBoard en la siguiente dirección: 
+
+\texttt{http://<IP VM>:8080/}
 
 Por defecto, ThingsBoard incluye tres diferentes perfiles para acceder a la plataforma:
 \begin{itemize}
@@ -93,9 +95,9 @@ Debido al uso de la máquina virtual, se ha tenido que realizar una redirección
     \label{fig:3-2-2-PuertosMV}
 \end{figure}
 
-Por lo que, en nuestro caso, el puerto 1883 correspondiente al \texttt{MQTT} broker se corresponde con el puerto 4444 de la máquina virtual, el puerto 3333 de la plataforma ThingsBoard se corresponde con el puerto 8080 de la MV y también se ha redirigido el puerto 22 de SSH al puerto 2222 de la máquina virtual por conflictos internos con otro programa.
+Por lo que, en nuestro caso, el puerto 1883 del \texttt{MQTT Broker} se corresponde con el puerto 4444 del anfitrión (\textit{host}), el puerto 3333 del anfitrión se corresponde con el puerto 8080 de la MV y también se ha redirigido el puerto 22 de \texttt{SSH} al puerto 2222 de la máquina anfitriona.
 
-Para la comunicación entre la plataforma ThingsBoard y el dispositivo ESP8266, se ha implementado el broker Mosquitto, el cual es un broker \texttt{MQTT} OpenSource ampliamente utilizado debido a su ligereza, lo que permite fácilmente emplearlo en gran número de ambientes, incluso si éstos son de pocos recursos. A continuación se indica el comando necesario para su instalación, obtenido de la guía oficial de ThingsBoard: \cite{thingsboardMQTTDeviceAPI}
+Para la comunicación entre la plataforma \texttt{ThingsBoard} y el dispositivo \texttt{ESP8266}, se ha implementado el broker \texttt{Mosquitto}, el cual es un broker \texttt{MQTT} OpenSource ampliamente utilizado debido a su ligereza, lo que permite fácilmente emplearlo en gran número de ambientes, incluso si éstos son de pocos recursos. A continuación se indica el comando necesario para su instalación, obtenido de la guía oficial de \texttt{ThingsBoard}: \cite{thingsboardMQTTDeviceAPI}
 
 \begin{verbatim}
 sudo apt-get install mosquitto-clients
@@ -125,9 +127,9 @@ Client mosqpub|xxx received PUBACK (Mid: 1)
 Client mosqpub|xxx sending DISCONNECT
 \end{verbatim}
 
-Una vez que se ha comprobado el correcto funcionamiento de la conexión entre la plataforma Thingsboard y el broker y cliente \texttt{MQTT}, se puede continuar con la personalización de dicha plataforma.
+Una vez que se ha comprobado el correcto funcionamiento de la conexión entre la plataforma \texttt{Thingsboard} y el \texttt{broker} y cliente \texttt{MQTT}, se puede continuar con la personalización de dicha plataforma.
 
-Para la visualización de los datos recibido, se ha optado por diseñar dos paneles o \textit{Dashboards}, uno en representación en forma de tablas y otro en forma de gráficas. Ambos paneles se actualizan en tiempo real y cuentan con una tabla o gráfica para cada dispositivo, obtenido un total de 4 tablas y 4 gráficas. Además, en las gráficas se puede visualizar también la media de los últimos datos medidos.
+Para la visualización de los datos recibidos, se ha optado por diseñar dos paneles o \textit{Dashboards}, uno en representación en forma de tablas y otro en forma de gráficas. Ambos paneles se actualizan en tiempo real y cuentan con una tabla o gráfica para cada dispositivo, obtenido un total de 4 tablas y 4 gráficas. Además, en las gráficas se puede visualizar también la media de los últimos datos medidos.
 
 \begin{figure}[H]
     \centering
@@ -143,7 +145,7 @@ Para la visualización de los datos recibido, se ha optado por diseñar dos pane
     \label{fig:3-2-2-GraficaThingsBoard}
 \end{figure}
 
-Debido a que mediante los sensores solo se obtienen valores de tensión y de corriente, se ha implementado un algoritmo mediante las cadenas de reglas de Thingsboard. Se ha necesitado crear una cadena de reglas para cada potencia calculada, obteniendo 4 cadena de reglas como la siguiente:
+Debido a que mediante los sensores solo se obtienen valores de tensión y de corriente, se ha implementado un algoritmo mediante las cadenas de reglas de \texttt{Thingsboard}. Se ha necesitado crear una cadena de reglas para cada potencia calculada, obteniendo 4 cadenas de reglas como la siguiente:
 
 \begin{figure}[H]
     \centering
@@ -158,10 +160,10 @@ Dichas cadenas de reglas se dividen en los siguientes pasos:
     \item Filtrar y transformar la telemetría entrante
     \item Realizar el cálculo de la potencia correspondiente
     \item Pasar dicha potencia a Vatios
-    \item Guardas los valores para su reprentación
+    \item Guardas los valores para su representación
 \end{enumerate}
 
-Por último, se ha añadido dichas cadenas de reglas de potencia a la cadena de regla principal, la cual gestiona el funcionamiento completo de Thingsboard y permite visualizar el dato obtenido de su respectiva cadena de regla.
+Por último, se ha añadido dichas cadenas de reglas de potencia a la cadena de regla principal, la cual gestiona el funcionamiento completo de \texttt{Thingsboard} y permite visualizar el dato obtenido de su respectiva cadena de regla.
 
 \begin{figure}[H]
     \centering
