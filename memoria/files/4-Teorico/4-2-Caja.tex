@@ -17,14 +17,14 @@ Esta protección debe asegurar las siguientes condiciones:
     \item \textbf{Temperaturas de trabajo}: La caja deberá ser capaz de aguantar altas temperaturas exteriores durante largos periodos de tiempo debido al entorno al que está expuesto.
 \end{enumerate}
 
-\subsubsection{Diseño 3D}
+\subsubsection{Diseño \texttt{3D}}
 
-Para tener un diseño preliminar de cómo sería la caja real se ha diseñado mediante el software de \texttt{FreeCAD} el siguiente modelo en 3D:
+Para tener un diseño preliminar de cómo sería la caja real se ha diseñado mediante el software de \texttt{FreeCAD} el siguiente modelo en \texttt{3D}:
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.45\textwidth]{images/4-DesarrolloTeorico/4-1-caja/CAJA_3D_ISOMETRICA.png}
-    \caption{Vista Isométrica Modelo 3D caja}
+    \caption{Vista Isométrica Modelo \texttt{3D} caja}
     \label{fig:DesarrolloTeorico/Caja/CAJA_3D_ISOMETRICA}
 \end{figure}
 
@@ -35,7 +35,7 @@ Como se puede observar, la caja cuenta con 2 accesos:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.35\textwidth]{images/4-DesarrolloTeorico/4-1-caja/CAJA_3D_PUERTA_USER.png}
-    \caption{Vista Puerta Usuario Modelo 3D caja}
+    \caption{Vista Puerta Usuario Modelo \texttt{3D} caja}
     \label{fig:DesarrolloTeorico/Caja/CAJA_3D_PUERTA_USER}
 \end{figure}
 
@@ -43,7 +43,7 @@ Como se puede observar, la caja cuenta con 2 accesos:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.35\textwidth]{images/4-DesarrolloTeorico/4-1-caja/CAJA_3D_PUERTA_ADMIN.png}
-    \caption{Vista Puerta Técnico Modelo 3D caja}
+    \caption{Vista Puerta Técnico Modelo \texttt{3D} caja}
     \label{fig:DesarrolloTeorico/Caja/CAJA_3D_PUERTA_ADMIN}
 \end{figure}
 
@@ -54,24 +54,24 @@ Adicionalmente, el interior de la caja tiene 3 incisiones. Estas serán usadas �
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.35\textwidth]{images/4-DesarrolloTeorico/4-1-caja/CAJA_3D_ACCESOS.png}
-    \caption{Vista Incisiones Modelo 3D caja}
+    \caption{Vista Incisiones Modelo \texttt{3D} caja}
     \label{fig:DesarrolloTeorico/Caja/CAJA_3D_ACCESOS}
 \end{figure}
 
 
 Además, en la parte superior de la caja contamos con un acceso para la entrada del cableado del panel solar para la caja.
 
-\textbf{Nota}: Para facilitar el entendimiento del diseño en el \autoref{sec:anexo_caja} se encuentran en detalle todas las vistas del diseño sin las puertas e imágenes adicionales del mismo.
+\textbf{Nota}: Para facilitar el entendimiento del diseño en el \autoref{sec:anexo_caja} se encuentran en detalle todas las vistas del diseño  e imágenes adicionales del mismo.
 
 \subsubsection{Características técnicas}
 
 Para cumplir el diseño teórico se proponen las siguientes características técnicas:
 \begin{itemize}
-    \item \textbf{Protección contra agua y partículas:} La caja cumplirá la norma internacional CEI 60529 para permitir esta protección. En concreto una protección IP67 que garantiza una protección completa contra polvo y pequeñas partículas y además, la inmersión completa de la caja a sin filtración alguna. \cite{iecInternationalStandardIEC}
+    \item \textbf{Protección contra agua y partículas}: La caja cumplirá la norma internacional \texttt{CEI 60529} para permitir esta protección. En concreto una protección \texttt{IP67} que garantiza una protección completa contra polvo y pequeñas partículas y además, la inmersión completa de la caja a sin filtración alguna. \cite{iecInternationalStandardIEC}
 
-    \item Acceso restringido: Esto se logra con el diseño 3D que hemos propuesto para la caja, la única implementación adicional que es necesaria añadir son cerraduras en cada una de las puertas.
+    \item \textbf{Acceso restringido}: Esto se logra con el diseño \texttt{3D} que hemos propuesto para la caja, la única implementación adicional que es necesaria añadir son cerraduras en cada una de las puertas.
 
-    \item \textbf{Aislamiento eléctrico, resistencia rayos ultravioleta y temperatura:} Para esto se plantea que el material de la caja sea de policarbonato. Gracias a esto se consigue evitar el efecto de jaula de Faraday que pudiera causar el uso de una caja de metal. Además, el policarbonato proporciona una protección total de los rayos ultravioleta y una temperatura de operación desde \texttt{-40ºC} hasta \texttt{115ºC} siendo un rango más que de sobra para nuestro circuito. \cite{horeshPolycarbonateProtectionUV2021} Además, protege de posibles cortos en caso de que alguno de los elementos de la caja hiciera contacto con ella.
+    \item \textbf{Aislamiento eléctrico, resistencia rayos ultravioleta y temperatura}: Para esto se plantea que el material de la caja sea de policarbonato. Gracias a esto se consigue evitar el efecto de jaula de Faraday que pudiera causar el uso de una caja de metal. Además, el policarbonato proporciona una protección total de los rayos ultravioleta y una temperatura de operación desde $-40^o C$ hasta $115^oC$ siendo un rango más que de sobra para nuestro circuito. \cite{horeshPolycarbonateProtectionUV2021} Además, protege de posibles cortos en caso de que alguno de los elementos de la caja hiciera contacto con ella.
 
     Como elemento adicional, todo el cableado expuesto tanto en el interior de la caja (cableado usado por el usuario) como exteriores (cableado del panel solar) pasarán por prensaestopas y el cableado exterior constará de una funda de protección para el paso del panel a la caja.
     \begin{figure}[H]
@@ -89,6 +89,6 @@ Para cumplir el diseño teórico se proponen las siguientes características té
     \end{figure}
 
 
-    \item \textbf{Resistencia a golpes:} En caso de impactos la caja debe proporcionar cierta protección, para esto debe de asegurar un índice de protección \texttt{IK} entre $08$ y $09$ que ayudaría a mitigar los golpes de efectos adversos como el granizo o golpes de pequeñas rocas. \cite{iecInternationalStandardIEC}
+    \item \textbf{Resistencia a golpes}: En caso de impactos la caja debe proporcionar cierta protección, para esto debe de asegurar un índice de protección \texttt{IK} entre $08$ y $09$ que ayudaría a mitigar los golpes de efectos adversos como el granizo o golpes de pequeñas rocas. \cite{iecInternationalStandardIEC}
 
 \end{itemize}

@@ -1,6 +1,6 @@
 El módulo de bajo consumo es el encargado de reducir el consumo del sistema cuando no es necesario que funcione a plena potencia, es decir, entre las obtenciones de las diferentes medidas.
 
-Las librerías incluidas con el \texttt{ESP8266} incluye un modo de bajo consumo ya definido llamado \texttt{deep-sleep}, el cual desactiva el \texttt{WiFi}, el reloj del sistema y la \texttt{CPU}, es decir, solo mantiene el funcionamiento del \texttt{RTC} y reduce el consumo del sistema a apenas unas decenas de microamperios. Sin embargo, debido a que este modo de bajo consumo inhabilita también los \texttt{GPIO} es incompatible con nuestro sistema, ya que si se activara, el sistema no sería capaz de mantener los relés conmutados al entrar a este modo. Debido a esto, este modo de bajo consumo no es apto para nuestro sistema. \cite{esp8266ESP8266LowPower}
+Las librerías incluidas con el \texttt{ESP8266} incluye un modo de bajo consumo ya definido llamado \texttt{deep-sleep}, el cual desactiva el \texttt{Wi-Fi}, el reloj del sistema y la \texttt{CPU}, es decir, solo mantiene el funcionamiento del \texttt{RTC} y reduce el consumo del sistema a apenas unas decenas de microamperios. Sin embargo, debido a que este modo de bajo consumo inhabilita también los \texttt{GPIO} es incompatible con nuestro sistema, ya que si se activara, el sistema no sería capaz de mantener los relés conmutados al entrar a este modo. Debido a esto, este modo de bajo consumo no es apto para nuestro sistema. \cite{esp8266ESP8266LowPower}
 
 \begin{figure}[H]
     \centering
@@ -9,9 +9,9 @@ Las librerías incluidas con el \texttt{ESP8266} incluye un modo de bajo consumo
     \label{fig:3-2-5-1-ModosBajoConsumo}
 \end{figure}
 
-Debido a este requisito, hemos desarrollado nuestro propio modo de bajo consumo, el cual reduce el consumo del sistema en un $80\%$ aproximadamente. Este modo de bajo consumo es similar al llamado modem-sleep. Por nuestra parte, nuestro modo desactiva el wifi, baja la frecuencia del reloj del sistema y ejecuta un \texttt{delay}, para que el micro reduzca su consumo. Debido a que en ningún momento se inhabilitan los \texttt{GPIO}, este modo de bajo consumo es perfecto para nuestro sistema.
+Por este requisito, hemos desarrollado nuestro propio modo de bajo consumo, el cual reduce el consumo del sistema en un $80\%$ aproximadamente. Este modo de bajo consumo es similar al llamado \texttt{modem-sleep}. Por nuestra parte, nuestro modo desactiva el \texttt{Wi-Fi}, baja la frecuencia del reloj del sistema y ejecuta un \texttt{delay}, para que el micro reduzca su consumo. Ya que en ningún momento se inhabilitan los \texttt{GPIO}, este modo de bajo consumo es perfecto para nuestro sistema.
 
-Este módulo esta dividido en dos ficheros, \texttt{sleep.hpp} el cual contiene la definición de la función de bajo consumo y la importación de la librería necesaria, y el fichero \texttt{sleep.cpp}, el cual contiene la implementación de dicha función, que recibe como parámetro el tiempo en milisegundos deseado de duración del modo de bajo consumo y no devuelve nada.
+Este módulo está dividido en dos ficheros, \texttt{sleep.hpp} el cual contiene la definición de la función de bajo consumo y la importación de la librería necesaria, y el fichero \texttt{sleep.cpp}, el cual contiene la implementación de dicha función, que recibe como parámetro el tiempo en milisegundos deseado de duración del modo de bajo consumo y no devuelve nada.
 
 \begin{lstlisting}[captionpos=b, caption={Función bajo consumo}, language=c++]
     void sleep_low_power(int time_delay) {}
@@ -20,9 +20,9 @@ Este módulo esta dividido en dos ficheros, \texttt{sleep.hpp} el cual contiene 
 La secuencia de ejecución se puede dividir en dos secuencias consecutivas, una que activa el modo de bajo consumo y otra que restaura el funcionamiento normal. La secuencia de activación es la siguiente:
 
 \begin{enumerate}
-    \item Se desactiva el módulo de \texttt{WiFi}, activando el modo \texttt{WIFI\_OFF}.
-    \item Se llama a la función \texttt{forceSleepBegin()}, la cual guarda el modo de \texttt{WiFi} actual y fuerza el estado de modo \texttt{sleep} del \texttt{WiFi}, reduciendo aún más el consumo.
-    \item Se reduce la frecuencia del reloj del sistema al mínimo valor posible, $80\ MHZ$.
+    \item Se desactiva el módulo de \texttt{Wi-Fi}, activando el modo \texttt{Wi-Fi\_OFF}.
+    \item Se llama a la función \texttt{forceSleepBegin()}, la cual guarda el modo de \texttt{Wi-Fi} actual y fuerza el estado de modo \texttt{sleep} del \texttt{Wi-Fi}, reduciendo aún más el consumo.
+    \item Se reduce la frecuencia del reloj del sistema al mínimo valor posible, $80$ MHz.
     \item Se introduce un \texttt{delay}. Esto asegura que el microprocesador consumirá menos durante dicho tiempo, además se utiliza para definir la duración aproximada del modo de bajo consumo.
 \end{enumerate}
 
@@ -39,9 +39,9 @@ Una vez pasado el tiempo definido de bajo consumo, se entra en la secuencia de r
 
 \begin{enumerate}
     \item Aumentar la frecuencia del reloj al valor anterior, 160 MHz.
-    \item Forzar la activación del módulo del \texttt{WiFi}.
-    \item Aplicar un \texttt{delay} de $1\ ms$ para asegurar que el módulo \texttt{WiFi} se haya despertado.
-    \item Configurar el módulo de \texttt{WiFi} como una estación, es decir, configurar el \texttt{ESP8266} como un dispositivo que se conecta a un punto de acceso.
+    \item Forzar la activación del módulo del \texttt{Wi-Fi}.
+    \item Aplicar un \texttt{delay} de $1\ ms$ para asegurar que el módulo \texttt{Wi-Fi} se haya despertado.
+    \item Configurar el módulo de \texttt{Wi-Fi} como una estación, es decir, configurar el \texttt{ESP8266} como un dispositivo que se conecta a un punto de acceso.
 \end{enumerate}
 
 \begin{lstlisting}[captionpos=b, caption={Restauración modo bajo consumo}, language=c++]

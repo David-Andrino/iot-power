@@ -1,6 +1,17 @@
 
 El fichero \texttt{telemetry.hpp} define la estructura de datos que usaremos para la telemetría.
 
-Dicha estructura almacenará los datos de las medidas obtenidas por los \texttt{INA}, es decir, los datos de tensión y corriente de las baterías (del usuario y Backup) y del panel solar.
+Dicha estructura almacenará los datos de las medidas obtenidas por los \texttt{INA}, es decir, los datos de tensión y corriente de las baterías (del usuario y \textit{Backup}) y del panel solar.
 
-\todo{Fragmento de código con la estructura}
+\begin{lstlisting}[language=c++,caption={Estructura de datos para la telemetría},captionpos=b]
+typedef struct {
+    float VSolar;  /** Tension panel solar      */
+    float ISolar;  /** Corriente panel solar    */
+    float VBatbu;  /** Tension bateria backup   */
+    float IBatbu;  /** Corriente bateria backup */
+    float VBat1;   /** Tension bateria 1        */
+    float IBat1;   /** Corriente bateria 1      */
+    float VBat2;   /** Tension bateria 2        */
+    float IBat2;   /** Corriente bateria 2      */
+} telemetry_t;
+\end{lstlisting}
