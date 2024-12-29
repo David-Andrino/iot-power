@@ -38,23 +38,23 @@ El fichero ina.cpp contiene las siguientes funciones:
         Batbu.setConversionTime(CONV_TIME_1100);
         Bat1.setConversionTime(CONV_TIME_1100);
         Bat2.setConversionTime(CONV_TIME_1100);
-    
+
         Solar.setMeasureMode(CONTINUOUS);
         Batbu.setMeasureMode(CONTINUOUS);
         Bat1.setMeasureMode(CONTINUOUS);
         Bat2.setMeasureMode(CONTINUOUS);
-        
+
         Solar.setResistorRange(0.1, 10);
         Batbu.setResistorRange(0.1, 10);
         Bat1.setResistorRange(0.1, 10);
         Bat2.setResistorRange(0.1, 10);
-        
+
         // Factores de correccion medidos experimentalmente
         Solar.setCorrectionFactor(1.0469);
         Batbu.setCorrectionFactor(1.0419);
         Bat1.setCorrectionFactor(0.9650);
         Bat2.setCorrectionFactor(0.9624);
-        
+
         Solar.waitUntilConversionCompleted();
         Batbu.waitUntilConversionCompleted();
         Bat1.waitUntilConversionCompleted();
@@ -101,25 +101,25 @@ El fichero ina.cpp contiene las siguientes funciones:
           setupINA226Sensors();
           first_config=true;
         }else{
-          powerUpINA226();  
+          powerUpINA226();
         }
-    
+
         reconfig_INAs();
-        
+
         Solar.readAndClearFlags();
         telemetry->VSolar = Solar.getBusVoltage_V() + (Solar.getShuntVoltage_mV() / 100);
         telemetry->ISolar = Solar.getCurrent_mA();
-    
+
         // Bateria Backup
         Batbu.readAndClearFlags();
         telemetry->VBatbu = Batbu.getBusVoltage_V() + (Batbu.getShuntVoltage_mV() / 100);
         telemetry->IBatbu = -Batbu.getCurrent_mA();
-    
+
         // Bateria 1
         Bat1.readAndClearFlags();
         telemetry->VBat1 = Bat1.getBusVoltage_V() + (Bat1.getShuntVoltage_mV() / 100);
         telemetry->IBat1 = -Bat1.getCurrent_mA(); // Invertir signo porque esta al reves
-    
+
         // Bateria 2
         Bat2.readAndClearFlags();
         telemetry->VBat2 = Bat2.getBusVoltage_V() + (Bat2.getShuntVoltage_mV() / 100);
@@ -138,6 +138,6 @@ En el contenido de este mismo fichero, se instancian los 4 \texttt{INA} que tene
     INA226_WE Batbu(I2C_D_BAT_BU);
     INA226_WE Bat1(I2C_D_BAT_1);
     INA226_WE Bat2(I2C_D_BAT_2);
-    
+
 \end{lstlisting}
 
