@@ -2,7 +2,7 @@
 
 \subsection{Descripción funcional del equipo}
 
-El sistema se encarga de cargar mediante energía solar y monitorizar dos baterías $12 V$ / $7 Ah$. Se encargará de guardar las medidas en un log y se visualizarán en un servidor, al que el usuario podrá acceder mediante un PC o un móvil. Además, el sistema dispondrá de una batería de backup para alimentar el sistema cuando la situación lo requiera (Bajo rendimiento solar). La batería de backup también se recargará mediante energía solar.
+El sistema se encarga de cargar mediante energía solar y monitorizar dos baterías $12 V$ / $7 Ah$. Se encargará de guardar las medidas en un \texttt{log} y se visualizarán en un servidor, al que el usuario podrá acceder mediante un PC o un móvil. Además, el sistema dispondrá de una batería de backup para alimentar el sistema cuando la situación lo requiera (Bajo rendimiento solar). La batería de backup también se recargará mediante energía solar.
 
 
 \subsection{Especificaciones funcionales}
@@ -35,12 +35,12 @@ Se diseñará un sistema de carga de baterías para emplazamientos aislados exte
 \begin{itemize}
     \item Se utilizará el entorno \texttt{Arduino IDE} para el desarrollo del código en el lenguaje \texttt{Arduino}.
     \item Se configurará y gestionará la conexión \texttt{Wi-Fi} en el \texttt{ESP8266}.
-    \item Toda la información estará disponible al usuario mediante un servidor web y un log almacenado en la memoria \texttt{flash} del microcontrolador.
+    \item Toda la información estará disponible al usuario mediante un servidor web y un \texttt{log} almacenado en la memoria \texttt{flash} del microcontrolador.
     \item En caso de pérdida de señal, el sistema seguirá almacenando medidas localmente.
-    \item Se dispondrá de un modo de lectura de medidas para obtener el log de medidas a través de \texttt{Serial}.
+    \item Se dispondrá de un modo de lectura de medidas para obtener el \texttt{log} de medidas a través de \texttt{Serial}.
     \item Se utilizará el protocolo de comunicación \texttt{MQTT} para la comunicación entre el \texttt{ESP8266} y el servidor.
     \item El cliente podrá acceder al sistema a través de una interfaz web (en móvil u ordenador).
     \item En el servidor web se visualizará en tiempo real gráficas y valores que correspondan con el estado de carga de las baterías y la producción de energía del panel solar.
-    \item En el log se almacenará la tensión y corriente de carga de las tres baterías y la producción de energía del panel solar.
+    \item En el \texttt{log} se almacenará la tensión y corriente de carga de las tres baterías y la producción de energía del panel solar.
     \item El funcionamiento normal del sistema consistirá en: El sistema se despierta, toma medidas, gestiona los relés, intenta conectarse a la red y enviar las medidas, almacena las medidas en memoria y se duerme hasta el siguiente ciclo. De esta forma se optimiza el consumo de batería.
 \end{itemize}

@@ -37,20 +37,20 @@ psql
     \begin{verbatim}
 \password
     \end{verbatim}
-    Después pulsa ``Ctrl + D'' para volver atrás y utiliza el siguiente comando para conectarte a la base de datos postgres:
+    Después pulsa ``Ctrl + D'' para volver atrás y utiliza el siguiente comando para conectarte a la base de datos \texttt{postgres}:
     \begin{verbatim}
 psql -U postgres -d postgres -h 127.0.0.1 -W
     \end{verbatim}
-    Ahora, crea la base de datos para \texttt{Thingsboard} mediante el comando: \\
+    Ahora, crea la base de datos para \texttt{ThingsBoard} mediante el comando: \\
     \texttt{CREATE DATABASE thingsboard;} \\
-    Por último, pulsa dos veces ``Ctrl + D'' para salir del PostgreSQL.
+    Por último, pulsa dos veces ``Ctrl + D'' para salir del \texttt{PostgreSQL}.
 
     \item Modificar el archivo de configuración de \texttt{ThingsBoard} mediante el siguiente comando:
     \begin{verbatim}
 sudo nano /etc/thingsboard/conf/thingsboard.conf
     \end{verbatim}
     A continuación, añade estas líneas al final del archivo y no olvides cambiar \\
-    \texttt{PUT\_YOUR\_POSTGRESQL\_PASSWORD\_HERE} por la contraseña del postgres que pusiste anteriormente:
+    \texttt{PUT\_YOUR\_POSTGRESQL\_PASSWORD\_HERE} por la contraseña del \texttt{postgres} que pusiste anteriormente:
     \begin{verbatim}
 # DB Configuration
 export DATABASE_TS_TYPE=sql
@@ -81,9 +81,9 @@ Una vez realizados estos pasos, se podrá acceder a \texttt{ThingsBoard} en la s
 
 Por defecto, \texttt{ThingsBoard} incluye tres diferentes perfiles para acceder a la plataforma:
 \begin{itemize}
-    \item System Administrator: \texttt{sysadmin@thingsboard.org / sysadmin}
-    \item Tenant Administrator: \texttt{tenant@thingsboard.org / tenant}
-    \item Customer User: \texttt{customer@thingsboard.org / customer}
+    \item \textit{System Administrator}: \texttt{sysadmin@thingsboard.org / sysadmin}
+    \item \textit{Tenant Administrator}: \texttt{tenant@thingsboard.org / tenant}
+    \item \textit{Customer User}: \texttt{customer@thingsboard.org / customer}
 \end{itemize}
 
 Debido al uso de la máquina virtual, se ha tenido que realizar una redirección de los puertos mediante la interfaz de red de la propia máquina, obteniendo la siguiente configuración:
@@ -95,9 +95,9 @@ Debido al uso de la máquina virtual, se ha tenido que realizar una redirección
     \label{fig:3-2-2-PuertosMV}
 \end{figure}
 
-Por lo que, en nuestro caso, el puerto 1883 del \texttt{MQTT Broker} se corresponde con el puerto 4444 del anfitrión (\textit{host}), el puerto 3333 del anfitrión se corresponde con el puerto 8080 de la MV y también se ha redirigido el puerto 22 de \texttt{SSH} al puerto 2222 de la máquina anfitriona.
+Por lo que, en nuestro caso, el puerto 1883 del \texttt{MQTT Broker} se corresponde con el puerto 4444 del anfitrión (\textit{host}), el puerto 3333 del anfitrión se corresponde con el puerto 8080 de la máquina virtual y también se ha redirigido el puerto 22 de \texttt{SSH} al puerto 2222 de la máquina anfitriona.
 
-Para la comunicación entre la plataforma \texttt{ThingsBoard} y el dispositivo \texttt{ESP8266}, se ha implementado el broker \texttt{Mosquitto}, el cual es un broker \texttt{MQTT} OpenSource ampliamente utilizado debido a su ligereza, lo que permite fácilmente emplearlo en gran número de ambientes, incluso si estos son de pocos recursos. A continuación se indica el comando necesario para su instalación, obtenido de la guía oficial de \texttt{ThingsBoard}: \cite{thingsboardMQTTDeviceAPI}
+Para la comunicación entre la plataforma \texttt{ThingsBoard} y el dispositivo \texttt{ESP8266}, utilizamos un \texttt{Broker MQTT} \textit{OpenSource} ampliamente utilizado debido a su ligereza, lo que permite fácilmente emplearlo en gran número de ambientes, incluso si estos son de pocos recursos. A continuación se indica el comando necesario para su instalación, obtenido de la guía oficial de \texttt{ThingsBoard}: \cite{thingsboardMQTTDeviceAPI}
 
 \begin{verbatim}
 sudo apt-get install mosquitto-clients
@@ -127,7 +127,7 @@ Client mosqpub|xxx received PUBACK (Mid: 1)
 Client mosqpub|xxx sending DISCONNECT
 \end{verbatim}
 
-Una vez que se ha comprobado el correcto funcionamiento de la conexión entre la plataforma \texttt{Thingsboard} y el \texttt{broker} y cliente \texttt{MQTT}, se puede continuar con la personalización de dicha plataforma.
+Una vez que se ha comprobado el correcto funcionamiento de la conexión entre la plataforma \texttt{ThingsBoard} y el \texttt{broker} y cliente \texttt{MQTT}, se puede continuar con la personalización de dicha plataforma.
 
 Para la visualización de los datos recibidos, se ha optado por diseñar dos paneles o \textit{Dashboards}, uno en representación en forma de tablas y otro en forma de gráficas. Ambos paneles se actualizan en tiempo real y cuentan con una tabla o gráfica para cada dispositivo, obtenido un total de 4 tablas y 4 gráficas. Además, en las gráficas se puede visualizar también la media de los últimos datos medidos.
 
@@ -145,7 +145,7 @@ Para la visualización de los datos recibidos, se ha optado por diseñar dos pan
     \label{fig:3-2-2-GraficaThingsBoard}
 \end{figure}
 
-Debido a que mediante los sensores solo se obtienen valores de tensión y de corriente, se ha implementado un algoritmo mediante las cadenas de reglas de \texttt{Thingsboard}. Se ha necesitado crear una cadena de reglas para cada potencia calculada, obteniendo 4 cadenas de reglas como la siguiente:
+Debido a que mediante los sensores solo se obtienen valores de tensión y de corriente, se ha implementado un algoritmo mediante las cadenas de reglas de \texttt{ThingsBoard}. Se ha necesitado crear una cadena de reglas para cada potencia calculada, obteniendo 4 cadenas de reglas como la siguiente:
 
 \begin{figure}[H]
     \centering
@@ -163,7 +163,7 @@ Dichas cadenas de reglas se dividen en los siguientes pasos:
     \item Guardas los valores para su representación
 \end{enumerate}
 
-Por último, se ha añadido dichas cadenas de reglas de potencia a la cadena de regla principal, la cual gestiona el funcionamiento completo de \texttt{Thingsboard} y permite visualizar el dato obtenido de su respectiva cadena de regla.
+Por último, se ha añadido dichas cadenas de reglas de potencia a la cadena de regla principal, la cual gestiona el funcionamiento completo de \texttt{ThingsBoard} y permite visualizar el dato obtenido de su respectiva cadena de regla.
 
 \begin{figure}[H]
     \centering

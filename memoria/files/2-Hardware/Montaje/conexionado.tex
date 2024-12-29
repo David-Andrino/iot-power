@@ -14,7 +14,7 @@ Entre la salida del relé 2 y cada cargador de batería hay un diodo. Este diodo
 
 El regulador conmutado reductor se encarga de reducir los $24 V$ de su entrada a $7 V$ en la entrada del \texttt{LDO}. La salida del \texttt{LDO} se conecta a los \texttt{INA226} y al \texttt{ESP8266} para alimentarlos a $5 V$.
 
-Para medir la tensión y corriente en el panel solar, la batería de backup y las baterías principales, se utilizan los \texttt{INA226}. Estos sensores se conectan al \texttt{ESP8266} por \texttt{I2C}, que se encarga de procesar la información y enviarla por \texttt{MQTT} al servidor, además de guardarla en un log.
+Para medir la tensión y corriente en el panel solar, la batería de backup y las baterías principales, se utilizan los \texttt{INA226}. Estos sensores se conectan al \texttt{ESP8266} por \texttt{I2C}, que se encarga de procesar la información y enviarla por \texttt{MQTT} al servidor, además de guardarla en un \texttt{log}.
 
 El \texttt{ESP8266} se encarga no solo de la toma y gestión de las medidas sino que también del control de la conmutación de los relés para los cambios de estado del sistema [\autoref{subsubsec:estados}] y la protección del circuito. Por ello, dos de sus pines están conectados a la entrada \texttt{SW} de cada relé.
 
