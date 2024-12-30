@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['measureina226_0',['measureINA226',['../ina_8hpp.html#a8bf6f569a506efddd83bcaa15be6b18b',1,'ina.cpp']]],
-  ['mqtt_5fclient_2ehpp_1',['mqtt_client.hpp',['../mqtt__client_8hpp.html',1,'']]]
+  ['elevador_3a_20xl6009_0',['Convertidor elevador: XL6009',['../md_memoria_2structure.html#autotoc_md10',1,'']]],
+  ['en_20esp8266_1',['Implementación en ESP8266',['../md_memoria_2structure.html#autotoc_md18',1,'']]],
+  ['en_20thingsboard_2',['Implementación en Thingsboard',['../md_memoria_2structure.html#autotoc_md19',1,'']]],
+  ['enunciado_20y_20caso_20de_20uso_3',['Introducción (Enunciado y caso de uso)',['../md_memoria_2structure.html',1,'']]],
+  ['esp8266_4',['Implementación en ESP8266',['../md_memoria_2structure.html#autotoc_md18',1,'']]]
 ];

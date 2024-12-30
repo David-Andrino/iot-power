@@ -26,6 +26,38 @@ var NAVTREE =
 [
   [ "IoT_POWER", "index.html", [
     [ "IoT - POWER", "index.html", null ],
+    [ "Introducción (Enunciado y caso de uso)", "md_memoria_2structure.html", [
+      [ "Desarrollo Hardware", "md_memoria_2structure.html#autotoc_md2", [
+        [ "Diagrama de bloques", "md_memoria_2structure.html#autotoc_md3", null ],
+        [ "Módulos individuales (Caracterización)", "md_memoria_2structure.html#autotoc_md4", [
+          [ "Módulo de reducción de consumo de relés (Cosecha propia)", "md_memoria_2structure.html#autotoc_md5", null ],
+          [ "Medidor de tensión y corriente: INA226", "md_memoria_2structure.html#autotoc_md6", null ],
+          [ "Cargador de baterías: CN3768", "md_memoria_2structure.html#autotoc_md7", null ],
+          [ "Controlador de descarga: PS58F1", "md_memoria_2structure.html#autotoc_md8", null ],
+          [ "Convertidor reductor: LM2596", "md_memoria_2structure.html#autotoc_md9", null ],
+          [ "Convertidor elevador: XL6009", "md_memoria_2structure.html#autotoc_md10", null ],
+          [ "Regulador lineal: AMS1117", "md_memoria_2structure.html#autotoc_md11", null ],
+          [ "Baterías", "md_memoria_2structure.html#autotoc_md12", null ],
+          [ "Panel solar", "md_memoria_2structure.html#autotoc_md13", null ]
+        ] ],
+        [ "Montaje completo", "md_memoria_2structure.html#autotoc_md14", null ]
+      ] ],
+      [ "Desarrollo Software", "md_memoria_2structure.html#autotoc_md15", [
+        [ "Librerías utilizadas", "md_memoria_2structure.html#autotoc_md16", null ],
+        [ "Arquitectura de la solución", "md_memoria_2structure.html#autotoc_md17", [
+          [ "Implementación en ESP8266", "md_memoria_2structure.html#autotoc_md18", null ],
+          [ "Implementación en Thingsboard", "md_memoria_2structure.html#autotoc_md19", null ]
+        ] ],
+        [ "Documentación software (Doxygen)", "md_memoria_2structure.html#autotoc_md20", null ]
+      ] ],
+      [ "Desarrollo teórico", "md_memoria_2structure.html#autotoc_md21", [
+        [ "Caja", "md_memoria_2structure.html#autotoc_md22", null ],
+        [ "Panel solar", "md_memoria_2structure.html#autotoc_md23", null ]
+      ] ],
+      [ "Presupuesto", "md_memoria_2structure.html#autotoc_md24", null ],
+      [ "Horas totales realizadas", "md_memoria_2structure.html#autotoc_md25", null ],
+      [ "Bibliografía", "md_memoria_2structure.html#autotoc_md26", null ]
+    ] ],
     [ "Estructuras de datos", "annotated.html", [
       [ "Estructuras de datos", "annotated.html", "annotated_dup" ],
       [ "Índice de estructuras de datos", "classes.html", null ],

@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['telemetry_2ehpp_0',['telemetry.hpp',['../MAIN__POWER_2telemetry_8hpp.html',1,'(Espacio de nombres global)'],['../read__file_2telemetry_8hpp.html',1,'(Espacio de nombres global)']]],
-  ['telemetry_5ft_1',['telemetry_t',['../structtelemetry__t.html',1,'']]]
+  ['la_20solución_0',['Arquitectura de la solución',['../md_memoria_2structure.html#autotoc_md17',1,'']]],
+  ['librerías_20utilizadas_1',['Librerías utilizadas',['../md_memoria_2structure.html#autotoc_md16',1,'']]],
+  ['lineal_3a_20ams1117_2',['Regulador lineal: AMS1117',['../md_memoria_2structure.html#autotoc_md11',1,'']]],
+  ['lm2596_3',['Convertidor reductor: LM2596',['../md_memoria_2structure.html#autotoc_md9',1,'']]]
 ];
