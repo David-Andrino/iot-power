@@ -1,0 +1,635 @@
+\section{Código de la aplicación}
+
+\begin{lstlisting}[language=c++,caption={Fichero \texttt{file\_management.hpp}},captionpos=b]
+/**
+* @file file_management.hpp
+* @author Estela Mora
+* @author David Andrino
+* @author Hugo Sanchez
+* @author Fernando Sanz
+* @brief Modulo de gestion de ficheros
+* @version 1.1
+* @date 15-12-2024
+* 
+* @copyright Copyright (c) 2024
+* 
+*/
+#ifndef FILE_MANAGEMENT_H
+#define FILE_MANAGEMENT_H
+
+#include <FS.h>
+#include <time.h>
+#include "telemetry.hpp"
+
+/**
+ * @brief Borra el contenido del fichero indicado.
+ * 
+ * @param measFile Nombre del fichero a borrar.
+ */
+extern void clear_file(const char* measFile);
+
+/**
+ * @brief Lee el contenido del fichero indicado. Imprime en consola el contenido.
+ * 
+ * @param measFile Nombre del fichero a leer.
+ */
+extern void read_meas(const char* measFile);
+
+/**
+ * @brief Escribe la medida en el fichero indicado.
+ * Formato: [timestamp] VPanelSolar: X.XX V, IPanelSolar: X.XX mA, VBatBackup: X.XX V, IBatBackup: X.XX mA, VBat1: X.XX V, IBat1: X.XX mA, VBat2: X.XX V, IBat2: X.XX mA
+ * 
+ * @param measFile Nombre del fichero.
+ * @param measures Medidas a escribir.
+ * @param timestamp Marca de tiempo.
+ * @return true si la escritura fue exitosa, false en caso contrario.
+ */
+extern bool write_meas(const char* measFile , telemetry_t measures, String timestamp);
+
+#endif
+\end{lstlisting}
+
+\begin{lstlisting}[language=c++,caption={Fichero \texttt{file\_management.cpp}},captionpos=b]
+#include "file_management.hpp"
+
+void clear_file(const char* measFile) {
+    if (!SPIFFS.begin()) {
+        Serial.println("[FILE_MGT] Error iniciando SPIFFS");
+        return;
+    }
+
+    File file = SPIFFS.open(measFile, "w");
+    if (!file) {
+        Serial.println("[FILE_MGT] Error abriendo el fichero para borrar");
+        return;
+    }
+
+    file.close();
+    Serial.println("[FILE_MGT] El contenido del fichero ha sido borrado.");
+}
+
+void read_meas(const char* measFile){
+    if (!SPIFFS.begin()) {
+        Serial.println("[FILE_MGT] Error iniciando SPIFFS");
+        return;
+    }
+
+    File measurementFile = SPIFFS.open(measFile, "r");
+    if (!measurementFile) {
+        Serial.println("[FILE_MGT] Error abriendo fichero");
+        return;
+    }
+
+    Serial.println("[FILE_MGT] Abriendo " + String(measFile) + ". Contenido: ");
+
+    while (measurementFile.available()) {
+        Serial.write(measurementFile.read());
+    }
+
+    measurementFile.close();
+}
+
+bool write_meas(const char* measFile, telemetry_t measures, String timestamp) {
+    if (!SPIFFS.begin()) {
+        return false;
+    }
+
+    File measurementFile = SPIFFS.open(measFile, "a");
+    if (!measurementFile) {
+        return false;
+    }
+
+    String measurement = timestamp +
+                         " VPanelSolar: " + String(measures.VSolar) + " V, " +
+                         "IPanelSolar: " + String(measures.ISolar) + " mA, " +
+                         "VBatBackup: " + String(measures.VBatbu) + " V, " +
+                         "IBatBackup: " + String(measures.IBatbu) + " mA, " +
+                         "VBat1: " + String(measures.VBat1) + " V, " +
+                         "IBat1: " + String(measures.IBat1) + " mA, " +
+                         "VBat2: " + String(measures.VBat2) + " V, " +
+                         "IBat2: " + String(measures.IBat2) + " mA";
+
+    measurementFile.println(measurement);
+    measurementFile.close();
+
+    return true;
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=c++,caption={Fichero\texttt{hardware.hpp}}, captionpos=b]
+/**
+* @file hardware.hpp
+* @author Estela Mora
+* @author David Andrino
+* @author Hugo Sanchez
+* @author Fernando Sanz
+* @brief Definicion de pines hardware
+* @version 1.1
+* @date 15-12-2024
+*/
+#ifndef HARDWARE_H
+#define HARDWARE_H
+
+#define RELAY_SW_IN 13
+#define RELAY_SW_OUT 15
+#define SDA 4
+#define SCL 5
+
+#endif
+\end{lstlisting}
+
+\begin{lstlisting}[language=c++,caption={Fichero\texttt{ina.cpp}}, captionpos=b]
+//! Clase ina. Engargada de configurar y solicitar medidas al los INAs del circuito.
+
+#include "ina.hpp"
+
+// INA226 instances
+INA226_WE Solar(I2C_D_PANEL);
+INA226_WE Batbu(I2C_D_BAT_BU);
+INA226_WE Bat1(I2C_D_BAT_1);
+INA226_WE Bat2(I2C_D_BAT_2);
+
+//! Booleano.
+/*! Indica si se ha realizado la configuracion inicial de los sensores*/
+bool first_config=false;
+
+void setupINA226Sensors();
+void reconfig_INAs();
+void powerDownINA226();
+void powerUpINA226();
+
+/**************************************************************************//**
+ * Configuracion inicial de los sensores.
+ *
+ * Tras un reset se inician los sensores para ser modificados, estableciendose los parametros:
+ *  -Tiempo de conversion: Entre 140 us y 8.244 ms.
+ *  -Modo de medida: POWER_DOWN (Sistema apagado), TRIGGERED (medidas a peticion) o CONTINUOUS (medidas constantes).
+ *  -Valor de la resistencia se SHUNT. 
+ *  -Rango de corrientes.
+ *  -Factor de correcion.
+ ******************************************************************************/
+void setupINA226Sensors() {
+    Wire.begin();
+    Solar.init();
+    Batbu.init();
+    Bat1.init();
+    Bat2.init();
+}
+
+/**************************************************************************//**
+ * Reconfiguracion de los sensores.
+ *
+ * Al desperta a los sensores, se reinician con la configuracion por defecto.
+ * Por ello es necesario reconfigurarlos al volver a tomar medidas.
+ ******************************************************************************/
+
+void reconfig_INAs(){
+    Solar.setConversionTime(CONV_TIME_1100);
+    Batbu.setConversionTime(CONV_TIME_1100);
+    Bat1.setConversionTime(CONV_TIME_1100);
+    Bat2.setConversionTime(CONV_TIME_1100);
+
+    Solar.setMeasureMode(CONTINUOUS);
+    Batbu.setMeasureMode(CONTINUOUS);
+    Bat1.setMeasureMode(CONTINUOUS);
+    Bat2.setMeasureMode(CONTINUOUS);
+    
+    Solar.setResistorRange(0.1, 10);
+    Batbu.setResistorRange(0.1, 10);
+    Bat1.setResistorRange(0.1, 10);
+    Bat2.setResistorRange(0.1, 10);
+    
+    // Factores de correccion medidos experimentalmente
+    Solar.setCorrectionFactor(1.0469);
+    Batbu.setCorrectionFactor(1.0419);
+    Bat1.setCorrectionFactor(0.9650);
+    Bat2.setCorrectionFactor(0.9624);
+    
+    Solar.waitUntilConversionCompleted();
+    Batbu.waitUntilConversionCompleted();
+    Bat1.waitUntilConversionCompleted();
+    Bat2.waitUntilConversionCompleted();
+}
+
+/**************************************************************************//**
+ * Realiza una medida de todos los sensores.
+ *
+ *Inicialmente se verifica si se ha realizado la configuracion inicial de los INAs.
+ *  -Si se ha realizado, se despiertan y reconfiguran
+ *  -En caso contrario se realiza una configuracion inicial antes de la captacion de datos.
+ *Se realiza 1 medida que es almacenada en la estrucutra de datos.
+ *Y finalmente se ponen a bajo consumo los INA.
+ * @param telemetry Puntero a la estructura de datos que contiene las medidas de tension y corriente de las baterias y panel solar.
+ ******************************************************************************/
+
+void measureINA226(telemetry_t *telemetry) {
+    // Panel Solar
+    if(first_config==false){
+      setupINA226Sensors();
+      first_config=true;
+    }else{
+      powerUpINA226();  
+    }
+
+    reconfig_INAs();
+    
+    Solar.readAndClearFlags();
+    telemetry->VSolar = Solar.getBusVoltage_V() + (Solar.getShuntVoltage_mV() / 100);
+    telemetry->ISolar = Solar.getCurrent_mA();
+
+    // Bateria Backup
+    Batbu.readAndClearFlags();
+    telemetry->VBatbu = Batbu.getBusVoltage_V() + (Batbu.getShuntVoltage_mV() / 100);
+    telemetry->IBatbu = -Batbu.getCurrent_mA();
+
+    // Bateria 1
+    Bat1.readAndClearFlags();
+    telemetry->VBat1 = Bat1.getBusVoltage_V() + (Bat1.getShuntVoltage_mV() / 100);
+    telemetry->IBat1 = -Bat1.getCurrent_mA(); // Invertir signo porque esta al reves
+
+    // Bateria 2
+    Bat2.readAndClearFlags();
+    telemetry->VBat2 = Bat2.getBusVoltage_V() + (Bat2.getShuntVoltage_mV() / 100);
+    telemetry->IBat2 = Bat2.getCurrent_mA();
+    powerDownINA226();
+}
+
+/**************************************************************************//**
+ * Pone en modo de bajo consumo a los INA.
+ *
+ * Tras una medida no es necesario que se mantengan activos los sensores por lo que es necesario ponerlos a bajo consumo.
+ ******************************************************************************/
+
+void powerDownINA226() {
+    Solar.powerDown();
+    Batbu.powerDown();
+    Bat1.powerDown();
+    Bat2.powerDown();
+}
+
+/**************************************************************************//**
+ * Despierta a los INA del bajo consumo.
+ *
+ * Al desperta a los sensores, se reinician con la configuracion por defecto.
+ * Por ello es necesario reconfigurarlos al volver a tomar medidas.
+ ******************************************************************************/
+
+void powerUpINA226() {
+    Solar.powerUp();
+    Batbu.powerUp();
+    Bat1.powerUp();
+    Bat2.powerUp();
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=c++,caption={Fichero\texttt{ina.hpp}}, captionpos=b]
+/**
+* @file ina.hpp
+* @author Estela Mora
+* @author David Andrino
+* @author Hugo Sanchez
+* @author Fernando Sanz
+* @brief Modulo de medida de sensores INA226
+* @version 1.1
+* @date 15-12-2024
+*/
+#ifndef ina_h
+#define ina_h
+
+#include <Wire.h>
+#include <INA226_WE.h>
+#include "telemetry.hpp"
+
+/** @def I2C_D_PANEL
+    @brief Indica la direccion I2C del INA que toma las medidas del panel solar.
+*/
+#define I2C_D_PANEL  0x45
+/** @def I2C_D_BAT_BU
+    @brief Indica la direccion I2C del INA que toma las medidas de la bateria de BackUp.
+*/
+#define I2C_D_BAT_BU 0x40
+/** @def I2C_D_BAT_1
+    @brief Indica la direccion I2C del INA que toma las medidas de la primera bateria.
+*/
+#define I2C_D_BAT_1  0x44
+/** @def I2C_D_BAT_2
+    @brief Indica la direccion I2C del INA que toma las medidas de la segunda bateria.
+*/
+#define I2C_D_BAT_2  0x41
+
+/**
+ * @brief Realiza una medida de todos los sensores.
+ *
+ * Inicialmente se verifica si se ha realizado la configuracion inicial de los INAs.
+ *     - Si se ha realizado, se despiertan y reconfiguran.
+ *     - En caso contrario se realiza una configuracion inicial antes de la captacion de datos.
+ * Se realiza 1 medida que es almacenada en la estructura de datos.
+ * Finalmente se apagan los INA.
+ * 
+ * @param telemetry Puntero a la estructura de datos que contiene las medidas.
+ */
+void measureINA226(telemetry_t *telemetry);
+
+#endif
+\end{lstlisting}
+
+\begin{lstlisting}[language=c++,caption={Fichero\texttt{MAIN\_POWER.ino}}, captionpos=b]
+#include "telemetry.hpp"
+#include "hardware.hpp"
+#include "ina.hpp"
+#include "mqtt_client.hpp"
+#include "file_management.hpp"
+#include "sleep.hpp"
+
+#define DEBUG
+
+#ifdef DEBUG
+#define PRINT_DEBUG(...) Serial.println(__VA_ARGS__)
+#else
+#define PRINT_DEBUG(...)
+#endif
+
+#define ssid             "POC"
+#define password         "POWERIoT"
+
+#define MQTT_SERVER      const_cast<char*>("192.168.111.69")
+#define MQTT_PORT        4444
+
+#define TIME_SLEEP       2000
+#define WIFI_TRIES       35
+#define BAT_THRESH       11.65
+#define SOLAR_THRESH     20
+#define MEASUREMENT_FILE "/measurements.txt"
+
+telemetry_t telemetry   = {0, 0, 0, 0, 0, 0, 0, 0};
+char        timeStr[50] = "";
+struct tm   currentTime;
+
+/**
+ * @brief Intenta realizar la conexion WiFi hasta WIFI_TRIES intentos
+ */
+static void setup_wifi();
+
+/**
+ * @brief Conmuta los reles en funcion de las medidas tomadas
+ * 
+ * 1. Si la tension del panel solar es mayor que SOLAR_THRESH, se activa el panel solar.
+ * 2. Si la tension de la bateria de backup es mayor que BAT_THRESH, se activa la bateria de backup.
+ * 3. En caso contrario, se activa la proteccion de sobredescarga.
+ * 
+ * @param telemetry Puntero a la estructura de medidas
+ */
+static void setRelays(telemetry_t *telemetry);
+
+void setup() {
+    pinMode(RELAY_SW_IN,  OUTPUT);
+    pinMode(RELAY_SW_OUT, OUTPUT);
+    pinMode(SDA,          OUTPUT);
+    pinMode(SCL,          OUTPUT);
+
+    Serial.begin(9600);
+}
+
+void loop() {
+    measureINA226(&telemetry); // Si no estan los INA conectados, bloquea
+
+    PRINT_DEBUG("[INA] VSolar [V]:  " + String(telemetry.VSolar));
+    PRINT_DEBUG("[INA] ISolar [mA]: " + String(telemetry.ISolar));
+    PRINT_DEBUG("[INA] VBatbu [V]:  " + String(telemetry.VBatbu));
+    PRINT_DEBUG("[INA] IBatbu [mA]: " + String(telemetry.IBatbu));
+    PRINT_DEBUG("[INA] VBat1 [V]:   " + String(telemetry.VBat1));
+    PRINT_DEBUG("[INA] IBat1 [mA]:  " + String(telemetry.IBat1));
+    PRINT_DEBUG("[INA] VBat2 [V]:   " + String(telemetry.VBat2));
+    PRINT_DEBUG("[INA] IBat2 [mA]:  " + String(telemetry.IBat2));
+
+    setRelays(&telemetry);
+
+    setup_wifi();
+
+    if (WiFi.status() == WL_CONNECTED){
+        configTime(3600, 0, "time.nist.gov", "0.pool.ntp.org");
+        
+        if (!publishTelemetry(MQTT_SERVER, MQTT_PORT, telemetry)){
+            PRINT_DEBUG("[POWER] ERROR publicando medidas");
+        } else {
+            PRINT_DEBUG("[POWER] Medidas publicadas con exito");
+        }
+
+        getLocalTime(&currentTime, 1000);
+        strftime(timeStr, 50, "[%d/%m/%y - %H:%M:%S]", &currentTime);
+        PRINT_DEBUG("[WIFI] Sincronizado con NTP. Hora obtenida: " + String(timeStr));
+    } else {
+        PRINT_DEBUG("[WIFI] No se ha podido conectar a la red WiFi");
+        snprintf(timeStr, 50, "[00/00/00 - 00:00:00]");
+    }
+
+    if (write_meas(MEASUREMENT_FILE, telemetry, timeStr)){
+        PRINT_DEBUG("[POWER] Fichero escrito con exito");
+    } else {
+        PRINT_DEBUG("[POWER] El fichero no ha podido ser escrito");
+    }
+
+    sleep_low_power(TIME_SLEEP);
+}
+
+static void setup_wifi() {
+    delay(10);
+    Serial.print("[WIFI] Intentando conectar a " ssid);
+
+    WiFi.begin(ssid, password);
+    for (int i = 0; i < WIFI_TRIES && WiFi.status() != WL_CONNECTED; i++) {
+        delay(500);
+        Serial.print(".");
+        i++;
+    }
+    if(WiFi.status() == WL_CONNECTED){
+        PRINT_DEBUG("[WIFI] Conectado a la red WiFi "  ssid  " con IP: "); PRINT_DEBUG(WiFi.localIP());
+    } else {
+        PRINT_DEBUG("[WIFI] No se ha podido conectar a la red WiFi");
+    }
+}
+
+static void setRelays(telemetry_t *telemetry){
+    if (telemetry->VSolar > SOLAR_THRESH) {
+        PRINT_DEBUG("[RELAY] Panel solar activo");
+
+        digitalWrite(RELAY_SW_IN,LOW);
+        digitalWrite(RELAY_SW_OUT,LOW);  
+    } else if (telemetry->VBatbu > BAT_THRESH){
+        PRINT_DEBUG("[RELAY] Bateria backup activa");
+
+        digitalWrite(RELAY_SW_IN,HIGH);
+        digitalWrite(RELAY_SW_OUT,HIGH);
+    } else {
+        PRINT_DEBUG("[RELAY] Activando proteccion sobredescarga. Se detendra el sistema");
+
+        digitalWrite(RELAY_SW_IN,LOW);
+        digitalWrite(RELAY_SW_OUT,LOW);
+    }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=c++,caption={Fichero\texttt{mqtt\_client.cpp}}, captionpos=b]
+#include "mqtt_client.hpp"
+
+static void reconnect(PubSubClient& client, char* const mqtt_server, int mqtt_port);
+
+bool publishTelemetry(char* const mqtt_server, int mqtt_port, telemetry_t& telemetry){
+    WiFiClient   wifiClient;
+    WiFiUDP      ntpUDP;
+    PubSubClient client(wifiClient);
+    bool         statusPublish=false;
+    char         result[256];
+
+    client.setServer(mqtt_server, mqtt_port);
+
+    if (!client.connected()){
+        reconnect(client, mqtt_server, mqtt_port);
+    }
+
+    snprintf(result, sizeof(result), 
+        "{VSolar:%.2f,ISolar:%.2f,VBatbu:%.2f,IBatbu:%.2f,VBat1:%.2f,IBat1:%.2f,VBat2:%.2f,IBat2:%.2f}", 
+        telemetry.VSolar, telemetry.ISolar, 
+        telemetry.VBatbu, telemetry.IBatbu, 
+        telemetry.VBat1,  telemetry.IBat1, 
+        telemetry.VBat2,  telemetry.IBat2
+    );
+
+    statusPublish = client.publish("v1/devices/me/telemetry", result);
+    client.disconnect();
+    return statusPublish;
+}
+
+void reconnect(PubSubClient& client, char* const mqtt_server, int mqtt_port) {
+    for (int i = 0; i < 3 && !client.connected(); i++){
+
+        Serial.print("[MQTT] Iniciando conexion a " + String(mqtt_server) + ":" + String(mqtt_port));
+
+        if (client.connect("Cliente", "Cliente", "Cliente")) {
+            Serial.println("[MQTT] Conectado");
+        } else {
+            Serial.print("[MQTT] Conexion fallida. Estado = " + String(client.state()) + ". Reintentando en 0.5 segundos...");
+            delay(500);
+        }
+    }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=c++,caption={Fichero\texttt{mqtt\_client.hpp}}, captionpos=b]
+/**
+ * @file mqtt_client.hpp
+ * @author David Andrino
+ * @author Estela Mora
+ * @author Hugo Sanchez
+ * @author Fernando Sanz
+ * @brief Modulo de cliente MQTT
+ * @version 1.1
+ * @date 15-12-2024
+ */
+#ifndef MQTT_CLIENT_HPP
+#define MQTT_CLIENT_HPP
+#include <WiFiUdp.h>
+#include <ESP8266WiFi.h>
+#include <PubSubClient.h>
+#include <Wire.h>
+
+#include "telemetry.hpp"
+
+/** 
+ * @brief Numero de reintentos de conexion con el servidor MQTT.
+ */
+#define REINTENTOS_MQTT 3
+
+/**
+ * @brief Crea el cliente MQTT y establece la conexion con el servidor MQTT.
+ * Ademas, define la estructura del mensaje para publicar las medidas
+ * tomadas y mostrarlas en ThingsBoard. En caso de que ocurra un error
+ * en la conexion con el servidor MQTT, se reintentara cada 5 segundos
+ * mediante una espera bloqueante.
+ * @param mqtt_server Direccion del servidor MQTT.
+ * @param mqtt_port Puerto del servidor MQTT.
+ * @param telemetry Referencia a una estructura que contiene las medidas de telemetria.
+ * @return true si la publicacion de telemetria fue exitosa, false en caso contrario.
+ */
+extern bool publishTelemetry(char* mqtt_server, int mqtt_port, telemetry_t& telemetry);
+
+#endif
+\end{lstlisting}
+
+\begin{lstlisting}[language=c++,caption={Fichero\texttt{sleep.cpp}}, captionpos=b]
+#include "sleep.hpp"
+
+#include <ESP8266WiFi.h>
+
+void sleep_low_power(int time_delay) {
+    Serial.println("[SLEEP] Entrando en modo bajo consumo");
+    WiFi.mode(WIFI_OFF);
+    WiFi.forceSleepBegin();
+    system_update_cpu_freq(SYS_CPU_80MHZ);
+
+    delay(time_delay);
+
+    Serial.println("[SLEEP] Saliendo del modo bajo consumo");
+    system_update_cpu_freq(SYS_CPU_160MHZ);
+    WiFi.forceSleepWake();
+    delay(1);
+    WiFi.mode(WIFI_STA);
+
+    // No hace falta conectar a la red WiFi, ya que se conectara en el loop
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=c++,caption={Fichero\texttt{sleep.hpp}}, captionpos=b]
+/**
+ * @file sleep.hpp
+ * @author David Andrino
+ * @author Estela Mora
+ * @author Hugo Sanchez
+ * @author Fernando Sanz
+ * @brief Modulo de bajo consumo
+ * @version 1.1
+ * @date 15-12-2024
+ */
+#ifndef SLEEP_H
+#define SLEEP_H
+
+/**
+ * @brief Pone al ESP8266 en modo de bajo consumo durante el tiempo que se le indique
+ * 
+ * @param time_delay Tiempo en milisegundos que el ESP8266 estara en modo de bajo consumo
+ */
+extern void sleep_low_power(int time_delay);
+
+#endif 
+\end{lstlisting}
+
+\begin{lstlisting}[language=c++,caption={Fichero\texttt{telemetry.hpp}}, captionpos=b]
+/**
+ * @file telemetry.hpp
+ * @author David Andrino
+ * @author Estela Mora
+ * @author Hugo Sanchez
+ * @author Fernando Sanz
+ * @brief Definicion de la estructura de telemetria
+ * @version 1.1
+ * @date 15-12-2024
+ */
+#ifndef TELEMETRY_H
+#define TELEMETRY_H
+
+/**
+ * @brief Estructura con las medidas tomadas por los diferentes sensores
+ */
+typedef struct {
+    float VSolar;  /**< Tension panel solar */
+    float ISolar;  /**< Corriente panel solar */
+    float VBatbu;  /**< Tension bateria backup */
+    float IBatbu;  /**< Corriente bateria backup */
+    float VBat1;   /**< Tension bateria 1 */
+    float IBat1;   /**< Corriente bateria 1 */
+    float VBat2;   /**< Tension bateria 2 */
+    float IBat2;   /**< Corriente bateria 2 */
+} telemetry_t;
+
+#endif
+\end{lstlisting}
