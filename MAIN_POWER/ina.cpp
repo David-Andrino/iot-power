@@ -1,6 +1,6 @@
-//! Clase INA_medidas. Engargada de configurar y solicitar medidas al los INAs del circuito.
+//! Clase ina. Engargada de configurar y solicitar medidas al los INAs del circuito.
 
-#include "INA_medidas.h"
+#include "ina.hpp"
 
 // INA226 instances
 INA226_WE Solar(I2C_D_PANEL);
@@ -10,7 +10,7 @@ INA226_WE Bat2(I2C_D_BAT_2);
 
 //! Booleano.
 /*! Indica si se ha realizado la configuración inicial de los sensores*/
-bool fist_config=false;
+bool first_config=false;
 
 void setupINA226Sensors();
 void reconfig_INAs();
@@ -29,60 +29,10 @@ void powerUpINA226();
  ******************************************************************************/
 void setupINA226Sensors() {
     Wire.begin();
-    //Inicialización de todos los INA antes de su configuración.
     Solar.init();
     Batbu.init();
     Bat1.init();
     Bat2.init();
-    //T_medida=Promediado_Numero_medidas*T_Conversion*2
-    /* Tiempo de conversión 
-       CONV_TIME_140          140 µs
-       CONV_TIME_204          204 µs
-       CONV_TIME_332          332 µs
-       CONV_TIME_588          588 µs
-       CONV_TIME_1100         1.1 ms (Por defecto)
-       CONV_TIME_2116       2.116 ms
-       CONV_TIME_4156       4.156 ms
-       CONV_TIME_8244       8.244 ms  
-    */
-    Solar.setConversionTime(CONV_TIME_1100);
-    Batbu.setConversionTime(CONV_TIME_1100);
-    Bat1.setConversionTime(CONV_TIME_1100);
-    Bat2.setConversionTime(CONV_TIME_1100);
-    /*Modos de medida:
-      POWER_DOWN - Permite configurar el sistema (es decir, mantiene apagado el sensor).
-                 - Si se declara inicialmente en este modo no se permite su configuración.
-                 - Además, el consumo se reduce de ~0.35mA (Activo) a ~2.3 uA (Bajo consumo) cuando está en este estado. 
-      TRIGGERED  - Medidas a petición
-      CONTINUOUS - Medidas continuas
-    */
-    Solar.setMeasureMode(CONTINUOUS);
-    Batbu.setMeasureMode(CONTINUOUS);
-    Bat1.setMeasureMode(CONTINUOUS);
-    Bat2.setMeasureMode(CONTINUOUS);
-    
-    /* Indicación de la resistencia se SHUNT y el rango de corrientes usados
-        .setResistorRange(R_SHUNT, I);
-    */
-    Solar.setResistorRange(0.1, 10);
-    Batbu.setResistorRange(0.1, 10);
-    Bat1.setResistorRange(0.1, 10);
-    Bat2.setResistorRange(0.1, 10);
-    
-    /* Si las medidas tienen un error debido al equipo por un factor constante se puede indicar:
-       Factor_Correccion = I_Equipo/I_INA
-    */
-    /*
-    Solar.setCorrectionFactor(0.95);
-    Batbu.setCorrectionFactor(0.95);
-    Bat1.setCorrectionFactor(0.95);
-    Bat2.setCorrectionFactor(0.95);
-    */
-    
-    Solar.waitUntilConversionCompleted();
-    Batbu.waitUntilConversionCompleted();
-    Bat1.waitUntilConversionCompleted();
-    Bat2.waitUntilConversionCompleted();
 }
 
 /**************************************************************************//**
@@ -93,17 +43,31 @@ void setupINA226Sensors() {
  ******************************************************************************/
 
 void reconfig_INAs(){
-    Solar.setConversionTime(CONV_TIME_1100);Batbu.setConversionTime(CONV_TIME_1100);
-    Bat1.setConversionTime(CONV_TIME_1100);Bat2.setConversionTime(CONV_TIME_1100);
+    Solar.setConversionTime(CONV_TIME_1100);
+    Batbu.setConversionTime(CONV_TIME_1100);
+    Bat1.setConversionTime(CONV_TIME_1100);
+    Bat2.setConversionTime(CONV_TIME_1100);
 
-    Solar.setMeasureMode(CONTINUOUS);Batbu.setMeasureMode(CONTINUOUS);
-    Bat1.setMeasureMode(CONTINUOUS);Bat2.setMeasureMode(CONTINUOUS);
-
-    Solar.setResistorRange(0.1, 10);Batbu.setResistorRange(0.1, 10);
-    Bat1.setResistorRange(0.1, 10);Bat2.setResistorRange(0.1, 10);
-
-    Solar.waitUntilConversionCompleted();Batbu.waitUntilConversionCompleted();
-    Bat1.waitUntilConversionCompleted();Bat2.waitUntilConversionCompleted();  
+    Solar.setMeasureMode(CONTINUOUS);
+    Batbu.setMeasureMode(CONTINUOUS);
+    Bat1.setMeasureMode(CONTINUOUS);
+    Bat2.setMeasureMode(CONTINUOUS);
+    
+    Solar.setResistorRange(0.1, 10);
+    Batbu.setResistorRange(0.1, 10);
+    Bat1.setResistorRange(0.1, 10);
+    Bat2.setResistorRange(0.1, 10);
+    
+    // Factores de corrección medidos experimentalmente
+    Solar.setCorrectionFactor(1.0469);
+    Batbu.setCorrectionFactor(1.0419);
+    Bat1.setCorrectionFactor(0.9650);
+    Bat2.setCorrectionFactor(0.9624);
+    
+    Solar.waitUntilConversionCompleted();
+    Batbu.waitUntilConversionCompleted();
+    Bat1.waitUntilConversionCompleted();
+    Bat2.waitUntilConversionCompleted();
 }
 
 /**************************************************************************//**
@@ -119,12 +83,14 @@ void reconfig_INAs(){
 
 void measureINA226(telemetry_t *telemetry) {
     // Panel Solar
-    if(fist_config==false){
+    if(first_config==false){
       setupINA226Sensors();
-      fist_config=true;
+      first_config=true;
     }else{
       powerUpINA226();  
     }
+
+    reconfig_INAs();
     
     Solar.readAndClearFlags();
     telemetry->VSolar = Solar.getBusVoltage_V() + (Solar.getShuntVoltage_mV() / 100);
@@ -133,12 +99,12 @@ void measureINA226(telemetry_t *telemetry) {
     // Batería Backup
     Batbu.readAndClearFlags();
     telemetry->VBatbu = Batbu.getBusVoltage_V() + (Batbu.getShuntVoltage_mV() / 100);
-    telemetry->IBatbu = Batbu.getCurrent_mA();
+    telemetry->IBatbu = -Batbu.getCurrent_mA();
 
     // Batería 1
     Bat1.readAndClearFlags();
     telemetry->VBat1 = Bat1.getBusVoltage_V() + (Bat1.getShuntVoltage_mV() / 100);
-    telemetry->IBat1 = Bat1.getCurrent_mA();
+    telemetry->IBat1 = -Bat1.getCurrent_mA(); // Invertir signo porque está al revés
 
     // Batería 2
     Bat2.readAndClearFlags();
@@ -172,5 +138,4 @@ void powerUpINA226() {
     Batbu.powerUp();
     Bat1.powerUp();
     Bat2.powerUp();
-    reconfig_INAs();
 }

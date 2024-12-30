@@ -1,23 +1,26 @@
-/*! \file mqtt_client.h
-    \brief Fichero de cabecera del módulo MQTT
-*/
-
+/**
+ * @file mqtt_client.hpp
+ * @author David Andrino
+ * @author Estela Mora
+ * @author Hugo Sánchez
+ * @author Fernando Sanz
+ * @brief Módulo de cliente MQTT
+ * @version 1.1
+ * @date 15-12-2024
+ */
 #ifndef MQTT_CLIENT_HPP
 #define MQTT_CLIENT_HPP
+#include <WiFiUdp.h>
+#include <ESP8266WiFi.h>
+#include <PubSubClient.h>
+#include <Wire.h>
 
-/**
- * @brief Estructura con las medidas tomadas por los diferentes sensores
+#include "telemetry.hpp"
+
+/** 
+ * @brief Número de reintentos de conexión con el servidor MQTT.
  */
-typedef struct {
-    float VSolar;  /**< Tension panel solar */
-    float ISolar;  /**< Corriente panel solar */
-    float VBatbu;  /**< Tension bateria backup */
-    float IBatbu;  /**< Corriente bateria backup */
-    float VBat1;   /**< Tension bateria 1 */
-    float IBat1;   /**< Corriente bateria 1 */
-    float VBat2;   /**< Tension bateria 2 */
-    float IBat2;   /**< Corriente bateria 2 */
-} telemetry_t;
+#define REINTENTOS_MQTT 3
 
 /**
  * @brief Crea el cliente MQTT y establece la conexión con el servidor MQTT.
