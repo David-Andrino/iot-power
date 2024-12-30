@@ -1,0 +1,40 @@
+\documentclass{article}
+\input{config.tex}
+
+\title{POWER}
+\author{David Andrino \\ Estela Mora \\ Hugo Sánchez \\ Fernando Sanz}
+\date{Otoño 2024}
+
+\begin{document}
+\frontmatter
+\include{cover}
+
+\tableofcontents
+\listoffigures
+% \listoftodos
+\lstlistoflistings
+\listoftables
+\mainmatter
+
+\pagestyle{fancy}
+\lhead[]{\href{https://github.com/David-Andrino/iot-power}{\textbf{POWER}}}
+\rhead[]{\textbf{Memoria del proyecto}}
+\cfoot{\thepage}
+
+\include{files/1-Introduccion}
+\include{files/2-Hardware}
+\include{files/3-Software}
+\include{files/4-Teorico}
+\include{files/5-Presupuesto}
+\include{files/6-Horas}
+
+\nocite{*}
+\printbibliography[title={Bibliografía}, heading=bibnumbered]
+
+\begin{appendices}
+    \include{files/AnexoCaja}
+\end{appendices}
+
+
+
+\end{document}

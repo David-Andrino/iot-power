@@ -6,6 +6,6 @@
 
 **Fernando Sanz**
 
-**Hugo Sanchez**
+**Hugo Sánchez**
 
 ![Logo](logo_full.jpg)
