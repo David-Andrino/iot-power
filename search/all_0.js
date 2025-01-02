@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['ams1117_0',['Regulador lineal: AMS1117',['../md_memoria_2structure.html#autotoc_md11',1,'']]],
-  ['arquitectura_20de_20la_20solución_1',['Arquitectura de la solución',['../md_memoria_2structure.html#autotoc_md17',1,'']]]
+  ['clear_5ffile_0',['clear_file',['../MAIN__POWER_2file__management_8hpp.html#a546a116b546478886981a20ad065aaa9',1,'clear_file(const char *measFile):&#160;file_management.cpp'],['../read__file_2file__management_8hpp.html#a546a116b546478886981a20ad065aaa9',1,'clear_file(const char *measFile):&#160;file_management.cpp']]]
 ];

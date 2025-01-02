@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['file_5fmanagement_2ehpp_0',['file_management.hpp',['../MAIN__POWER_2file__management_8hpp.html',1,'(Espacio de nombres global)'],['../read__file_2file__management_8hpp.html',1,'(Espacio de nombres global)']]]
+  ['power_0',['IoT - POWER',['../index.html',1,'']]],
+  ['publishtelemetry_1',['publishTelemetry',['../mqtt__client_8hpp.html#a2a8f1d78d749723f6d3e3b88539ea735',1,'mqtt_client.cpp']]]
 ];

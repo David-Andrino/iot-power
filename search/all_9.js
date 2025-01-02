@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['módulo_20de_20reducción_20de_20consumo_20de_20relés_20cosecha_20propia_0',['Módulo de reducción de consumo de relés (Cosecha propia)',['../md_memoria_2structure.html#autotoc_md5',1,'']]],
-  ['módulos_20individuales_20caracterización_1',['Módulos individuales (Caracterización)',['../md_memoria_2structure.html#autotoc_md4',1,'']]],
-  ['measureina226_2',['measureINA226',['../ina_8hpp.html#a8bf6f569a506efddd83bcaa15be6b18b',1,'ina.cpp']]],
-  ['medidor_20de_20tensión_20y_20corriente_3a_20ina226_3',['Medidor de tensión y corriente: INA226',['../md_memoria_2structure.html#autotoc_md6',1,'']]],
-  ['montaje_20completo_4',['Montaje completo',['../md_memoria_2structure.html#autotoc_md14',1,'']]],
-  ['mqtt_5fclient_2ehpp_5',['mqtt_client.hpp',['../mqtt__client_8hpp.html',1,'']]]
+  ['vbat1_0',['VBat1',['../structtelemetry__t.html#a3f74b2e302051e1e9b17088483468c27',1,'telemetry_t']]],
+  ['vbat2_1',['VBat2',['../structtelemetry__t.html#a9967a6bdf0757da0e1b9aa0df9cfe52b',1,'telemetry_t']]],
+  ['vbatbu_2',['VBatbu',['../structtelemetry__t.html#a6e219678f653e735bc2113a2333d9dd5',1,'telemetry_t']]],
+  ['vsolar_3',['VSolar',['../structtelemetry__t.html#aeb9c570ed70112f6f56e6be8b01e8294',1,'telemetry_t']]]
 ];
